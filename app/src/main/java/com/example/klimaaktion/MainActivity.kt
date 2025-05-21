@@ -1,4 +1,4 @@
-package com.example.klimaaktion.viewmodel
+package com.example.klimaaktion
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
