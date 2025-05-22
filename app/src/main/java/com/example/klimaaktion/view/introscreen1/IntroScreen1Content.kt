@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.introscreen1.TransportCard
 
+// Skrevet af Jacob
 @Composable
 fun IntroScreen1Content(navController: NavController) {
     Box(
@@ -55,7 +56,7 @@ fun IntroScreen1Content(navController: NavController) {
             TransportCard(modifier = Modifier.align(Alignment.CenterHorizontally))
         }
 
-        // Komponenter placering i bunden
+        // Komponenter placeret i bunden
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier

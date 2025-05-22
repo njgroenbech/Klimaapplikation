@@ -16,6 +16,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.draw.shadow
 import com.example.klimaaktion.R
 
+// Skrevet af Jacob
 @Composable
 fun TransportCard(modifier: Modifier = Modifier) {
     Box(

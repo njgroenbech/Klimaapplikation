@@ -18,9 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.shadow
-
 import androidx.navigation.NavController
 
+// Skrevet af Jacob
 @Composable
 fun StartTaskCard(navController: NavController, modifier: Modifier = Modifier) {
     Box(
