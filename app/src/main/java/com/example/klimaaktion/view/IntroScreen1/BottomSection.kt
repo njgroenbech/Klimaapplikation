@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
@@ -33,9 +34,9 @@ fun BottomSection(
                 val isSelected = index == currentPage
                 Box(
                     modifier = Modifier
-                        .width(if (isSelected) 24.dp else 14.dp) // aktiv = bredere
+                        .width(if (isSelected) 24.dp else 14.dp)
                         .height(14.dp)
-                        .clip(RoundedCornerShape(7.dp)) // afrundede hjørner
+                        .clip(RoundedCornerShape(7.dp))
                         .background(Color.Black)
                 )
                 if (index != 2) Spacer(modifier = Modifier.width(10.dp))
@@ -45,7 +46,8 @@ fun BottomSection(
         // Forward button
         Box(
             modifier = Modifier
-                .size(80.dp) // før 64.dp
+                .size(80.dp)
+                .shadow(10.dp, CircleShape, clip = false)
                 .clip(CircleShape)
                 .background(Color(0xFF7EDC91)),
             contentAlignment = Alignment.Center
@@ -54,7 +56,7 @@ fun BottomSection(
                 imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                 contentDescription = "Videre",
                 tint = Color.White,
-                modifier = Modifier.size(65.dp) // før 32.dp
+                modifier = Modifier.size(65.dp)
             )
         }
     }
