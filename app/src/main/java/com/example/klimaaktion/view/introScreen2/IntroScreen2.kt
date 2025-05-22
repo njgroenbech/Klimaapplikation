@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view
+package com.example.klimaaktion.view.introScreen2
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,7 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
+import com.example.klimaaktion.view.components.BottomSection
 
+// Nedenstående kode er skrevet af Elias
 
 @Composable
 fun IntroScreen2() {
@@ -45,8 +47,6 @@ fun IntroScreen2() {
             Spacer(Modifier.height(36.dp))
 
             IntroScreen2Cards()
-
-
         }
     }
 }
@@ -60,7 +60,7 @@ fun IntroScreen2Cards() {
         Row {
             Image(
                 painter = painterResource(id = R.drawable.opgaveblock31),
-                contentDescription = "Opgave Block til intro skærm 2",
+                contentDescription = "Opgave kort",
                 modifier = Modifier
                     .size(230.dp)
             )
@@ -74,11 +74,17 @@ fun IntroScreen2Cards() {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.quizfield1),
-                contentDescription = "Opgave Block til intro skærm 2",
+                contentDescription = "Opgave kort",
                 modifier = Modifier
                     .size(265.dp)
             )
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        BottomSection(1,
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
 
@@ -102,3 +108,4 @@ fun IntroScreen2Header() {
         }
     }
 }
+
