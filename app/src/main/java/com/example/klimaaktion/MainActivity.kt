@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.klimaaktion.ui.theme.KlimaAktionTheme
-import com.example.klimaaktion.view.IntroScreen1
+import com.example.klimaaktion.view.IntroScreen3.IntroScreen3
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KlimaAktionTheme {
-                IntroScreen1()
+                IntroScreen3()
             }
         }
     }
