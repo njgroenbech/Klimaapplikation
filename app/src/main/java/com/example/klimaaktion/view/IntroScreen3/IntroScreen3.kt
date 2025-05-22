@@ -12,11 +12,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.example.klimaaktion.R
 
 // kode skrevet af Jacob
 @Composable
-fun IntroScreen3() {
+fun IntroScreen3(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()

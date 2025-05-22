@@ -21,13 +21,14 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.klimaaktion.R
-import com.example.klimaaktion.view.components.BottomSection
+import com.example.klimaaktion.view.IntroScreen1.BottomSection
 
 // Nedenstående kode er skrevet af Elias
 
 @Composable
-fun IntroScreen2() {
+fun IntroScreen2(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()

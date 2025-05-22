@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view
+package com.example.klimaaktion.view.IntroScreen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,12 +10,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.klimaaktion.view.IntroScreen1.StartTaskButton
-import com.example.klimaaktion.view.components.BottomSection
-import com.example.klimaaktion.view.components.TaskCard
+import androidx.navigation.NavController
 
 @Composable
-fun IntroScreen1() {
+fun IntroScreen1(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
