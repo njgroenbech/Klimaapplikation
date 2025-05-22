@@ -17,7 +17,7 @@ import androidx.compose.ui.draw.shadow
 import com.example.klimaaktion.R
 
 @Composable
-fun TaskCard(modifier: Modifier = Modifier) {
+fun TransportCard(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth(0.8f)
