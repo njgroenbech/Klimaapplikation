@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
+// Hele siden er skrevet af Felix
 @Composable
 fun FrontScreen() {
     Box(
