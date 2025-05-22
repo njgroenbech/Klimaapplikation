@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.IntroScreen1
+package com.example.klimaaktion.view.introscreen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -45,7 +45,10 @@ fun IntroScreen1(navController: NavController) {
             )
 
             Spacer(Modifier.height(50.dp))
-            StartTaskButton(modifier = Modifier.align(Alignment.CenterHorizontally))
+            StartTaskButton(
+                navController = navController,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
 
             Spacer(Modifier.height(50.dp))
             TaskCard(modifier = Modifier.align(Alignment.CenterHorizontally))

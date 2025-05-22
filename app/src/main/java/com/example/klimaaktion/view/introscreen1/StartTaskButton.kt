@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.IntroScreen1
+package com.example.klimaaktion.view.introscreen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,8 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.shadow
 
+import androidx.navigation.NavController
+
 @Composable
-fun StartTaskButton(modifier: Modifier = Modifier) {
+fun StartTaskButton(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()

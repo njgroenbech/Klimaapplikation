@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.IntroScreen1
+package com.example.klimaaktion.view.introscreen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

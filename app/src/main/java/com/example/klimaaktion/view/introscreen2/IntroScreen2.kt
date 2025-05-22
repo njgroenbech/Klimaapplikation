@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.introScreen2
+package com.example.klimaaktion.view.introscreen2
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
-import com.example.klimaaktion.view.IntroScreen1.BottomSection
+import com.example.klimaaktion.view.introscreen1.BottomSection
 
 // Nedenstående kode er skrevet af Elias
 
