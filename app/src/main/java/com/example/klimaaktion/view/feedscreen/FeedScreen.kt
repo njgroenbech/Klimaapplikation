@@ -6,5 +6,5 @@ import androidx.navigation.NavController
 
 @Composable
 fun FeedScreen(navController: NavController) {
-    Text("Feed Screen")
+    FeedScreenContent(navController = navController)
 }
