@@ -23,8 +23,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
-import com.example.klimaaktion.view.introscreen1.BottomSection
 
+//import com.example.klimaaktion.view.introscreen1.BottomSection
 // Nedenstående kode er skrevet af Elias
 
 @Composable
@@ -83,9 +83,9 @@ fun IntroScreen2Cards() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        BottomSection(1,
-            modifier = Modifier.fillMaxWidth()
-        )
+        //BottomSection(1,
+            //modifier = Modifier.fillMaxWidth()
+        //)
     }
 }
 
