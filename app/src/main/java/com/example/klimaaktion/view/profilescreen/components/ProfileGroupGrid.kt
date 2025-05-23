@@ -30,11 +30,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
+//Skrevet af Felix, med en del hjælp AI & Online ift. LazyVerticalGrid & "Progressbaren"
 @Composable
 fun ProfileGroupGrid() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("10%", fontWeight = FontWeight.Bold, color = Color(0xFF343434))
         Spacer(modifier = Modifier.height(4.dp))
+        val points = 50
+        val maxPoints = 250
+        val progress = points.toFloat() / maxPoints.toFloat()
+        val minProgressToEmbedText = 0.09f
 
         Box(
             modifier = Modifier
@@ -43,18 +47,47 @@ fun ProfileGroupGrid() {
                 .clip(RoundedCornerShape(50))
                 .background(Color.White)
         ) {
-            LinearProgressIndicator(
-                progress = { 0.14f },
+            // Grøn bar
+            Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .clip(RoundedCornerShape(50)),
-                color = Color(0xFF6CD59A),
-                trackColor = Color(0xFFF0F0F0)
+                    .fillMaxWidth(progress.coerceIn(0f, 1f))
+                    .clip(RoundedCornerShape(50))
+                    .background(Color(0xFF6CD59A))
             )
+
+            if (progress < minProgressToEmbedText) {
+                // Vis tekst UDENFOR baren (venstrestillet)
+                Text(
+                    text = "${(progress * 100).toInt()}%",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 12.sp,
+                    color = Color(0xFF343434),
+                    modifier = Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 8.dp)
+                )
+            } else {
+                // Vis tekst INDENI baren (højrestillet)
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth(progress)
+                        .padding(end = 8.dp),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    Text(
+                        text = "${(progress * 100).toInt()}%",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                        color = Color(0xFF343434)
+                    )
+                }
+            }
         }
 
         Spacer(modifier = Modifier.height(4.dp))
-        Text("35 point ud af 250", fontSize = 14.sp, color = Color(0xFF343434))
+        Text("$points point ud af $maxPoints", fontSize = 14.sp, color = Color(0xFF343434))
 
         Spacer(modifier = Modifier.height(12.dp))
 
