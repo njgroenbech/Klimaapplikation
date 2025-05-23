@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.taskScreen
+package com.example.klimaaktion.view.taskscreen
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
