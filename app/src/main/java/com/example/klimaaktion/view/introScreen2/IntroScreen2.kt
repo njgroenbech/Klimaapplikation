@@ -39,8 +39,6 @@ fun IntroScreen2() {
                 .fillMaxSize()
                 .padding(top = 90.dp)
                 .background(Color(0xFFACD8F1))
-                .statusBarsPadding()
-
         ) {
             IntroScreen2Header()
 
