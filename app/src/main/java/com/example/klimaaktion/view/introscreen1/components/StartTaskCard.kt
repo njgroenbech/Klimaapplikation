@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.IntroScreen1
+package com.example.klimaaktion.view.introscreen1.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,9 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.draw.shadow
+import androidx.navigation.NavController
 
+// Skrevet af Jacob
 @Composable
-fun StartTaskButton(modifier: Modifier = Modifier) {
+fun StartTaskCard(navController: NavController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth()

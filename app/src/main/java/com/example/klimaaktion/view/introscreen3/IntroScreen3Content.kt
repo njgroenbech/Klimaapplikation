@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view
+package com.example.klimaaktion.view.introscreen3.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,12 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.klimaaktion.view.IntroScreen1.StartTaskButton
-import com.example.klimaaktion.view.components.BottomSection
-import com.example.klimaaktion.view.components.TaskCard
+import androidx.navigation.NavController
 
+// Skrevet af Jacob
 @Composable
-fun IntroScreen1() {
+fun IntroScreen3Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -31,33 +30,39 @@ fun IntroScreen1() {
             Spacer(modifier = Modifier.height(100.dp))
 
             Text(
-                text = "Udfør",
+                text = "Følg",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "Klimaaktiviteter og opjen point",
+                text = "Se din fremgang og optjen trofæer!",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(50.dp))
-            StartTaskButton(modifier = Modifier.align(Alignment.CenterHorizontally))
+            Spacer(modifier = Modifier.height(40.dp))
 
-            Spacer(Modifier.height(50.dp))
-            TaskCard(modifier = Modifier.align(Alignment.CenterHorizontally))
+            ProgressCard()
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            TrophyCard()
         }
 
-        // BottomSection placement
-        BottomSection(
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
-        )
+        ) {
+            PageIndicator(currentPage = 2)
+            Spacer(modifier = Modifier.height(20.dp))
+            ForwardButton()
+        }
     }
 }

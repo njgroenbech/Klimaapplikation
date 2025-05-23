@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.components
+package com.example.klimaaktion.view.introscreen1
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,8 +16,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.draw.shadow
 import com.example.klimaaktion.R
 
+// Skrevet af Jacob
 @Composable
-fun TaskCard(modifier: Modifier = Modifier) {
+fun TransportCard(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth(0.8f)

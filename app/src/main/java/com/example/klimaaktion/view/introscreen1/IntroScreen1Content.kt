@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.IntroScreen3
+package com.example.klimaaktion.view.introscreen1.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,13 +10,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.Image
-import androidx.compose.ui.res.painterResource
-import com.example.klimaaktion.R
+import androidx.navigation.NavController
+import com.example.klimaaktion.view.introscreen1.TransportCard
 
-// kode skrevet af Jacob
+// Skrevet af Jacob
 @Composable
-fun IntroScreen3() {
+fun IntroScreen1Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -32,7 +31,7 @@ fun IntroScreen3() {
             Spacer(modifier = Modifier.height(100.dp))
 
             Text(
-                text = "Følg",
+                text = "Udfør",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color(0xFF202020)
@@ -41,39 +40,32 @@ fun IntroScreen3() {
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Se din fremgang og optjen trofæer!",
+                text = "Klimaaktiviteter og opjen point",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF202020)
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Image(
-                painter = painterResource(id = R.drawable.intro_card),
-                contentDescription = "Progress box",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(260.dp)
-                    .align(Alignment.CenterHorizontally)
+            Spacer(Modifier.height(50.dp))
+            StartTaskCard(
+                navController = navController,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Image(
-                painter = painterResource(id = R.drawable.trophy),
-                contentDescription = "Trophies box",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
+            Spacer(Modifier.height(50.dp))
+            TransportCard(modifier = Modifier.align(Alignment.CenterHorizontally))
         }
 
-        BottomSection3(
+        // Komponenter placeret i bunden
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
-        )
+        ) {
+            PageIndicator()
+            Spacer(modifier = Modifier.height(20.dp))
+            ForwardButton()
+        }
     }
 }
