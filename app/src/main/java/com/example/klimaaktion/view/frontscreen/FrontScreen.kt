@@ -15,11 +15,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.klimaaktion.R
 
 // Hele siden er skrevet af Felix
 @Composable
-fun FrontScreen() {
+fun FrontScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
