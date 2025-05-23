@@ -55,7 +55,7 @@ fun ProfileGroupGrid() {
                     .clip(RoundedCornerShape(50))
                     .background(Color(0xFF6CD59A))
             )
-
+                // Selv skrevet først, cleanet up med lidt hjælp fra AI ift. Alignment
             if (progress < minProgressToEmbedText) {
                 // Vis tekst UDENFOR baren (venstrestillet)
                 Text(
@@ -105,7 +105,7 @@ fun ProfileGroupGrid() {
             horizontalArrangement = Arrangement.spacedBy(40.dp),
             modifier = Modifier
                 .width(340.dp)
-                .height(310.dp)
+                .height(320.dp)
         ) {
             itemsIndexed(members) { index, name ->
                 Column(
