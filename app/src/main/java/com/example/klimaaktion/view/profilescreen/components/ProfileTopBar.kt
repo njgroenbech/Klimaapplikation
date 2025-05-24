@@ -1,6 +1,7 @@
 package com.example.klimaaktion.view.profilescreen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,7 +22,7 @@ import com.example.klimaaktion.R
 
 // Skrevet af Felix
 @Composable
-fun ProfileTopBar() {
+fun ProfileTopBar(onSettingsClick: () -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -45,9 +46,12 @@ fun ProfileTopBar() {
             Image(
                 painter = painterResource(R.drawable.settings),
                 contentDescription = "Indstillinger",
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier
+                    .size(40.dp)
+                    .clickable { onSettingsClick() }, // 👈 NYT
                 colorFilter = null
             )
+
         }
     }
 }

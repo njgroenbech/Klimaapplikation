@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.klimaaktion.R
 
-
+// Skrevet af Felix, men list huske hjælp fra AI ift. data class & NavItems og NavBarItems
 data class NavItem(val route: String, val iconResId: Int)
 
 @Composable
