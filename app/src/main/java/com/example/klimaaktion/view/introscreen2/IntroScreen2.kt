@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
 
-//import com.example.klimaaktion.view.introscreen1.BottomSection
 // Nedenstående kode er skrevet af Elias
 
 @Composable
@@ -40,6 +39,8 @@ fun IntroScreen2(navController: NavController) {
                 .fillMaxSize()
                 .padding(top = 90.dp)
                 .background(Color(0xFFACD8F1))
+                .statusBarsPadding()
+
         ) {
             IntroScreen2Header()
 
@@ -80,10 +81,11 @@ fun IntroScreen2Cards() {
         }
 
         Spacer(modifier = Modifier.height(20.dp))
-
-        //BottomSection(1,
-            //modifier = Modifier.fillMaxWidth()
-        //)
+        /*
+        BottomSection(1,
+            modifier = Modifier.fillMaxWidth()
+        )
+         */
     }
 }
 
