@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
-//Skrevet af Felix, med en del hjælp AI & Online ift. LazyVerticalGrid & "Progressbaren"
+//Skrevet af Felix, med en del hjælp fra AI & Online ift. LazyVerticalGrid
 @Composable
 fun ProfileGroupGrid() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -15,7 +15,7 @@ import com.example.klimaaktion.view.startscreen.StartScreen
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "startScreen") {
+    NavHost(navController = navController, startDestination = "frontscreen") {
         composable("startScreen") {StartScreen(navController)}
         composable("frontScreen") {FrontScreen(navController) }
         composable("intro1") { IntroScreen1(navController) }
