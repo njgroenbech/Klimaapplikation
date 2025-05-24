@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.klimaaktion.view.taskscreen.components.TaskCard
 import com.example.klimaaktion.viewmodel.MainViewModel
 
@@ -23,10 +24,11 @@ import com.example.klimaaktion.viewmodel.MainViewModel
 // Nedenstående kode er lavet af Elias
 
 @Composable
-fun TaskScreen(viewModel: MainViewModel = viewModel()) {
-
+fun TaskScreen(viewModel: MainViewModel = viewModel(),
+               navController: NavController,
+               modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFACD8F1))
             .statusBarsPadding()

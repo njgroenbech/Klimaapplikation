@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.klimaaktion.R
+import com.example.klimaaktion.navigation.Routes
 
 // Skrevet af Felix, men list huske hjælp fra AI ift. data class & NavItems og NavBarItems
 data class NavItem(val route: String, val iconResId: Int)
@@ -17,10 +18,10 @@ fun BottomNavBar(
     currentRoute: String?
 ) {
     val items = listOf(
-        NavItem("home", R.drawable.homeikon),
-        NavItem("feed", R.drawable.barchartikon),
-        NavItem("check", R.drawable.opgaveikon),
-        NavItem("profile", R.drawable.profilikon)
+        NavItem(Routes.Feed, R.drawable.homeikon),
+        NavItem(Routes.Progress, R.drawable.barchartikon),
+        NavItem(Routes.Tasks, R.drawable.opgaveikon),
+        NavItem(Routes.Profile, R.drawable.profilikon)
     )
 
     NavigationBar {

@@ -11,7 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
-import com.example.klimaaktion.view.frontscreen.NextButton
+import com.example.klimaaktion.view.sharedcomponents.NextButton
 
 
 @Composable
@@ -45,6 +45,6 @@ fun StartScreen (navController: NavController) {
         Spacer(modifier = Modifier.height(150.dp))
 
 
-        NextButton {  }
+        NextButton { navController.navigate("intro1") }
     }
 }

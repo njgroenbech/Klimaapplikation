@@ -5,13 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.klimaaktion.view.loginscreen.components.LoginButton
 import com.example.klimaaktion.view.loginscreen.components.LoginForm
 import com.example.klimaaktion.view.loginscreen.components.LogoHeader
 
 
 @Composable
-fun LoginScreenContent() {
+fun LoginScreenContent(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -23,6 +24,6 @@ fun LoginScreenContent() {
         Spacer(modifier = Modifier.height(70.dp))
         LoginForm()
         Spacer(modifier = Modifier.height(100.dp))
-        LoginButton()
+        LoginButton(navController)
     }
 }
