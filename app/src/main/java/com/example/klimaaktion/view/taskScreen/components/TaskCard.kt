@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.taskScreen.components
+package com.example.klimaaktion.view.taskscreen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.taskScreen
+package com.example.klimaaktion.view.taskscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.klimaaktion.view.taskScreen.components.TaskCard
+import com.example.klimaaktion.view.taskscreen.components.TaskCard
 import com.example.klimaaktion.viewmodel.MainViewModel
 
 
