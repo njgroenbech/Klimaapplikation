@@ -9,5 +9,6 @@ data class Task(
     val title: String,
     val points: Int,
     val backgroundColor: Color,
-    val fact: String
+    val fact: String,
+    val details: String
 )

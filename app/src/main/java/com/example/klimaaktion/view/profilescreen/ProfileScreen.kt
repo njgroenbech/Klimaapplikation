@@ -16,7 +16,7 @@ import com.example.klimaaktion.view.profilescreen.components.ProfileDrawerConten
 import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
 import kotlinx.coroutines.launch
 
-// Kode skrevet af Felix
+// Kode skrevet af Felix med AI hjælp til Drawer relateret kode
 @Composable
 fun ProfileScreen(navController: NavController) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)

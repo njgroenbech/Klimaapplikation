@@ -1,6 +1,7 @@
 package com.example.klimaaktion.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -10,18 +11,25 @@ import com.example.klimaaktion.view.introscreen1.IntroScreen1
 import com.example.klimaaktion.view.introscreen2.IntroScreen2
 import com.example.klimaaktion.view.profilescreen.ProfileScreen
 import com.example.klimaaktion.view.startscreen.StartScreen
+import com.example.klimaaktion.view.taskScreen.TaskScreen
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 
 @Composable
 fun AppNavHost() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "frontscreen") {
+    NavHost(navController = navController, startDestination = "taskscreen") {
         composable("startScreen") {StartScreen(navController)}
         composable("frontScreen") {FrontScreen(navController) }
         composable("intro1") { IntroScreen1(navController) }
         composable("intro2") { IntroScreen2(navController) }
         composable("FeedScreen") { FeedScreen(navController) }
         composable("ProfileScreen") { ProfileScreen(navController) }
+        composable("taskscreen") {
+            val viewModel: MainViewModel = viewModel()
+            TaskScreen(viewModel, navController)
+        }
+
 
     }
 }
