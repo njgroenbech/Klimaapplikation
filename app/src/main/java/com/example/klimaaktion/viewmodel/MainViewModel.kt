@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.example.klimaaktion.model.Task
 import androidx.compose.ui.graphics.Color
+import com.example.klimaaktion.model.Group
 import com.example.klimaaktion.model.QuizQuestion
 
 class MainViewModel : ViewModel() {
@@ -280,9 +281,42 @@ class MainViewModel : ViewModel() {
                 )
             )        )
     )
+
     val taskList: List<Task> = listOfTasks
 
     fun removeTask(task: Task) {
         listOfTasks.remove(task)
+    }
+
+    // Denne del er tilføjet af Nicholas, hvilket styrer gruppefunktionerne
+    private val _groups = mutableStateListOf(
+        Group(1, "Testgruppe")
+    )
+
+    val groups: List<Group> = _groups
+
+    fun addGroup(name: String) {
+        val newId = (_groups.maxOfOrNull { it.id } ?: 0) + 1
+        _groups.add(Group(newId, name))
+    }
+
+    fun completeTask(groupId: Int, task: Task) {
+        val idx = _groups.indexOfFirst { it.id == groupId }
+        if (idx >= 0) {
+            val old = _groups[idx]
+            if (task.id !in old.completedTaskIds) {
+                val newCompleted = (old.completedTaskIds + task.id).toMutableList()
+                _groups[idx] = old.copy(completedTaskIds = newCompleted)
+            }
+        }
+    }
+
+    fun sumGroupPoints(group: Group): Int =
+        group.completedTaskIds.sumOf { id -> listOfTasks.find { it.id == id }?.points ?: 0 }
+
+    // Find opgaver som gruppen ikke har lavet
+    fun getPendingTasks(groupId: Int): List<Task> {
+        val completed = _groups.find { it.id == groupId }?.completedTaskIds ?: emptyList()
+        return listOfTasks.filter { it.id !in completed }
     }
 }

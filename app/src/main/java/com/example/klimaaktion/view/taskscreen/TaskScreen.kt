@@ -25,6 +25,7 @@ import com.example.klimaaktion.viewmodel.MainViewModel
 
 @Composable
 fun TaskScreen(viewModel: MainViewModel = viewModel(),
+               groupId: Int,
                navController: NavController,
                modifier: Modifier = Modifier) {
     Box(
@@ -44,11 +45,17 @@ fun TaskScreen(viewModel: MainViewModel = viewModel(),
                 fontWeight = FontWeight.Bold,
             )
 
+
+            // Find opgaver gruppen ikke har lavet, Nicholas har lavet nedenstående
+            val pendingTasks = viewModel.getPendingTasks(groupId)
+
             LazyColumn {
-                items(viewModel.taskList, key = { it.id }) { taskId ->
+                items(pendingTasks, key = { it.id }) { task ->
                     TaskCard(
-                        task = taskId,
-                        onTaskDone = { viewModel.removeTask(taskId) }
+                        task = task,
+                        onTaskDone = {
+                            viewModel.completeTask(groupId, task)
+                        }
                     )
                 }
             }

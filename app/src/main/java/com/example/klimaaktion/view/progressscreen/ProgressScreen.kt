@@ -13,13 +13,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.progressscreen.components.CircularProgressBar
 import com.example.klimaaktion.view.progressscreen.components.LeaderboardCard
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 // Nicholas
 @Composable
-fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun ProgressScreen(navController: NavController,
+                   modifier: Modifier = Modifier,
+                   viewmodel: MainViewModel = viewModel()) {
     Column(
         modifier = Modifier
             .fillMaxSize()

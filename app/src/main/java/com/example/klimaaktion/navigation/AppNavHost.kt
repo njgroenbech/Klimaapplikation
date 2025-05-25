@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.klimaaktion.view.feedscreen.FeedScreen
 import com.example.klimaaktion.view.frontscreen.FrontScreen
 import com.example.klimaaktion.view.introscreen1.IntroScreen1
@@ -55,17 +57,29 @@ fun AppNavHost() {
             }
         }
 
-        composable(Routes.Tasks) {
+        // task screen tager nu groupId some argument, så forskellige grupper kan se og udføre
+        // forskellige opgaver
+        composable(
+            route = Routes.Tasks,
+            arguments = listOf(navArgument("groupId") {
+                type = NavType.IntType
+                defaultValue = 1
+            })
+        ) { backStack ->
+            val groupId = backStack.arguments!!.getInt("groupId")
             Scaffold(
                 bottomBar = {
                     BottomNavBar(navController = navController, currentRoute = Routes.Tasks)
                 }
-            ) {
-                    innerPadding ->
-                TaskScreen(navController = navController,
-                    modifier = Modifier.padding(innerPadding))
+            ) { innerPadding ->
+                TaskScreen(
+                    groupId = groupId,
+                    navController = navController,
+                    modifier = Modifier.padding(innerPadding)
+                )
             }
         }
+
 
         composable(Routes.Profile) {
             Scaffold(

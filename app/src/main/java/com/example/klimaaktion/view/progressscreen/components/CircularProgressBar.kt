@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 
+// Nicholas, med hjælp fra AI til skitsering af den cirkulære datavisualisering
 @Composable
 fun CircularProgressBar(
     percentage: Float, // e.g., 0.06 for 6%
