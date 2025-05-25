@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.view.introscreen3.components.PageIndicator
 import com.example.klimaaktion.view.sharedcomponents.NextButton
 
 // Nedenstående kode er skrevet af Elias
@@ -36,7 +37,7 @@ fun IntroScreen2(navController: NavController) {
             .statusBarsPadding()
     ) {
         Column(
-            modifier = Modifier.padding(24.dp)
+            modifier = Modifier.padding(horizontal = 20.dp)
                 .fillMaxSize()
                 .padding(top = 90.dp)
                 .background(Color(0xFFACD8F1))
@@ -48,6 +49,15 @@ fun IntroScreen2(navController: NavController) {
             Spacer(Modifier.height(36.dp))
 
             IntroScreen2Cards()
+
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                PageIndicator(currentPage = 1) // composable fra Jacob i introscreen3.components.pageIndicator
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
 
             NextButton { navController.navigate("intro3") }
         }
