@@ -1,5 +1,6 @@
 package com.example.klimaaktion.view.taskscreen
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.taskscreen.components.TaskCard
@@ -38,11 +40,17 @@ fun TaskScreen(viewModel: MainViewModel = viewModel(),
                 .padding(horizontal = 24.dp)
                 .fillMaxSize()
         ) {
+
             Text(
                 text = "Opgaver",
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
             )
+            Button(onClick = {
+                viewModel.fetchTasksFromOpenAI()
+            }) {
+                Text("Test OpenAI-kald")
+            }
 
             LazyColumn {
                 items(viewModel.taskList, key = { it.id }) { taskId ->

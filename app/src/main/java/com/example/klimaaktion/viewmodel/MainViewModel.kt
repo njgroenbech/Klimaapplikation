@@ -1,16 +1,131 @@
 package com.example.klimaaktion.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import com.example.klimaaktion.model.Task
 import androidx.compose.ui.graphics.Color
+import com.example.klimaaktion.model.ChatRequest
+import com.example.klimaaktion.model.ChatResponse
+import com.example.klimaaktion.model.Message
 import com.example.klimaaktion.model.QuizQuestion
+import com.example.klimaaktion.model.TaskRaw
+import com.example.klimaaktion.network.Api
+import com.example.klimaaktion.network.OpenAIService
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
+import retrofit2.Call
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 class MainViewModel : ViewModel() {
 
     // Elias: Til TaskScreen
     // quiz relaterede ting og "details" i koden er lavet af Felix
     // Farverne og opgaverne er genereret af AI
+
+    private val openAIService = Api.openAIService
+
+    fun fetchTasksFromOpenAI() {
+        Log.d("OpenAITest", "🔁 fetchTasksFromOpenAI() kaldt")
+
+        val prompt = """
+ Generer 2 klimaopgaver til børn mellem 10 og 14 år. Returnér dem som en gyldig JSON-liste, hvor hvert objekt indeholder disse felter:
+
+ 1. "id": Et unikt 2-cifret heltal    (alle 10 opgaver skal have forskelligt ID)
+ 2. "title": En kort sætning, der beskriver opgaven (f.eks. "Sluk lyset efter dig", "Plant 1 træ" eller "tag cyklen 2 gange" )
+ 3. "points": Et tal mellem 5 og 50, som skal være deleligt med 5 (kun 5, 10, 15, ..., 50). Brug lavere point til nemme opgaver og højere til svære.
+ 4. "backgroundColor": En frugt-agtig farvekode i hex-format, undgå farver tæt på lyseblå, eller farver som: hvid, sort, mørkegrøn
+ 5. "fact": En kort faktatekst (max én linje) om klima, relateret til opgaven
+ 6. "details": En forklarende tekst på cirka 150 ord, skrevet i et let forståeligt sprog for børn i alderen 10-14 år. Den skal forklare hvorfor opgaven er vigtig for klima og miljø.
+ 7. "quiz": En liste med 3 spørgsmål. Hvert spørgsmål skal have:
+    - "question": selve spørgsmålet
+    - "answers": en liste med præcis 3 svarmuligheder
+    - "correctAnswerIndex": et heltal mellem 0 og 2, som angiver det rigtige svar
+
+ Returnér kun gyldig JSON. Svar må ikke indeholde nogen forklarende eller anden tekst.
+ """.trimIndent()
+
+
+        val request = ChatRequest(
+            model = "gpt-3.5-turbo",
+            messages = listOf(
+                Message(role = "user", content = prompt)
+            ),
+            temperature = 0.7,
+            max_tokens = 2000
+        )
+
+
+        val call = openAIService.getChatCompletion(request)
+
+        call.enqueue(object : retrofit2.Callback<ChatResponse> {
+            override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
+                val content = response.body()?.choices?.firstOrNull()?.message?.content
+                Log.d("OpenAITest", "Raw content:\n$content")
+
+                if (content == null) {
+                    Log.e("OpenAITest", "Svar er null")
+                    return
+                }
+
+                val cleaned = content
+                    .replace("```json", "")
+                    .replace("```", "")
+                    .trim()
+
+                Log.d("OpenAITest", "Cleaned content:\n$cleaned")
+
+                try {
+                    val jsonArray = JSONArray(cleaned)
+                    Log.d("OpenAITest", "✅ Gyldig JSON-array med ${jsonArray.length()} opgaver")
+
+                    // PARSING til dine egne Task-objekter
+                    val tasks = parseTasksFromJson(cleaned)
+
+                    // Opdater den mutable liste, så UI også opdateres
+                    listOfTasks.clear()
+                    listOfTasks.addAll(tasks)
+
+                } catch (e: Exception) {
+                    Log.e("OpenAITest", "⚠️ Parsing-fejl: ${e.message}")
+                }
+            }
+
+            override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
+                Log.e("OpenAITest", "❌ Kald fejlede: ${t.message}", t)
+            }
+
+        })
+    }
+
+    private fun hexToColor(hex: String): Color {
+        return Color(android.graphics.Color.parseColor(hex))
+    }
+
+    private fun parseTasksFromJson(jsonString: String): List<Task> {
+        val gson = Gson()
+        val type = object : TypeToken<List<TaskRaw>>() {}.type
+        val rawList: List<TaskRaw> = gson.fromJson(jsonString, type)
+
+        return rawList.map { raw ->
+            Task(
+                id = raw.id,
+                title = raw.title,
+                points = raw.points,
+                backgroundColor = hexToColor(raw.backgroundColor),
+                fact = raw.fact,
+                details = raw.details,
+                quiz = raw.quiz
+            )
+        }
+    }
+
+
+
 
     private val listOfTasks = mutableStateListOf(
         Task(
