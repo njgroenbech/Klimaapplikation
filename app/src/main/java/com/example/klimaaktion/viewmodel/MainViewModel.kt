@@ -1,5 +1,6 @@
 package com.example.klimaaktion.viewmodel
 
+import com.example.klimaaktion.BuildConfig
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
@@ -16,7 +17,6 @@ import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Response
-import java.io.File
 import androidx.core.graphics.toColorInt
 
 
@@ -25,17 +25,11 @@ class MainViewModel : ViewModel() {
     // Elias: Til TaskScreen
     // quiz relaterede ting og "details" i koden er lavet af Felix
     // Farverne og opgaverne er genereret af AI
+    // Build config tilføjet af Nicholas
 
     private val openAIService = Api.openAIService
 
-    private val apiKey: String by lazy {
-        File("local.properties")
-            .useLines { lines ->
-                lines.firstOrNull { it.startsWith("OPENAI_API_KEY=") }
-                    ?.substringAfter("=")
-            }?.let { "Bearer $it" } ?: throw Exception("API-nøgle mangler i local.properties")
-    }
-
+    val apiKey = "Bearer ${BuildConfig.OPENAI_API_KEY}"
 
     fun fetchTasksFromOpenAI() {
         Log.d("OpenAITest", "🔁 fetchTasksFromOpenAI() kaldt")

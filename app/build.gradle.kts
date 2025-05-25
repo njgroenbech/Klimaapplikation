@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -15,6 +18,17 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val localPropsFile = rootProject.file("local.properties")
+        if (localPropsFile.exists()) {
+            val props = Properties().apply {
+                load(FileInputStream(localPropsFile))
+            }
+            val openAiKey = props.getProperty("OPENAI_API_KEY", "").trim()
+            buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
+        } else {
+            buildConfigField("String", "OPENAI_API_KEY", "\"\"")
+        }
     }
 
     buildTypes {
@@ -34,6 +48,7 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
