@@ -1,6 +1,9 @@
 package com.example.klimaaktion.navigation
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -27,7 +30,6 @@ fun AppNavHost() {
         composable("intro2") { IntroScreen2(navController) }
         composable("intro3") { IntroScreen3(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
-        composable(Routes.Profile) { ProfileScreen(navController) }
 
         // Tilføje navbar til bunden af skærme (Nicholas)
         composable(Routes.Feed) {
