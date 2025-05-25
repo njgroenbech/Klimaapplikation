@@ -45,7 +45,6 @@ fun CreateUserScreen(navController: NavController) {
     var usernameText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
-    // Linje 47-84 er fra frontscreen packagen lavet af Felix
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -68,7 +67,10 @@ fun CreateUserScreen(navController: NavController) {
                     .width(400.dp)
                     .height(60.dp)
             )
-            // Vi bruger denne funktion for at kunne skalere billedet udover skærmens størrelse
+
+            Text("Velkommen ${usernameText}")
+
+            // Linje 75-87 er taget fra frontscreen package
             BoxWithConstraints(
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center
