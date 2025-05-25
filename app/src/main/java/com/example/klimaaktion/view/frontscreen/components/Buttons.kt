@@ -20,7 +20,7 @@ import androidx.navigation.NavController
 fun FrontScreenButtons(navController: NavController){
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Button(
-            onClick = { navController.navigate("loginscreen") },
+            onClick = { navController.navigate("createUserScreen") },
             shape = RoundedCornerShape(50),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
             elevation = ButtonDefaults.buttonElevation(6.dp),
@@ -38,7 +38,7 @@ fun FrontScreenButtons(navController: NavController){
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = { navController.navigate("loginscreen") },
             shape = RoundedCornerShape(50),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
             elevation = ButtonDefaults.buttonElevation(6.dp),
