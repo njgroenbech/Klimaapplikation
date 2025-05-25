@@ -66,7 +66,7 @@ fun TaskCard(
                 Spacer(modifier = Modifier.weight(1f))
 
 
-                // De 2 boxes (bog og spørgsmålstegn ikon) her er skrevet af Felix
+                // De 2 boxes (bog og spørgsmålstegn ikon, linje 69 - 104) her er skrevet af Felix
                 Box(
                     modifier = Modifier
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
@@ -115,7 +115,7 @@ fun TaskCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Details og Quiz er lavet af Felix
+            // Details og Quiz (linje 118-133) er lavet af Felix
             if (detailsExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
