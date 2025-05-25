@@ -115,7 +115,7 @@ fun TaskCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Details og Quiz (linje 118-133) er lavet af Felix
+            // Details og Quiz (linje 118-164) er lavet af Felix
             if (detailsExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -125,11 +125,42 @@ fun TaskCard(
             }
 
             if (quizExpanded) {
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = task.quiz,
-                    fontSize = 14.sp
-                )
+                Column {
+                    task.quiz.forEach { quizQuestion ->
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(Color(0xFFABE8E4), RoundedCornerShape(20.dp))
+                                .padding(12.dp)
+                                .padding(vertical = 8.dp)
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(
+                                    text = quizQuestion.question,
+                                    fontWeight = FontWeight.SemiBold,
+                                    modifier = Modifier.padding(bottom = 12.dp),
+                                    color = Color.Black
+                                )
+
+                                quizQuestion.answers.forEach { answer ->
+                                    Button(
+                                        onClick = {},
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(vertical = 4.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color.White,
+                                            contentColor = Color(0xFF224B43)
+                                        ),
+                                        shape = RoundedCornerShape(20.dp)
+                                    ) {
+                                        Text(text = answer)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             if (isExpanded == false) {
