@@ -1,7 +1,5 @@
 package com.example.klimaaktion.view.taskscreen
 
-package com.example.klimaaktion.view.taskscreen
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
