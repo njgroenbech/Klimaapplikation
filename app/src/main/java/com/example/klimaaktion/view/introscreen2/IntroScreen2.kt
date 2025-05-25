@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.view.sharedcomponents.NextButton
 
 // Nedenstående kode er skrevet af Elias
 
@@ -47,6 +48,8 @@ fun IntroScreen2(navController: NavController) {
             Spacer(Modifier.height(36.dp))
 
             IntroScreen2Cards()
+
+            NextButton { navController.navigate("intro3") }
         }
     }
 }
@@ -54,8 +57,7 @@ fun IntroScreen2(navController: NavController) {
 @Composable
 fun IntroScreen2Cards() {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
+
     ) {
         Row {
             Image(

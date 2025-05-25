@@ -19,7 +19,7 @@ import com.example.klimaaktion.view.progressscreen.components.LeaderboardCard
 
 // Nicholas
 @Composable
-fun ProgressScreen(navController: NavController) {
+fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxSize()

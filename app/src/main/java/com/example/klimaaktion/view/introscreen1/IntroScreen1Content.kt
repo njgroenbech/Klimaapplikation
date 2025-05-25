@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.klimaaktion.view.sharedcomponents.NextButton
 import com.example.klimaaktion.view.introscreen1.TransportCard
 
 // Skrevet af Jacob
@@ -65,7 +66,7 @@ fun IntroScreen1Content(navController: NavController) {
         ) {
             PageIndicator()
             Spacer(modifier = Modifier.height(20.dp))
-            ForwardButton()
+            NextButton { navController.navigate("intro2") }
         }
     }
 }
