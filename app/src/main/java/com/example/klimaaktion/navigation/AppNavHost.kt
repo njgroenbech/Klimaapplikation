@@ -30,7 +30,6 @@ fun AppNavHost() {
         composable("intro2") { IntroScreen2(navController) }
         composable("intro3") { IntroScreen3(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
-        composable(Routes.Profile) { ProfileScreen(navController) }
 
         // Tilføje navbar til bunden af skærme (Nicholas)
         composable(Routes.Feed) {

@@ -1,7 +1,6 @@
 package com.example.klimaaktion.view.profilescreen
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
@@ -15,8 +14,9 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.profilescreen.components.ProfileDrawerContent
 import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
-// Kode skrevet af Felix
+// Kode skrevet af Felix med AI hjælp til Drawer relateret kode
 @Composable
 fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -30,7 +30,7 @@ fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier) {
                 onClose = { scope.launch { drawerState.close() } },
                 onLogout = { /* TODO: log ud */ },
                 onLinkClick = { url ->
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    val intent = Intent(Intent.ACTION_VIEW, url.toUri())
                     context.startActivity(intent)
                 }
             )
