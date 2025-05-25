@@ -7,7 +7,6 @@ plugins {
 android {
     namespace = "com.example.klimaaktion"
     compileSdk = 35
-
     defaultConfig {
         applicationId = "com.example.klimaaktion"
         minSdk = 26

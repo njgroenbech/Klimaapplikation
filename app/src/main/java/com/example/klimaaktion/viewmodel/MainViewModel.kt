@@ -11,14 +11,13 @@ import com.example.klimaaktion.model.Message
 import com.example.klimaaktion.model.QuizQuestion
 import com.example.klimaaktion.model.TaskRaw
 import com.example.klimaaktion.network.Api
-import com.example.klimaaktion.network.OpenAIService
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
+import androidx.core.graphics.toColorInt
 
 
 class MainViewModel : ViewModel() {
@@ -28,6 +27,15 @@ class MainViewModel : ViewModel() {
     // Farverne og opgaverne er genereret af AI
 
     private val openAIService = Api.openAIService
+
+    private val apiKey: String by lazy {
+        File("local.properties")
+            .useLines { lines ->
+                lines.firstOrNull { it.startsWith("OPENAI_API_KEY=") }
+                    ?.substringAfter("=")
+            }?.let { "Bearer $it" } ?: throw Exception("API-nøgle mangler i local.properties")
+    }
+
 
     fun fetchTasksFromOpenAI() {
         Log.d("OpenAITest", "🔁 fetchTasksFromOpenAI() kaldt")
@@ -60,7 +68,7 @@ class MainViewModel : ViewModel() {
         )
 
 
-        val call = openAIService.getChatCompletion(request)
+        val call = openAIService.getChatCompletion(apiKey, request)
 
         call.enqueue(object : retrofit2.Callback<ChatResponse> {
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
@@ -103,7 +111,7 @@ class MainViewModel : ViewModel() {
     }
 
     private fun hexToColor(hex: String): Color {
-        return Color(android.graphics.Color.parseColor(hex))
+        return Color(hex.toColorInt())
     }
 
     private fun parseTasksFromJson(jsonString: String): List<Task> {

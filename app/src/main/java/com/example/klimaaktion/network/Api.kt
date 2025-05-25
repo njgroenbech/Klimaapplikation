@@ -1,6 +1,5 @@
 package com.example.klimaaktion.network
 
-import com.example.klimaaktion.network.OpenAIService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
