@@ -11,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.klimaaktion.model.Trophy
 
+// Skrevet af Jacob
 @Composable
 fun HorizontalTrophyList(trophies: List<Trophy>) {
     LazyRow(

@@ -22,7 +22,10 @@ import com.example.klimaaktion.R
 
 // Skrevet af Felix
 @Composable
-fun ProfileTopBar(onSettingsClick: () -> Unit) {
+fun ProfileTopBar(
+    onSettingsClick: () -> Unit,
+    onTrophyClick: () -> Unit //Jacob
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,7 +42,9 @@ fun ProfileTopBar(onSettingsClick: () -> Unit) {
             Image(
                 painter = painterResource(R.drawable.profiltrophy),
                 contentDescription = "Trofæ",
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier
+                    .size(40.dp)
+                    .clickable { onTrophyClick() }, // Jacob
                 colorFilter = null
             )
             Spacer(modifier = Modifier.width(24.dp))

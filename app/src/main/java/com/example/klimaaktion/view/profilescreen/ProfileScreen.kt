@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import androidx.core.net.toUri
 
 // Kode skrevet af Felix med AI hjælp til Drawer relateret kode
+// Navigation til trophyscreen skrevet af Jacob
 @Composable
 fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -45,6 +46,9 @@ fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(innerPadding),
                 onSettingsClick = {
                     scope.launch { drawerState.open() }
+                },
+                onTrophyClick = {
+                    navController.navigate("TrophyScreen")
                 }
             )
         }

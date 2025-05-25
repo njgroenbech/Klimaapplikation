@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
 import com.example.klimaaktion.R
 
+// Skrevet af Jacob
 @Composable
 fun MotivationCard(
     isCompleted: Boolean = false

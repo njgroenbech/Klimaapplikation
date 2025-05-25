@@ -21,7 +21,8 @@ import com.example.klimaaktion.view.profilescreen.components.ProfileTopBar
 @Composable
 fun ProfileScreenContent(
     modifier: Modifier = Modifier,
-    onSettingsClick: () -> Unit
+    onSettingsClick: () -> Unit,
+    onTrophyClick: () -> Unit // Jacob
 ) {
     Column(
         modifier = modifier
@@ -30,7 +31,10 @@ fun ProfileScreenContent(
             .padding(horizontal = 24.dp, vertical = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ProfileTopBar(onSettingsClick = onSettingsClick)
+        ProfileTopBar(
+            onSettingsClick = onSettingsClick,
+            onTrophyClick = onTrophyClick // Jacob
+        )
         Spacer(modifier = Modifier.height(24.dp))
         ProfileMainContent()
         Spacer(modifier = Modifier.height(24.dp))

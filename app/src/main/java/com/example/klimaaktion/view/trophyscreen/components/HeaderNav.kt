@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
+// Skrevet af Jacob
 @Composable
 fun HeaderNav(
     onTrophyClick: () -> Unit = {},
@@ -33,17 +34,9 @@ fun HeaderNav(
         Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = onTrophyClick) {
                 Icon(
-                    painter = painterResource(id = R.drawable.trophy_icon),
+                    painter = painterResource(id = R.drawable.profilikon),
                     tint = Color.Unspecified,
-                    contentDescription = "Trofæ",
-                    modifier = Modifier.size(50.dp)
-                )
-            }
-            Spacer(modifier = Modifier.width(12.dp))
-            IconButton(onClick = onSettingsClick) {
-                Icon(
-                    painter = painterResource(id = R.drawable.settings_icon),
-                    contentDescription = "Indstillinger",
+                    contentDescription = "Profil",
                     modifier = Modifier.size(50.dp)
                 )
             }

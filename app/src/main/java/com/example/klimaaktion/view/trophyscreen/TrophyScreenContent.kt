@@ -24,12 +24,14 @@ import com.example.klimaaktion.view.trophyscreen.components.cards.PlantFoodCard
 import com.example.klimaaktion.view.trophyscreen.components.cards.SeedCard
 import com.example.klimaaktion.view.trophyscreen.components.cards.TrashCard
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.klimaaktion.viewmodel.TrophyViewModel
+import com.example.klimaaktion.viewmodel.MainViewModel
 
+// Skrevet af Jacob
 @Composable
 fun TrophyScreenContent(
     navController: NavController,
-    viewModel: TrophyViewModel = viewModel()
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel = viewModel()
 ) {
     val trophies = viewModel.trophies
 
@@ -41,8 +43,9 @@ fun TrophyScreenContent(
         Spacer(modifier = Modifier.height(50.dp))
 
         HeaderNav(
-            onTrophyClick = { /* Navigér til trofæ-skærm */ },
-            onSettingsClick = { /* Åbn indstillinger */ }
+            onTrophyClick = {
+                navController.navigate("profilescreen")
+            }
         )
 
         Spacer(modifier = Modifier.height(8.dp))
