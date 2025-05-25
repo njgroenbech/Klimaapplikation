@@ -41,7 +41,7 @@ fun TaskCard(
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     var detailsExpanded by remember { mutableStateOf(false) }
-
+    var quizExpanded by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -89,12 +89,15 @@ fun TaskCard(
                 Box(
                     modifier = Modifier
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
-                        .size(50.dp),
+                        .size(50.dp)
+                        .clickable {quizExpanded = !quizExpanded},
                     contentAlignment = Alignment.Center
 
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.questionmark),
+                            painter = painterResource(
+                                id = if (quizExpanded) R.drawable.arrowup else R.drawable.questionmark
+                            ),
                             contentDescription = "",
                             modifier = Modifier.size(30.dp)
                         )
@@ -112,10 +115,19 @@ fun TaskCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
+            // Details og Quiz er lavet af Felix
             if (detailsExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = task.details,
+                    fontSize = 14.sp
+                )
+            }
+
+            if (quizExpanded) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = task.quiz,
                     fontSize = 14.sp
                 )
             }
