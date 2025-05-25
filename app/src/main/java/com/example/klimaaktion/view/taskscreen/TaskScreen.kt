@@ -17,9 +17,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
-import com.example.klimaaktion.viewmodel.MainViewModel
 import com.example.klimaaktion.view.taskscreen.components.TaskCard
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 
 // Nedenstående kode er lavet af Elias
@@ -29,7 +28,7 @@ fun TaskScreen(viewModel: MainViewModel = viewModel(),
                navController: NavController,
                modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFACD8F1))
             .statusBarsPadding()
@@ -50,7 +49,7 @@ fun TaskScreen(viewModel: MainViewModel = viewModel(),
                     TaskCard(
                         task = taskId,
                         onTaskDone = { viewModel.removeTask(taskId) }
-                        )
+                    )
                 }
             }
         }

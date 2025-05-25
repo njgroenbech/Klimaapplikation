@@ -11,5 +11,5 @@ data class Task(
     val backgroundColor: Color,
     val fact: String,
     val details: String,
-    val quiz: String
+    val quiz: List<QuizQuestion>
 )
