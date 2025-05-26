@@ -38,7 +38,7 @@ fun LeaderboardCard(rank: Int, name: String, points: Int) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "1",
+                text = "${rank}",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
@@ -50,7 +50,7 @@ fun LeaderboardCard(rank: Int, name: String, points: Int) {
                 color = Color.Black
             )
             Text(
-                text = "35",
+                text = "${points}",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

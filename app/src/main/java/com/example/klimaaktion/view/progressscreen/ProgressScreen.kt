@@ -71,9 +71,9 @@ fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) 
 
         LeaderboardCard(1, "Klimaklubben", 35)
 
-        LeaderboardCard(1, "Klimaklubben", 35)
+        LeaderboardCard(2, "Klimaklubben", 35)
 
-        LeaderboardCard(1, "Klimaklubben", 35)
+        LeaderboardCard(3, "Klimaklubben", 35)
 
     }
 }
