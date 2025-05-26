@@ -204,11 +204,14 @@ fun TaskCard(
                 )
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ){
 
                     Button(
+                        modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
                         onClick = onTaskDone,
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {
@@ -216,6 +219,8 @@ fun TaskCard(
                     }
 
                     Button(
+                        modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
                         onClick = { isExpanded = false },
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {

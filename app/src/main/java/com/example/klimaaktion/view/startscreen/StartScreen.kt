@@ -53,7 +53,7 @@ fun StartScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 24.dp)
+                .padding(bottom = 30.dp)
         ) {
             NextButton { navController.navigate("intro1") }
         }
