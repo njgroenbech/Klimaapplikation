@@ -14,14 +14,16 @@ import com.example.klimaaktion.viewmodel.FirebaseViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 
+// skrevet af Nicholas
 
 @Composable
-fun ClassSelectorButton(viewModel: FirebaseViewModel = viewModel()) {
+fun ClassSelectorButton(
+    classes: List<SchoolClass>,
+    selectedClass: SchoolClass?,
+    onSelect: (SchoolClass) -> Unit
+) {
 
-    val classes = viewModel.classes
     var expanded by remember { mutableStateOf(false) }
-    var selectedClass by remember { mutableStateOf<SchoolClass?>(null) }
-
 
     Box {
         Button(onClick = { expanded = true }) {
@@ -35,7 +37,7 @@ fun ClassSelectorButton(viewModel: FirebaseViewModel = viewModel()) {
                 DropdownMenuItem(
                     text = { Text(schoolClass.name) },
                     onClick = {
-                        selectedClass = schoolClass
+                        onSelect(schoolClass)
                         expanded = false
                     }
                 )

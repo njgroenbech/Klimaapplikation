@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,15 +35,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.model.firebasemodel.SchoolClass
+import com.example.klimaaktion.model.firebasemodel.Student
 import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
+import com.example.klimaaktion.viewmodel.FirebaseViewModel
 
 // Nedenstående kode er lavet af Elias
 @SuppressLint("UnusedBoxWithConstraintsScope") // Denne skulle tilføjes, for at bruge BoxWithConstraints
 @Composable
-fun CreateUserScreen(navController: NavController) {
+fun CreateUserScreen(
+    navController: NavController,
+    viewModel: FirebaseViewModel = viewModel()
+    ) {
+
+    // Nicholas har added kode her, også viewmodel og onRegister
+    val classList = viewModel.classes
+    val result = viewModel.registerResult
+    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) }
+
+    // Se register resultat
+    val registerResult = viewModel.registerResult
+
+    LaunchedEffect(registerResult) {
+        registerResult
+            ?.onSuccess { student ->
+                navController.navigate("LoginScreen") {
+                    popUpTo("createUserScreen") { inclusive = true }
+                }
+            }
+    }
+
     var usernameText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
@@ -138,9 +164,23 @@ fun CreateUserScreen(navController: NavController) {
                         )
                     )
 
-                    ClassSelectorButton()
+                    // mere nicholas har skrevet
+                    ClassSelectorButton(
+                        classes = classList,
+                        selectedClass = selectedClassId,
+                        onSelect = { selectedClassId = it }
+                    )
 
                     Spacer(modifier = Modifier.height(12.dp))
+
+                    // mere Nicholas
+                    registerResult?.onFailure { error ->
+                        Text(
+                            text = error.localizedMessage ?: "Registrering fejlede",
+                            color = Color.Red,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
                 }
             }
 
@@ -155,8 +195,18 @@ fun CreateUserScreen(navController: NavController) {
             horizontalArrangement = Arrangement.Center
         ) {
 
-            CreateUserButton(navController)
-
+            // mere Nicholas, feeder viewModel vores states fra input
+            CreateUserButton(
+                onClick = {
+                    selectedClassId?.let {
+                        viewModel.registerStudent(
+                            username = usernameText,
+                            password = passwordText,
+                            classId = it.id
+                        )
+                    }
+                }
+            )
         }
     }
 }
