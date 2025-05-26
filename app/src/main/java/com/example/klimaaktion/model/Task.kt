@@ -12,5 +12,7 @@ data class Task(
     val backgroundColor: Color,
     val fact: String,
     val details: String,
-    val quiz: List<QuizQuestion>
+    val quiz: List<QuizQuestion>,
+    val trophy: Trophy? = null,
+    val isCompleted: Boolean = false
 )

@@ -1,29 +1,24 @@
 package com.example.klimaaktion.view.trophyscreen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.example.klimaaktion.view.trophyscreen.components.HeaderNav
-import com.example.klimaaktion.view.trophyscreen.components.HorizontalTrophyList
-import com.example.klimaaktion.view.trophyscreen.components.cards.BikeCard
-import com.example.klimaaktion.view.trophyscreen.components.cards.LightCard
-import com.example.klimaaktion.view.trophyscreen.components.cards.MotivationCard
-import com.example.klimaaktion.view.trophyscreen.components.cards.PlantFoodCard
-import com.example.klimaaktion.view.trophyscreen.components.cards.SeedCard
-import com.example.klimaaktion.view.trophyscreen.components.cards.TrashCard
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.klimaaktion.view.trophyscreen.components.TrophyCard
 import com.example.klimaaktion.viewmodel.MainViewModel
 
 // Skrevet af Jacob
@@ -33,25 +28,59 @@ fun TrophyScreenContent(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = viewModel()
 ) {
-    val trophies = viewModel.trophies
+    val tasksWithTrophies = viewModel.taskList.filter { it.trophy != null }
+    val trophies = tasksWithTrophies.map { it.trophy!! }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFA3E6F7))
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
-        HeaderNav(
-            onTrophyClick = {
-                navController.navigate("profilescreen")
+        // Header (tidligere HeaderNav)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "Trofæer",
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            IconButton(onClick = { navController.navigate("profilescreen") }) {
+                Icon(
+                    painter = painterResource(id = com.example.klimaaktion.R.drawable.profilikon),
+                    contentDescription = "Profil",
+                    modifier = Modifier.size(50.dp),
+                    tint = Color.Unspecified
+                )
             }
-        )
+        }
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Send data til horizontal liste
-        HorizontalTrophyList(trophies = trophies)
+        // Horisontal række af trofæikoner
+        LazyRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(24.dp)
+        ) {
+            items(trophies) { trophy ->
+                Image(
+                    painter = painterResource(id = trophy.iconRes),
+                    contentDescription = "Trofæ ikon",
+                    modifier = Modifier
+                        .size(94.dp)
+                        .alpha(if (trophy.isCompleted) 1f else 0.3f)
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.height(22.dp))
 
@@ -63,19 +92,16 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        // Lodret liste af trophy-cards
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            //  Brug trofæerne fra ViewModel
-            item { BikeCard(isCompleted = trophies[0].isCompleted) }
-            item { PlantFoodCard(isCompleted = trophies[1].isCompleted) }
-            item { SeedCard(isCompleted = trophies[2].isCompleted) }
-            item { LightCard(isCompleted = trophies[3].isCompleted) }
-            item { TrashCard(isCompleted = trophies[4].isCompleted) }
-            item { MotivationCard(isCompleted = trophies[5].isCompleted) }
+            items(tasksWithTrophies) { task ->
+                TrophyCard(task = task)
+            }
         }
     }
 }
