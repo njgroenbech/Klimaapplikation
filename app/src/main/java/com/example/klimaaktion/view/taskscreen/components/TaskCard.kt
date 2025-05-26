@@ -116,7 +116,7 @@ fun TaskCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Details og Quiz (linje 118-164) er lavet af Felix
+            // Details og Quiz (linje 120-164) er lavet af Felix
             if (detailsExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -126,7 +126,7 @@ fun TaskCard(
             }
 
             if (quizExpanded) {
-                Column {
+                Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                     task.quiz.forEach { quizQuestion ->
                         Box(
                             modifier = Modifier
@@ -143,28 +143,29 @@ fun TaskCard(
                                     color = Color.Black
                                 )
 
-                                quizQuestion.answers.forEach { answer ->
-                                    Button(
-                                        onClick = {},
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(vertical = 4.dp),
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = Color.White,
-                                            contentColor = Color(0xFF224B43)
-                                        ),
-                                        shape = RoundedCornerShape(20.dp)
-                                    ) {
-                                        Text(text = answer)
+                                    quizQuestion.answers.forEach { answer ->
+                                        Button(
+                                            onClick = {},
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(vertical = 4.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = Color.White,
+                                                contentColor = Color(0xFF224B43)
+                                            ),
+                                            shape = RoundedCornerShape(20.dp)
+                                        ) {
+                                            Text(text = answer)
+                                        }
                                     }
-                                }
+
                             }
                         }
                     }
                 }
             }
 
-            if (isExpanded == false) {
+            else if (isExpanded == false) {
 
                 Row(
                     horizontalArrangement = Arrangement.End,
@@ -176,7 +177,7 @@ fun TaskCard(
                             .size(width = 115.dp, height = 50.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF224B43),
-                            contentColor = Color.White
+                            contentColor = Color.White,
                         )
                     ) {
                         Text(
