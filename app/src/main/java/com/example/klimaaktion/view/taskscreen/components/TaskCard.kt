@@ -1,5 +1,6 @@
 package com.example.klimaaktion.view.taskscreen.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -38,7 +39,7 @@ import com.example.klimaaktion.model.Task
 @Composable
 fun TaskCard(
     task: Task,
-    onTaskDone: () -> Unit
+    onTaskDone: (Task) -> Unit
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     var detailsExpanded by remember { mutableStateOf(false) }
@@ -199,7 +200,9 @@ fun TaskCard(
                 ){
 
                     Button(
-                        onClick = onTaskDone,
+                        onClick = {
+                            Log.d("TaskCard", "Knappen 'Vi har gjort det!' trykket for: ${task.title}")
+                            onTaskDone(task) },
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {
                         Text("Vi har gjort det! (${task.points} point)", color = Color.White)

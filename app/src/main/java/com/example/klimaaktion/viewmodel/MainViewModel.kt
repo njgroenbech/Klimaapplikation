@@ -1,6 +1,8 @@
 package com.example.klimaaktion.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.klimaaktion.model.Task
 import androidx.compose.ui.graphics.Color
@@ -126,7 +128,7 @@ class MainViewModel : ViewModel() {
                     correctAnswerIndex = 0
                 )
             ),
-            Trophy(R.drawable.bike_trophy_icon, "Tag cyklen 3 gange!", Color(0xFFFFD479), false),
+            Trophy(R.drawable.bike_trophy_icon, "Tag cyklen 3 gange!", Color(0xFFFFD479), true),
         ),
         Task(5,
             "Spis vegetarisk i 2 dage",
@@ -291,7 +293,18 @@ class MainViewModel : ViewModel() {
     )
     val taskList: List<Task> = listOfTasks
 
-    fun removeTask(task: Task) {
-        listOfTasks.remove(task)
+    fun completeAndRemoveTask(task: Task) {
+        val index = listOfTasks.indexOfFirst { it.id == task.id }
+
+        Log.d("ViewModel", "Modtaget task: ${task.title} med id=${task.id}")
+
+        if (index != -1) {
+            val updatedTask = task.copy(isCompleted = true)
+            listOfTasks.removeAt(index)
+
+            Log.d("ViewModel", "Task fjernet og markeret som completed: ${updatedTask.title}")
+        } else {
+            Log.d("ViewModel", "Task IKKE fundet i listen: ${task.title}")
+        }
     }
 }

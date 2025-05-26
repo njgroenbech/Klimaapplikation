@@ -45,10 +45,11 @@ fun TaskScreen(viewModel: MainViewModel = viewModel(),
             )
 
             LazyColumn {
-                items(viewModel.taskList, key = { it.id }) { taskId ->
+                items(viewModel.taskList, key = { it.id }) { task ->
                     TaskCard(
-                        task = taskId,
-                        onTaskDone = { viewModel.removeTask(taskId) }
+                        task = task,
+                        onTaskDone = { viewModel.completeAndRemoveTask(it )
+                        }
                     )
                 }
             }
