@@ -371,7 +371,7 @@ class MainViewModel : ViewModel() {
                 )
             )        ),
         Task(10,
-            "Køb brugt i stedet for at købe nyt",
+            "Køb genbrugstøj",
             40,
             Color(0xFFDCEDC8),
             "Deling og køb af brugte ting reducerer affald og produktionens CO2-aftryk markant.",
