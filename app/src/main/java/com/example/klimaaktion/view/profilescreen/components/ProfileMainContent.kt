@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
 // Skrevet af Felix
+// UI rettet til af Jacob
 @Composable
 fun ProfileMainContent() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -26,9 +27,8 @@ fun ProfileMainContent() {
             modifier = Modifier.size(140.dp)
         )
         Spacer(modifier = Modifier.height(12.dp))
-        Text("Stefan", fontSize = 38.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
-        Text("Klimaklubben", fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
-        Text("Din gruppe", fontSize = 24.sp, color = Color(0xFF000000))
+        Text("Stefan", fontSize = 36.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
+        Text("Klimaklubben", fontSize = 32.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
+        Text("Din gruppe", fontSize = 20.sp, color = Color.Black)
     }
 }
-

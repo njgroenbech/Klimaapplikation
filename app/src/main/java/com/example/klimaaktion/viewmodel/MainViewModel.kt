@@ -319,7 +319,7 @@ class MainViewModel : ViewModel() {
                 )
             )        ),
         Task(8,
-            "Sov med slukket elektronik",
+            "Sluk elektronik",
             30,
             Color(0xFFFFAB91),
             "Elektronik i standby bruger op til 10% af hjemmets strømforbrug.",

@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,6 +20,7 @@ import com.example.klimaaktion.view.progressscreen.components.CircularProgressBa
 import com.example.klimaaktion.view.progressscreen.components.LeaderboardCard
 
 // Nicholas
+// UI rettet til af Jacob
 @Composable
 fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) {
     Column(
@@ -27,13 +30,16 @@ fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Spacer(modifier = Modifier.height(26.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         Text(
             text = "Klassens Klima Fremskridt",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF202020)
+            color = Color(0xFF202020),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp)
         )
 
         Spacer(modifier = Modifier.height(42.dp))
@@ -58,7 +64,7 @@ fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) 
             color = Color(0xFF224B43)
         )
 
-        Spacer(modifier = Modifier.height(42.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
         Text(
             text = "Top 3 - Leaderboard",
@@ -67,7 +73,7 @@ fun ProgressScreen(navController: NavController, modifier: Modifier = Modifier) 
             color = Color(0xFF202020)
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         LeaderboardCard(1, "Klimaklubben", 35)
 

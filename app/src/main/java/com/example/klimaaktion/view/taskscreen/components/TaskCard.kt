@@ -24,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +36,8 @@ import com.example.klimaaktion.model.Task
 // Nedenstående kode er lavet af Elias
 // En lille smule er skrevet af Felix, se kommentare i koden.
 // hope this shit works
+// UI rettet til af Jacob
+
 @Composable
 fun TaskCard(
     task: Task,
@@ -48,6 +51,7 @@ fun TaskCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .shadow(6.dp, RoundedCornerShape(20.dp))
             .background(task.backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
@@ -60,7 +64,7 @@ fun TaskCard(
                 Text(
                     text = task.title,
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.ExtraBold,
                     color = Color.Black
                 )
 
@@ -70,6 +74,7 @@ fun TaskCard(
                 // De 2 boxes (bog og spørgsmålstegn ikon, linje 69 - 104) her er skrevet af Felix
                 Box(
                     modifier = Modifier
+                        .shadow(6.dp, RoundedCornerShape(20.dp))
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
                         .size(50.dp)
                         .clickable { detailsExpanded = !detailsExpanded },
@@ -80,7 +85,8 @@ fun TaskCard(
                             id = if (detailsExpanded) R.drawable.arrowup else R.drawable.book
                         ),
                         contentDescription = "",
-                        modifier = Modifier.size(30.dp)
+                        modifier = Modifier
+                            .size(30.dp)
                     )
                 }
 
@@ -89,6 +95,7 @@ fun TaskCard(
 
                 Box(
                     modifier = Modifier
+                        .shadow(6.dp, RoundedCornerShape(20.dp))
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
                         .size(50.dp)
                         .clickable {quizExpanded = !quizExpanded},
@@ -110,7 +117,7 @@ fun TaskCard(
 
             Text(
                 text = "${task.points} Point",
-                fontSize = 14.sp,
+                fontSize = 18.sp,
                 color = Color.DarkGray
             )
 
@@ -148,6 +155,7 @@ fun TaskCard(
                                             onClick = {},
                                             modifier = Modifier
                                                 .fillMaxWidth()
+                                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
                                                 .padding(vertical = 4.dp),
                                             colors = ButtonDefaults.buttonColors(
                                                 containerColor = Color.White,
@@ -174,6 +182,7 @@ fun TaskCard(
                     Button(
                         onClick = { isExpanded = true },
                         modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
                             .size(width = 115.dp, height = 50.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF224B43),

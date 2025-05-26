@@ -36,11 +36,16 @@ fun FeedScreenContent(navController: NavController) {
         Spacer(modifier = Modifier.height(24.dp))
 
         LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxSize()
         ) {
             item { GreenDayCard() }
             item { RecycleCard() }
             item { TreeCard() }
+
+            item {
+                Spacer(modifier = Modifier.height(50.dp))
+            }
         }
     }
 }

@@ -16,6 +16,7 @@ import com.example.klimaaktion.navigation.Routes
 
 // Skrevet af Felix, men list huske hjælp fra AI ift. data class & NavItems og NavBarItems
 // UI rettet til af Nicholas
+// UI rettet til af Jacob
 data class NavItem(val route: String, val iconResId: Int)
 
 @Composable
@@ -32,7 +33,7 @@ fun BottomNavBar(
 
     NavigationBar(
         modifier = Modifier
-            .height(56.dp),
+            .height(75.dp),
         tonalElevation = 4.dp
     ) {
         items.forEach { item ->
@@ -69,39 +70,3 @@ fun BottomNavBar(
         }
     }
 }
-
-/*
-@Composable
-fun BottomNavBarPreview() {
-    val items = listOf(
-        NavItem("home", R.drawable.homeikon),
-        NavItem("feed", R.drawable.barchartikon),
-        NavItem("check", R.drawable.opgaveikon),
-        NavItem("profile", R.drawable.profilikon)
-    )
-
-    NavigationBar {
-        items.forEach { item ->
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        painter = painterResource(id = item.iconResId),
-                        contentDescription = null
-                    )
-                },
-                selected = item.route == "home", // vælg en som default
-                onClick = { /* gør ingenting i preview */ },
-                label = null,
-                alwaysShowLabel = false
-            )
-        }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewBottomNavBar() {
-    BottomNavBarPreview()
-} */
-

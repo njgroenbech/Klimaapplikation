@@ -15,27 +15,37 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.klimaaktion.view.profilescreen.components.ProfileGroupGrid
 import com.example.klimaaktion.view.profilescreen.components.ProfileMainContent
+import com.example.klimaaktion.view.profilescreen.components.ProfileProgressBar
 import com.example.klimaaktion.view.profilescreen.components.ProfileTopBar
 
 // Kode skrevet af Felix
+// UI rettet til af Jacob
 @Composable
 fun ProfileScreenContent(
-    modifier: Modifier = Modifier,
-    onSettingsClick: () -> Unit
+    backgroundColor: Color,
+    onSettingsClick: () -> Unit,
+    onTrophyClick: () -> Unit
 ) {
     Column(
-        modifier = modifier
-            .verticalScroll(rememberScrollState())
-            .background(Color(0xFF8ECBEA))
-            .padding(horizontal = 24.dp, vertical = 16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(horizontal = 24.dp, vertical = 16.dp)
+            .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ProfileTopBar(onSettingsClick = onSettingsClick)
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(40.dp))
+        ProfileTopBar(
+            onSettingsClick = onSettingsClick,
+            onTrophyClick = onTrophyClick
+        )
+        Spacer(modifier = Modifier.height(30.dp))
         ProfileMainContent()
+        Spacer(modifier = Modifier.height(16.dp))
+        ProfileProgressBar(points = 35, maxPoints = 250)
         Spacer(modifier = Modifier.height(24.dp))
         ProfileGroupGrid()
+        Spacer(modifier = Modifier.height(24.dp))
+
     }
 }
-
-

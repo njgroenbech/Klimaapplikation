@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.introscreen1.components
+package com.example.klimaaktion.view.introscreen2
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,16 +11,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.klimaaktion.view.introscreen2.components.IntroScreen2Cards
+import com.example.klimaaktion.view.introscreen3.components.PageIndicator
 import com.example.klimaaktion.view.sharedcomponents.NextButton
-import com.example.klimaaktion.view.introscreen1.TransportCard
 
-// Skrevet af Jacob
+// Skrevet af Elias
+// UI rettet af Jacob
 @Composable
-fun IntroScreen1Content(navController: NavController) {
+fun IntroScreen2Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF94D7F2))
+            .background(Color(0xFFACD8F1))
             .padding(24.dp)
     ) {
         Column(
@@ -32,41 +34,35 @@ fun IntroScreen1Content(navController: NavController) {
             Spacer(modifier = Modifier.height(100.dp))
 
             Text(
-                text = "Udfør",
+                text = "Lær",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "Klimaaktiviteter og opjen point",
+                text = "Undersøg viden og quiz om klimaet",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(40.dp))
-            StartTaskCard(
-                navController = navController,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
+            Spacer(modifier = Modifier.height(10.dp))
 
-            Spacer(Modifier.height(30.dp))
-            TransportCard(modifier = Modifier.align(Alignment.CenterHorizontally))
+            IntroScreen2Cards()
         }
 
-        // Komponenter placeret i bunden
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
         ) {
-            PageIndicator()
+            PageIndicator(currentPage = 1)
             Spacer(modifier = Modifier.height(20.dp))
-            NextButton { navController.navigate("intro2") }
+            NextButton { navController.navigate("intro3") }
         }
     }
 }

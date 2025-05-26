@@ -19,6 +19,7 @@ import com.example.klimaaktion.view.progressscreen.ProgressScreen
 import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
 import com.example.klimaaktion.view.startscreen.StartScreen
 import com.example.klimaaktion.view.taskscreen.TaskScreen
+import com.example.klimaaktion.view.trophyscreen.TrophyScreen
 
 
 @Composable
@@ -32,6 +33,7 @@ fun AppNavHost() {
         composable("intro3") { IntroScreen3(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
         composable("createUserScreen") { CreateUserScreen(navController) }
+        composable("trophyscreen") { TrophyScreen(navController) }
 
         // Tilføje navbar til bunden af skærme (Nicholas)
         composable(Routes.Feed) {

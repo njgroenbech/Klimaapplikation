@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,17 +20,21 @@ import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
 // Skrevet af Felix
+// UI rettet til af Jacob
 @Composable
-fun ProfileTopBar(onSettingsClick: () -> Unit) {
+fun ProfileTopBar(
+    onSettingsClick: () -> Unit,
+    onTrophyClick: () -> Unit
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Trofæer",
+            text = "Profil",
             fontWeight = FontWeight.Bold,
-            fontSize = 40.sp,
+            fontSize = 35.sp,
             color = Color(0xFF343434)
         )
 
@@ -39,19 +42,18 @@ fun ProfileTopBar(onSettingsClick: () -> Unit) {
             Image(
                 painter = painterResource(R.drawable.profiltrophy),
                 contentDescription = "Trofæ",
-                modifier = Modifier.size(40.dp),
-                colorFilter = null
+                modifier = Modifier
+                    .size(40.dp)
+                    .clickable { onTrophyClick() }
             )
-            Spacer(modifier = Modifier.width(24.dp))
+            Spacer(modifier = Modifier.width(16.dp))
             Image(
                 painter = painterResource(R.drawable.settings),
                 contentDescription = "Indstillinger",
                 modifier = Modifier
                     .size(40.dp)
-                    .clickable { onSettingsClick() }, // 👈 NYT
-                colorFilter = null
+                    .clickable { onSettingsClick() }
             )
-
         }
     }
 }

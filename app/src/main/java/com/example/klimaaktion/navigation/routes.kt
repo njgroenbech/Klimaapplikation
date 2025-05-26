@@ -5,4 +5,5 @@ object Routes {
     const val Profile = "profilescreen"
     const val Tasks = "taskscreen"
     const val Progress = "progressscreen"
+    const val TrophyScren = "trophyscreen"
 }
