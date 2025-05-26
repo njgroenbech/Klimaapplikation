@@ -1,0 +1,45 @@
+package com.example.klimaaktion.view.createuserscreen.components
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.example.klimaaktion.viewmodel.FirebaseViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.klimaaktion.model.firebasemodel.SchoolClass
+
+
+@Composable
+fun ClassSelectorButton(viewModel: FirebaseViewModel = viewModel()) {
+
+    val classes = viewModel.classes
+    var expanded by remember { mutableStateOf(false) }
+    var selectedClass by remember { mutableStateOf<SchoolClass?>(null) }
+
+
+    Box {
+        Button(onClick = { expanded = true }) {
+            Text(text = selectedClass?.name ?: "Vælg klasse") // viser selected class når man trykker
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            classes.forEach { schoolClass ->
+                DropdownMenuItem(
+                    text = { Text(schoolClass.name) },
+                    onClick = {
+                        selectedClass = schoolClass
+                        expanded = false
+                    }
+                )
+            }
+        }
+    }
+}

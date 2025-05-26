@@ -16,9 +16,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
 
 // Nedenstående kode er lavet af Elias
@@ -136,6 +137,10 @@ fun CreateUserScreen(navController: NavController) {
                             unfocusedContainerColor = Color.White
                         )
                     )
+
+                    ClassSelectorButton()
+
+                    Spacer(modifier = Modifier.height(12.dp))
                 }
             }
 
