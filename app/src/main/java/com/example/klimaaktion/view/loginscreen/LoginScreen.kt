@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.viewmodel.LoginViewModel
@@ -22,17 +21,7 @@ fun LoginScreen(navController: NavController) {
     ) {
         LoginScreenContent(
             navController = navController,
-            state = vm.uiState,
-            onUsernameChange = vm::onUsernameChange,
-            onPasswordChange = vm::onPasswordChange,
-            onLoginClick = {
-                vm.login {
-                    navController.navigate("feedscreen")
-                }
-            }
-
+            viewModel = vm
         )
     }
 }
-
-
