@@ -46,7 +46,7 @@ fun IntroScreen2(navController: NavController) {
         ) {
             IntroScreen2Header()
 
-            Spacer(Modifier.height(36.dp))
+            Spacer(Modifier.height(0.08.dp))
 
             IntroScreen2Cards()
 
@@ -57,7 +57,7 @@ fun IntroScreen2(navController: NavController) {
                 PageIndicator(currentPage = 1) // composable fra Jacob i introscreen3.components.pageIndicator
             }
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(1.dp))
 
             NextButton { navController.navigate("intro3") }
         }

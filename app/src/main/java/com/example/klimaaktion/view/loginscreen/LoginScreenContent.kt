@@ -9,10 +9,17 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.loginscreen.components.LoginButton
 import com.example.klimaaktion.view.loginscreen.components.LoginForm
 import com.example.klimaaktion.view.loginscreen.components.LogoHeader
+import com.example.klimaaktion.viewmodel.LoginUiState
 
 
 @Composable
-fun LoginScreenContent(navController: NavController) {
+fun LoginScreenContent(
+    navController: NavController,
+    state: LoginUiState,
+    onUsernameChange: (String) -> Unit,
+    onPasswordChange: (String) -> Unit,
+    onLoginClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -22,8 +29,15 @@ fun LoginScreenContent(navController: NavController) {
         Spacer(modifier = Modifier.height(35.dp))
         LogoHeader()
         Spacer(modifier = Modifier.height(70.dp))
-        LoginForm()
+        LoginForm(
+            username = state.username,
+            onUsernameChange = onUsernameChange,
+            password = state.password,
+            onPasswordChange = onPasswordChange,
+            errorMessage = state.error
+        )
+
         Spacer(modifier = Modifier.height(100.dp))
-        LoginButton(navController)
+        LoginButton(onClick = onLoginClick)
     }
 }

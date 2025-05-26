@@ -7,6 +7,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -14,28 +18,34 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
+
 @Composable
-fun LoginForm() {
+fun LoginForm(
+    username: String,
+    onUsernameChange: (String) -> Unit,
+    password: String,
+    onPasswordChange: (String) -> Unit,
+    errorMessage: String?
+) {
     BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(320.dp),
+        modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
-        val imageWidth = maxWidth * 1.25f
-        val offset = -(imageWidth - maxWidth) / 2
+        val imageWidth = maxWidth * 1.15f
+
         Image(
             painter = painterResource(id = R.drawable.frontscreenimage),
-            contentDescription = null,
+            contentDescription = "Illustration",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .width(imageWidth)
+                .padding(top = 20.dp)
                 .alpha(0.22f)
-                .offset(x = offset)
         )
         Column(
             modifier = Modifier
@@ -54,13 +64,12 @@ fun LoginForm() {
             Spacer(modifier = Modifier.height(22.dp))
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = username,
+                onValueChange = onUsernameChange,
                 label = { Text("Brugernavn") },
                 placeholder = { Text("Brugernavn") },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(55.dp),
+                    .fillMaxWidth(),
                 shape = RoundedCornerShape(28.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
@@ -68,21 +77,38 @@ fun LoginForm() {
                 )
             )
             Spacer(modifier = Modifier.height(16.dp))
-
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = password,
+                onValueChange = onPasswordChange,
                 label = { Text("Adgangskode") },
                 placeholder = { Text("Adgangskode") },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(55.dp),
+                    .fillMaxWidth(),
                 shape = RoundedCornerShape(28.dp),
+                visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White
                 )
             )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(24.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (errorMessage != null) {
+                    Text(
+                        text = errorMessage,
+                        color = Color.Red,
+                        fontSize = 13.sp,
+                        modifier = Modifier.padding(horizontal = 12.dp)
+                    )
+                }
+            }
         }
     }
 }

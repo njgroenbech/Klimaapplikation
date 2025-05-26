@@ -14,9 +14,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun LoginButton(navController: NavController) {
+fun LoginButton(onClick: () -> Unit) {
     Button(
-        onClick = { navController.navigate("feedscreen") },
+        onClick =  onClick,
         shape = RoundedCornerShape(50),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
         elevation = ButtonDefaults.buttonElevation(6.dp),
