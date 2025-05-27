@@ -2,7 +2,9 @@ package com.example.klimaaktion.viewmodel
 
 import com.example.klimaaktion.BuildConfig
 import android.util.Log
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.klimaaktion.model.Task
 import androidx.compose.ui.graphics.Color
@@ -18,14 +20,19 @@ import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Response
 import androidx.core.graphics.toColorInt
+import com.example.klimaaktion.model.Leaderboard
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 
 class MainViewModel : ViewModel() {
 
     // Elias: Til TaskScreen
     // quiz relaterede ting og "details" i koden er lavet af Felix
-    // Farverne og opgaverne er genereret af AI
+    // Opgaverne er genereret af AI
     // Build config tilføjet af Nicholas
+
+    //Linje 37-134 er lavet af Felix.
 
     private val openAIService = Api.openAIService
 
@@ -127,13 +134,13 @@ class MainViewModel : ViewModel() {
     }
 
 
-
+// Linje 139-407 er lavet af både Elias og Felix med hjælp fra AI til at generere opgaverne.
 
     private val listOfTasks = mutableStateListOf(
         Task(
             1,
             "Sluk lyset efter jer!",
-            10,
+            30,
             Color(0xFFFF8080),
             "Vidste du, at man kan spare op til 30 kg CO2 om året ved at slukke lyset?",
             "Mere info om opgaven...",
@@ -395,11 +402,66 @@ class MainViewModel : ViewModel() {
                     ),
                     correctAnswerIndex = 0
                 )
-            )        )
+            )
+        )
     )
+
+
+    // Linje 411- 467 er lavet af Elias.
     val taskList: List<Task> = listOfTasks
+
+    val totalPointsInTasks: Int = listOfTasks.sumOf { it.points }
+
+    var earnedPointsState = mutableStateOf(0)
+    val earnedPoints: State<Int> = earnedPointsState
+
+    val totalTasks: Int = listOfTasks.size
+
+    val completedTasksState = mutableStateOf(0)
+
+    val completedTasks: State<Int> = completedTasksState
+
+    private val leaderboardStartState = MutableStateFlow(
+        listOf(
+            Leaderboard(1, "Klimaklubben", 0),
+            Leaderboard(2, "Grønne Venner", 0),
+            Leaderboard(3, "Earth Savers", 0)
+        )
+    )
+    val leaderboard: StateFlow<List<Leaderboard>> = leaderboardStartState
+
+    fun onTaskCompleted(pointsForTask: Int) {
+
+        completedTasksState.value = completedTasks.value + 1
+
+        earnedPointsState.value = earnedPointsState.value + pointsForTask
+
+        // Dette er hardcoded for at teste, om pointsystemet fungerer.
+        val updatedLeaderboard = leaderboardStartState.value
+            .map { group ->
+                if (group.rank == 1) {
+                    // tag entry.points og læg task-point oveni
+                    group.copy(points = group.points + pointsForTask)
+                } else {
+                    group
+                }
+            }
+
+            .sortedByDescending { it.points }
+
+            .mapIndexed { index, entry ->
+                entry.copy(rank = index + 1)
+            }
+
+        leaderboardStartState.value = updatedLeaderboard
+    }
+
 
     fun removeTask(task: Task) {
         listOfTasks.remove(task)
+    }
+
+    fun resetEarnedPoints() {
+        earnedPointsState.value = 0
     }
 }

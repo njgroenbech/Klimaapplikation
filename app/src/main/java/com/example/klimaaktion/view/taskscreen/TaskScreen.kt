@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.klimaaktion.model.Task
 import com.example.klimaaktion.view.taskscreen.components.TaskCard
 import com.example.klimaaktion.viewmodel.MainViewModel
 
@@ -23,11 +24,9 @@ import com.example.klimaaktion.viewmodel.MainViewModel
 // UI rettet til af Jacob
 
 @Composable
-fun TaskScreen(
-    viewModel: MainViewModel = viewModel(),
-    navController: NavController,
-    modifier: Modifier = Modifier
-) {
+fun TaskScreen(viewModel: MainViewModel,
+               navController: NavController,
+               modifier: Modifier = Modifier) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -62,10 +61,15 @@ fun TaskScreen(
             }
 
             LazyColumn {
-                items(viewModel.taskList, key = { it.id }) { taskId ->
+                items(viewModel.taskList, key = { it.id }) { task ->
                     TaskCard(
-                        task = taskId,
-                        onTaskDone = { viewModel.removeTask(taskId) }
+                        task = task,
+                        onTaskDone = {
+                            // 1) Fjern opgaven
+                            viewModel.removeTask(task)
+                            // 2) Giv de rigtige point
+                            viewModel.onTaskCompleted(task.points)
+                        }
                     )
                 }
             }

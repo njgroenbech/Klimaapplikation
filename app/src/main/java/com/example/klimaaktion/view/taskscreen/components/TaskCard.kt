@@ -30,8 +30,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.klimaaktion.R
 import com.example.klimaaktion.model.Task
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 // Nedenstående kode er lavet af Elias
 // En lille smule er skrevet af Felix, se kommentare i koden.
@@ -46,6 +48,8 @@ fun TaskCard(
     var isExpanded by remember { mutableStateOf(false) }
     var detailsExpanded by remember { mutableStateOf(false) }
     var quizExpanded by remember { mutableStateOf(false) }
+
+
 
     Box(
         modifier = Modifier
@@ -213,6 +217,8 @@ fun TaskCard(
                         modifier = Modifier
                             .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
                         onClick = onTaskDone,
+                        onClick = {
+                            onTaskDone()},
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {
                         Text("Vi har gjort det! (${task.points} point)", color = Color.White)
