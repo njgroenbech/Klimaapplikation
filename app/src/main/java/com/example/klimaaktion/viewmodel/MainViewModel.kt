@@ -29,8 +29,10 @@ class MainViewModel : ViewModel() {
 
     // Elias: Til TaskScreen
     // quiz relaterede ting og "details" i koden er lavet af Felix
-    // Farverne og opgaverne er genereret af AI
+    // Opgaverne er genereret af AI
     // Build config tilføjet af Nicholas
+
+    //Linje 37-134 er lavet af Felix.
 
     private val openAIService = Api.openAIService
 
@@ -132,7 +134,7 @@ class MainViewModel : ViewModel() {
     }
 
 
-
+// Linje 139-407 er lavet af både Elias og Felix med hjælp fra AI til at generere opgaverne.
 
     private val listOfTasks = mutableStateListOf(
         Task(
@@ -400,11 +402,12 @@ class MainViewModel : ViewModel() {
                     ),
                     correctAnswerIndex = 0
                 )
-            )        )
+            )
+        )
     )
 
 
-
+    // Linje 411- 467 er lavet af Elias.
     val taskList: List<Task> = listOfTasks
 
     val totalPointsInTasks: Int = listOfTasks.sumOf { it.points }
@@ -428,29 +431,29 @@ class MainViewModel : ViewModel() {
     val leaderboard: StateFlow<List<Leaderboard>> = leaderboardStartState
 
     fun onTaskCompleted(pointsForTask: Int) {
-        // A) opdater antal klaret
+
         completedTasksState.value = completedTasks.value + 1
 
         earnedPointsState.value = earnedPointsState.value + pointsForTask
 
-        // B) giv ekstra point til nr. 1 på leaderboard som eksempel
-        val updated = leaderboardStartState.value
-            .map { entry ->
-                if (entry.rank == 1) {
+        // Dette er hardcoded for at teste, om pointsystemet fungerer.
+        val updatedLeaderboard = leaderboardStartState.value
+            .map { group ->
+                if (group.rank == 1) {
                     // tag entry.points og læg task-point oveni
-                    entry.copy(points = entry.points + pointsForTask)
+                    group.copy(points = group.points + pointsForTask)
                 } else {
-                    entry
+                    group
                 }
             }
-            // sortér omvendt, så højest points først
+
             .sortedByDescending { it.points }
-            // re-sæt rank 1,2,3 ...
+
             .mapIndexed { index, entry ->
                 entry.copy(rank = index + 1)
             }
 
-        leaderboardStartState.value = updated
+        leaderboardStartState.value = updatedLeaderboard
     }
 
 
