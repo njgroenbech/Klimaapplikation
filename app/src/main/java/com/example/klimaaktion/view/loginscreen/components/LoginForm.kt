@@ -44,7 +44,7 @@ fun LoginForm(
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .width(imageWidth)
-                .padding(top = 20.dp)
+                .padding(top = 35.dp)
                 .alpha(0.22f)
         )
         Column(
