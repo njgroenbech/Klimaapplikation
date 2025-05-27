@@ -38,9 +38,11 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
+import com.example.klimaaktion.view.createuserscreen.components.GroupSelectorButton
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
 
 // Nedenstående kode er lavet af Elias
@@ -53,8 +55,9 @@ fun CreateUserScreen(
 
     // Nicholas har added kode her, også viewmodel og onRegister
     val classList = viewModel.classes
-    val result = viewModel.registerResult
-    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) }
+    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) } // nullable og defaulter til null
+    val groupList = viewModel.groups
+    var selectedGroup by remember { mutableStateOf<Group?>(null) }
 
     // Se register resultat
     val registerResult = viewModel.registerResult
@@ -171,6 +174,16 @@ fun CreateUserScreen(
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
+
+                    if (selectedClassId != null) {
+                        GroupSelectorButton(
+                            groups = groupList,
+                            selectedGroup = selectedGroup,
+                            onSelect = { selectedGroup = it }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(80.dp))
 
                     // mere Nicholas
                     registerResult?.onFailure { error ->
