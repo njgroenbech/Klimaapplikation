@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -50,7 +52,9 @@ import com.example.klimaaktion.viewmodel.FirebaseViewModel
 @Composable
 fun CreateUserScreen(
     navController: NavController,
-    viewModel: FirebaseViewModel = viewModel()
+    viewModel: FirebaseViewModel = viewModel(),
+    classId: String = "GNq8IPwIZ0Dw7WojacUX", // Hard coded for test
+    groupId: String = "nyyyyy-gruppe-test", // hard coded for test
     ) {
 
     // Nicholas har added kode her, også viewmodel og onRegister
@@ -219,9 +223,61 @@ fun CreateUserScreen(
                     }
                 }
             )
-        }
-    }
-}
 
+
+            }
+
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 90.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+
+
+            Button(
+                onClick = { viewModel.createGroup(classId) },
+                shape = RoundedCornerShape(50),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
+                elevation = ButtonDefaults.buttonElevation(6.dp),
+                modifier = Modifier
+                    .width(220.dp)
+                    .height(50.dp)
+            ) {
+                Text(
+                    text = "OPRET GRUPPE TEST KNAP",
+                    color = Color(0xFF343434),
+                    fontSize = 18.sp
+                )
+            }
+        }
+
+        /*Button(
+            onClick = { viewModel.addPointsToGroupAndClassWhenTaskCompleted(classId, groupId) },
+            shape = RoundedCornerShape(50),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
+            elevation = ButtonDefaults.buttonElevation(6.dp),
+            modifier = Modifier
+                .width(220.dp)
+                .height(50.dp)
+        ) {
+            Text(
+                text = "Giv point test knap",
+                color = Color(0xFF343434),
+                fontSize = 18.sp
+            )
+        }
+
+         */
+
+    }
+
+
+    }
+
+
+//
 
 

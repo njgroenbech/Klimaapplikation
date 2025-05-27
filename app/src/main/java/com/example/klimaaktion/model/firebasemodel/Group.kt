@@ -5,10 +5,9 @@ package com.example.klimaaktion.model.firebasemodel
 // dokument id'er
 
 data class Group(
-    val id: String = "",
+    val groupId: String = "",
     val name: String = "",
     val points: Int = 0,
     val classId: String = "",
     val students: List<String> = emptyList(),
-    val completedTaskIds: MutableList<String> = mutableListOf()
 )

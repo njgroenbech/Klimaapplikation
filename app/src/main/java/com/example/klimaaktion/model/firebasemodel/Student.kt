@@ -5,7 +5,7 @@ package com.example.klimaaktion.model.firebasemodel
 // dokument id'er
 
 data class Student(
-    val id: String = "",
+    val studentId: String = "",
     val username: String = "",
     val groupId: String? = null, // null indtil man joiner in gruppe
     val classId: String = ""

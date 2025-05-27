@@ -42,8 +42,10 @@ fun ProgressScreen(navController: NavController,
     val completed   by viewModel.completedTasks // Bruges også til firebase, når vi lige har fået fikset levelintrval
 
     var percentage = if (totalPoints > 0) {
-        earnedPoints.toFloat() / totalPoints
-    } else 0f
+        earnedPoints.toFloat() / totalPoints //.toFloat fordi CircularProgressBar skal bruge en float værdi for at virke :)
+    } else {
+        0f
+    }
 
     val level = 1 + (completed / 10) // Dette skal laves om til noget andet. Lige nu kommer man i level ved at complete 10 tasks.
                                     // Vi må prøve at lave noget med et levelInterval og et when statement. I er MEGET velkomne til at prøve.
@@ -109,11 +111,11 @@ fun ProgressScreen(navController: NavController,
 
         //Elias: Nedenstående fik jeg hjælp til af AI, fordi den ikke ville tage imod viewModel.leaderboard.forEach {}. Don't ask me why
 
-        viewModel.leaderboard.collectAsState().value.forEach { entry ->
+        viewModel.leaderboard.collectAsState().value.forEach { group ->
             LeaderboardCard(
-                rank   = entry.rank,
-                name   = entry.name,
-                points = entry.points
+                rank   = group.rank,
+                name   = group.name,
+                points = group.points
             )
         }
 

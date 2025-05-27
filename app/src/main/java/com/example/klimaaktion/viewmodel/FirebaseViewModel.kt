@@ -54,4 +54,17 @@ class FirebaseViewModel(
         }
     }
 
+    fun createGroup(classId: String) {
+        viewModelScope.launch {
+            viewModelScope.launch {
+                repo.createGroupInClass(classId, "nyyyyy-gruppe-test", "🧪 Test Grupper")
+            }
+        }
+    }
+
+    fun addPointsToGroupAndClassWhenTaskCompleted(classId: String, groupId: String) {
+        viewModelScope.launch {
+            repo.addPointsToGroup(classId, groupId, 2)
+        }
+    }
 }
