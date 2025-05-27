@@ -10,8 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.klimaaktion.viewmodel.FirebaseViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 
 // skrevet af Nicholas

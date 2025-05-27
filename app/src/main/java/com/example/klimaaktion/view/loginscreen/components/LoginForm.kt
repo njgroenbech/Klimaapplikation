@@ -1,5 +1,6 @@
 package com.example.klimaaktion.view.loginscreen.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun LoginForm(
     username: String,
