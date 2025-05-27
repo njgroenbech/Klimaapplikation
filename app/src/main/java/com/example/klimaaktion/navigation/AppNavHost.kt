@@ -37,6 +37,7 @@ fun AppNavHost() {
         composable("intro3") { IntroScreen3(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
         composable("createUserScreen") { CreateUserScreen(navController) }
+        composable("profilescreen") { ProfileScreen(navController) }
         composable("trophyscreen") { TrophyScreen(navController) }
 
         // Tilføje navbar til bunden af skærme (Nicholas)

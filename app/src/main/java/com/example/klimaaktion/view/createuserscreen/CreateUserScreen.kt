@@ -93,8 +93,8 @@ fun CreateUserScreen(
                 painter = painterResource(id = R.drawable.logofrontscreen),
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(400.dp)
-                    .height(60.dp)
+                    .width(350.dp)
+                    .height(70.dp)
             )
 
             Text("Velkommen ${usernameText}")

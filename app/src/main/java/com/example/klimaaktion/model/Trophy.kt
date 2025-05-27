@@ -7,5 +7,5 @@ data class Trophy(
     @DrawableRes val iconRes: Int,
     val title: String,
     val backgroundColor: Color,
-    val isCompleted: Boolean
+    val isCompleted: Boolean = false
 )
