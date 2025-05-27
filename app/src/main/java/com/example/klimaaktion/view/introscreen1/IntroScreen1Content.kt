@@ -41,7 +41,7 @@ fun IntroScreen1Content(navController: NavController) {
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Klimaaktiviteter og opjen point",
+                text = "Klimaaktiviteter og optjen point",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
                 color = Color(0xFF202020)

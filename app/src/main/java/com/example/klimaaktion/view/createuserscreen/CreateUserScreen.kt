@@ -139,7 +139,7 @@ fun CreateUserScreen(navController: NavController) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(260.dp))
+            Spacer(modifier = Modifier.height(285.dp))
         }
 
         Row(
