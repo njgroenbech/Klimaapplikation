@@ -6,9 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.klimaaktion.model.UserLogin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.example.klimaaktion.network.FirebaseRepository
+import com.example.klimaaktion.model.firebasemodel.Student
 
-class LoginViewModel : ViewModel() {
 
+class LoginViewModel(
+    private val repo: FirebaseRepository = FirebaseRepository()
+) : ViewModel() {
+    var student by mutableStateOf<Student?>(null)   // <-- ADD THIS LINE
+        private set
     var username by mutableStateOf("Indtast Login!")
         private set
     var password by mutableStateOf("kodeord")
@@ -37,7 +43,6 @@ class LoginViewModel : ViewModel() {
     fun login(runLogin: () -> Unit) {
 
         //  runlogin bruges her så ikke login endnu
-        runLogin()
         val inputUsername = username.trim()
         val inputPassword = password.trim()
 
@@ -52,15 +57,12 @@ class LoginViewModel : ViewModel() {
         error = null
 // alt her er lidt ligegyldigt
         viewModelScope.launch {
-            try {
-                delay(1000)
-                if (loginData.username == "Indtast Login!" && loginData.password == "kodeord") {
-                    runLogin()
-                } else {
-                    error = "Forkert brugernavn eller adgangskode"
-                }
-            } catch (e: Exception) {
-                error = "Noget gik galt"
+            val result = repo.loginStudent(loginData.username,loginData.password)
+            if (result.isSuccess) {
+                student = result.getOrNull()
+                runLogin() // Only call this if login succeeded!
+            } else {
+                error = "kritisk fejl med login"
             }
         }
     }
