@@ -13,9 +13,10 @@ import com.example.klimaaktion.model.firebasemodel.Student
 class LoginViewModel(
     private val repo: FirebaseRepository = FirebaseRepository()
 ) : ViewModel() {
-    var student by mutableStateOf<Student?>(null)   // <-- ADD THIS LINE
+
+    var student by mutableStateOf<Student?>(null)
         private set
-    var username by mutableStateOf("Indtast Login!")
+    var username by mutableStateOf("Obi-Wan-Kenobi")
         private set
     var password by mutableStateOf("kodeord")
         private set
@@ -60,9 +61,9 @@ class LoginViewModel(
             val result = repo.loginStudent(loginData.username,loginData.password)
             if (result.isSuccess) {
                 student = result.getOrNull()
-                runLogin() // Only call this if login succeeded!
+                runLogin() // kør navigation logik
             } else {
-                error = "kritisk fejl med login"
+                error = "Login eksisterer ikke"
             }
         }
     }

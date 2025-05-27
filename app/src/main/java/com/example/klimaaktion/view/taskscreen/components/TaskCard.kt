@@ -142,7 +142,8 @@ fun TaskCard(
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(Color(0xFFABE8E4), RoundedCornerShape(20.dp))
+                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
+                                .background(Color(0xFFF0F0F0), RoundedCornerShape(20.dp))
                                 .padding(12.dp)
                                 .padding(vertical = 8.dp)
                         ) {
@@ -159,11 +160,10 @@ fun TaskCard(
                                             onClick = {},
                                             modifier = Modifier
                                                 .fillMaxWidth()
-                                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
                                                 .padding(vertical = 4.dp),
                                             colors = ButtonDefaults.buttonColors(
-                                                containerColor = Color.White,
-                                                contentColor = Color(0xFF224B43)
+                                                containerColor = Color(0xFF224B43),
+                                                contentColor = Color(0xFFFFFFFF)
                                             ),
                                             shape = RoundedCornerShape(20.dp)
                                         ) {
