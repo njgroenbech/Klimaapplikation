@@ -16,7 +16,7 @@ class FirebaseViewModel(
     private val repo: FirebaseRepository = FirebaseRepository()
 ): ViewModel() {
 
-    // get classes to choose from in signup
+    // create state to choose classes from in signup
     var classes by mutableStateOf<List<SchoolClass>>(emptyList())
         private set
 
@@ -26,6 +26,8 @@ class FirebaseViewModel(
     var loginResult by mutableStateOf<Result<Student>?>(null)
         private set
 
+    // init block sørger for, at all klasser er tilgængelige så snart man denne viewmodel er
+    // initialized
     init {
         viewModelScope.launch {
             classes = repo.getAllClasses()
