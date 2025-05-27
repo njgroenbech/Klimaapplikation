@@ -41,6 +41,7 @@ import com.example.klimaaktion.R
 import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
+import com.example.klimaaktion.view.createuserscreen.components.CreateGroupButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
 import com.example.klimaaktion.view.createuserscreen.components.GroupSelectorButton
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
@@ -173,9 +174,10 @@ fun CreateUserScreen(
                         onSelect = { selectedClassId = it }
                     )
 
-                    Spacer(modifier = Modifier.height(12.dp))
-
                     if (selectedClassId != null) {
+
+                        CreateGroupButton {  }
+
                         GroupSelectorButton(
                             groups = groupList,
                             selectedGroup = selectedGroup,
@@ -185,7 +187,7 @@ fun CreateUserScreen(
 
                     Spacer(modifier = Modifier.height(80.dp))
 
-                    // mere Nicholas
+                    // mere Nicholas, til hvis registrering fejler
                     registerResult?.onFailure { error ->
                         Text(
                             text = error.localizedMessage ?: "Registrering fejlede",
@@ -207,7 +209,8 @@ fun CreateUserScreen(
             horizontalArrangement = Arrangement.Center
         ) {
 
-            // mere Nicholas, feeder viewModel vores states fra input
+            // mere Nicholas, bruger funktion fra viewmodel til at oprette en bruger efter man har
+            // klikket på knappen
             CreateUserButton(
                 onClick = {
                     selectedClassId?.let {
