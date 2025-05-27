@@ -39,7 +39,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
-import com.example.klimaaktion.model.firebasemodel.Student
 import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
 import com.example.klimaaktion.viewmodel.FirebaseViewModel

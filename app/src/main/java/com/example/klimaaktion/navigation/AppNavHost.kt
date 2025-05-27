@@ -21,6 +21,7 @@ import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
 import com.example.klimaaktion.view.startscreen.StartScreen
 import com.example.klimaaktion.view.taskscreen.TaskScreen
 import com.example.klimaaktion.view.trophyscreen.TrophyScreen
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 
 @Composable

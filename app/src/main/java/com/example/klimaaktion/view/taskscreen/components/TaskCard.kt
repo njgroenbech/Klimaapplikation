@@ -216,7 +216,6 @@ fun TaskCard(
                     Button(
                         modifier = Modifier
                             .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
-                        onClick = onTaskDone,
                         onClick = {
                             onTaskDone()},
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
