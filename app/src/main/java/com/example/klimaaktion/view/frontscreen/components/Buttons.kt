@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.klimaaktion.navigation.Routes
 
 @Composable
 fun FrontScreenButtons(navController: NavController){
@@ -52,5 +53,25 @@ fun FrontScreenButtons(navController: NavController){
                 fontSize = 12.sp
             )
         }
+
+        // Admin knap til at skippe login
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            onClick = { navController.navigate(Routes.Feed) },
+            shape = RoundedCornerShape(50),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF9A9A)), // evt. en anden farve for admin
+            elevation = ButtonDefaults.buttonElevation(6.dp),
+            modifier = Modifier
+                .width(220.dp)
+                .height(35.dp)
+        ) {
+            Text(
+                text = "ADMIN ADGANG",
+                color = Color(0xFF343434),
+                fontSize = 12.sp
+            )
+        }
+
     }
 }

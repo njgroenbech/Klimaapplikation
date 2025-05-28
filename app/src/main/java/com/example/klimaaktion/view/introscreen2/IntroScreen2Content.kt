@@ -49,7 +49,7 @@ fun IntroScreen2Content(navController: NavController) {
                 color = Color(0xFF202020)
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             IntroScreen2Cards()
         }

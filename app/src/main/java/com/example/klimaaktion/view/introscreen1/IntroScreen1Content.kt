@@ -12,7 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.sharedcomponents.NextButton
-import com.example.klimaaktion.view.introscreen1.TransportCard
+import com.example.klimaaktion.view.sharedcomponents.PageIndicator
+import com.example.klimaaktion.view.introscreen1.IntroScreen1Cards
 
 // Skrevet af Jacob
 @Composable
@@ -48,16 +49,10 @@ fun IntroScreen1Content(navController: NavController) {
             )
 
             Spacer(Modifier.height(40.dp))
-            StartTaskCard(
-                navController = navController,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
 
-            Spacer(Modifier.height(30.dp))
-            TransportCard(modifier = Modifier.align(Alignment.CenterHorizontally))
+            IntroScreen1Cards(navController = navController)
         }
 
-        // Komponenter placeret i bunden
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
