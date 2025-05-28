@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 // Nick har ændret navController til en onclick for at kunne oprette brugere på knappen og
 // få dem ind i firebase db

@@ -38,9 +38,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.R
+import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.view.createuserscreen.components.ClassSelectorButton
+import com.example.klimaaktion.view.createuserscreen.components.CreateGroupButton
 import com.example.klimaaktion.view.createuserscreen.components.CreateUserButton
+import com.example.klimaaktion.view.createuserscreen.components.GroupSelectorButton
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
 
 // Nedenstående kode er lavet af Elias
@@ -53,8 +56,9 @@ fun CreateUserScreen(
 
     // Nicholas har added kode her, også viewmodel og onRegister
     val classList = viewModel.classes
-    val result = viewModel.registerResult
-    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) }
+    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) } // nullable og defaulter til null
+    val groupList = viewModel.groups
+    var selectedGroup by remember { mutableStateOf<Group?>(null) }
 
     // Se register resultat
     val registerResult = viewModel.registerResult
@@ -90,8 +94,8 @@ fun CreateUserScreen(
                 painter = painterResource(id = R.drawable.logofrontscreen),
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .width(400.dp)
-                    .height(60.dp)
+                    .width(350.dp)
+                    .height(70.dp)
             )
 
             Text("Velkommen ${usernameText}")
@@ -170,9 +174,20 @@ fun CreateUserScreen(
                         onSelect = { selectedClassId = it }
                     )
 
-                    Spacer(modifier = Modifier.height(12.dp))
+                    if (selectedClassId != null) {
 
-                    // mere Nicholas
+                        CreateGroupButton {  }
+
+                        GroupSelectorButton(
+                            groups = groupList,
+                            selectedGroup = selectedGroup,
+                            onSelect = { selectedGroup = it }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(80.dp))
+
+                    // mere Nicholas, til hvis registrering fejler
                     registerResult?.onFailure { error ->
                         Text(
                             text = error.localizedMessage ?: "Registrering fejlede",
@@ -194,7 +209,8 @@ fun CreateUserScreen(
             horizontalArrangement = Arrangement.Center
         ) {
 
-            // mere Nicholas, feeder viewModel vores states fra input
+            // mere Nicholas, bruger funktion fra viewmodel til at oprette en bruger efter man har
+            // klikket på knappen
             CreateUserButton(
                 onClick = {
                     selectedClassId?.let {

@@ -10,36 +10,36 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
-
-// skrevet af Nicholas
+import kotlin.collections.forEach
 
 @Composable
-fun ClassSelectorButton(
-    classes: List<SchoolClass>,
-    selectedClass: SchoolClass?,
-    onSelect: (SchoolClass) -> Unit
+fun GroupSelectorButton(
+    groups: List<Group>,
+    selectedGroup: Group?,
+    onSelect: (Group) -> Unit
 ) {
 
     var expanded by remember { mutableStateOf(false) }
 
     Box {
         Button(onClick = { expanded = true }) {
-            Text(text = if (selectedClass != null) {
-                selectedClass.name
+            Text(text = if (selectedGroup != null) {
+                selectedGroup.name
             } else {
-                "Vælg klasse"
-            }) // viser selected class når man trykker
+                "Vælg gruppe"
+            })
         }
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            classes.forEach { schoolClass ->
+            groups.forEach { group ->
                 DropdownMenuItem(
-                    text = { Text(schoolClass.name) },
+                    text = { Text(group.name) },
                     onClick = {
-                        onSelect(schoolClass)
+                        onSelect(group)
                         expanded = false
                     }
                 )

@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.model.firebasemodel.Student
 import com.example.klimaaktion.network.FirebaseRepository
@@ -20,13 +21,16 @@ class FirebaseViewModel(
     var classes by mutableStateOf<List<SchoolClass>>(emptyList())
         private set
 
+    var groups by mutableStateOf<List<Group>>(emptyList())
+        private set
+
     var registerResult by mutableStateOf<Result<Student>?>(null)
         private set
 
     var loginResult by mutableStateOf<Result<Student>?>(null)
         private set
 
-    // init block sørger for, at all klasser er tilgængelige så snart man denne viewmodel er
+    // init block sørger for, at all klasser er tilgængelige så snart denne viewmodel er
     // initialized
     init {
         viewModelScope.launch {
@@ -49,6 +53,5 @@ class FirebaseViewModel(
             loginResult = repo.loginStudent(username, password)
         }
     }
-
 
 }
