@@ -1,8 +1,8 @@
 package com.example.klimaaktion.view.introscreen3
 
+import IntroScreen3Content
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import com.example.klimaaktion.view.introscreen3.components.IntroScreen3Content
 
 // Skrevet af Jacob
 @Composable

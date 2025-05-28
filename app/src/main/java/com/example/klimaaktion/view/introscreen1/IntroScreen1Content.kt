@@ -11,8 +11,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.klimaaktion.view.introscreen1.IntroScreen1Cards
 import com.example.klimaaktion.view.sharedcomponents.NextButton
-import com.example.klimaaktion.view.introscreen1.TransportCard
+import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 
 // Skrevet af Jacob
 @Composable
@@ -38,7 +39,7 @@ fun IntroScreen1Content(navController: NavController) {
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             Text(
                 text = "Klimaaktiviteter og optjen point",
@@ -47,24 +48,18 @@ fun IntroScreen1Content(navController: NavController) {
                 color = Color(0xFF202020)
             )
 
-            Spacer(Modifier.height(40.dp))
-            StartTaskCard(
-                navController = navController,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
+            Spacer(modifier = Modifier.height(12.dp)) // matcher Intro 2 & 3
 
-            Spacer(Modifier.height(30.dp))
-            TransportCard(modifier = Modifier.align(Alignment.CenterHorizontally))
+            IntroScreen1Cards(navController = navController)
         }
 
-        // Komponenter placeret i bunden
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
         ) {
-            PageIndicator()
+            PageIndicator(currentPage = 0)
             Spacer(modifier = Modifier.height(20.dp))
             NextButton { navController.navigate("intro2") }
         }

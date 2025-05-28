@@ -223,7 +223,7 @@ class MainViewModel : ViewModel() {
             "Tag cyklen 3 dage",
             35,
             Color(0xFFFFCC66),
-            "loremloremloremloremipsiem",
+            "Cykler du i 3 dage, sparer du nok CO₂ til at oplade din iPad 100 gange",
             "Mere info om opgaven...",
             quiz = listOf(
                 QuizQuestion(

@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.introscreen2.components.IntroScreen2Cards
-import com.example.klimaaktion.view.introscreen3.components.PageIndicator
 import com.example.klimaaktion.view.sharedcomponents.NextButton
+import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 
 // Skrevet af Elias
 // UI rettet af Jacob
@@ -49,7 +49,7 @@ fun IntroScreen2Content(navController: NavController) {
                 color = Color(0xFF202020)
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             IntroScreen2Cards()
         }

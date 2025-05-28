@@ -1,5 +1,3 @@
-package com.example.klimaaktion.view.introscreen3.components
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -12,15 +10,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.sharedcomponents.NextButton
+import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 
-// Skrevet af Jacob
 @Composable
 fun IntroScreen3Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF94D7F2))
-            .padding(24.dp)
+            .background(Color(0xFF8ECBEA)) // Samme blå baggrund som valgt
+            .padding(24.dp) // Matcher screen 2
     ) {
         Column(
             modifier = Modifier
@@ -28,7 +26,7 @@ fun IntroScreen3Content(navController: NavController) {
                 .align(Alignment.TopCenter),
             horizontalAlignment = Alignment.Start
         ) {
-            Spacer(modifier = Modifier.height(100.dp))
+            Spacer(modifier = Modifier.height(100.dp)) // Samme topafstand som screen 2
 
             Text(
                 text = "Følg",
@@ -48,11 +46,7 @@ fun IntroScreen3Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            ProgressCard()
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            TrophyCard()
+            IntroScreen3Cards()
         }
 
         Column(
@@ -61,10 +55,9 @@ fun IntroScreen3Content(navController: NavController) {
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
         ) {
-            PageIndicator(currentPage = 2)
+            PageIndicator(currentPage = 2) // Matcher aktiv side
             Spacer(modifier = Modifier.height(20.dp))
-
-            NextButton{ navController.navigate("frontScreen") }
+            NextButton { navController.navigate("frontScreen") }
         }
     }
 }
