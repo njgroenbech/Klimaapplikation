@@ -11,7 +11,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.klimaaktion.model.firebasemodel.Group
-import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import kotlin.collections.forEach
 
 @Composable
@@ -20,17 +19,15 @@ fun GroupSelectorButton(
     selectedGroup: Group?,
     onSelect: (Group) -> Unit
 ) {
-
     var expanded by remember { mutableStateOf(false) }
 
     Box {
+        // The main button shows either the selected group or a prompt
         Button(onClick = { expanded = true }) {
-            Text(text = if (selectedGroup != null) {
-                selectedGroup.name
-            } else {
-                "Vælg gruppe"
-            })
+            Text(text = selectedGroup?.name ?: "Vælg gruppe")
         }
+
+        // The dropdown menu anchors to that button
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }

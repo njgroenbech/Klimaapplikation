@@ -4,15 +4,18 @@ import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.model.firebasemodel.Student
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
 
-// Repository skrevet af Nicholas
+// Repository skrevet af Nicholas, brugt AI som hjælpemiddel til løsningsforslag
+
 class FirebaseRepository(
     private val authentication: FirebaseAuth = FirebaseAuth.getInstance(),
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) {
+
     suspend fun getAllClasses(): List<SchoolClass> {
         val query = db.collection("classes")
             .get()
@@ -25,34 +28,62 @@ class FirebaseRepository(
     suspend fun registerStudent(
         username: String,
         password: String,
-        classId: String
+        classId: String,
+        groupId: String?
     ): Result<Student> {
         return try {
-            // laver en fake email for at "bypasse" createUserWithEmailAndPassword funktionen
-            // igennem firebase auth
             val fakeEmail = "${username}@ignorethis.local"
-            val result = authentication.createUserWithEmailAndPassword(fakeEmail, password).await()
+            val result = authentication
+                .createUserWithEmailAndPassword(fakeEmail, password)
+                .await()
 
-
-            val firebaseUser = result.user!! // lave non nullability af denne instance af result
-
+            val firebaseUser = result.user!!
             val student = Student(
                 id = firebaseUser.uid,
-                username = username,
+                username= username,
                 classId = classId,
-                groupId = null
+                groupId = groupId
             )
 
-            // tilføj instance af student til database
-            db.collection("students")
-                .document(student.id)
-                .set(student)
-                .await()
-            Result.success(student)
+            // Hvis der ikke er valgt en gruppe, kan man ikke registrere
+            if (groupId != null) {
+                // Tilføj student til student collection
+                db.collection("students")
+                    .document(student.id)
+                    .set(student)
+                    .await()
 
+                // Tilføj gruppe til gruppe collection og opdater med student ID
+                db.collection("groups")
+                    .document(groupId)
+                    .update("students", FieldValue.arrayUnion(student.id))
+                    .await()
+
+                // Tilføj til classes og opdater classes til at indholde student ID
+                db.collection("classes")
+                    .document(classId)
+                    .update("students", FieldValue.arrayUnion(student.id))
+                    .await()
+            }
+
+            Result.success(student)
         } catch (e: Exception) {
             Result.failure(e)
         }
+    }
+
+    suspend fun createGroup(group: Group): Group {
+        // Laver vores gruppe dokument i db
+        val docRef = db.collection("groups").document()
+        val newGroup = group.copy(id = docRef.id)
+        docRef.set(newGroup).await()
+
+        // Tilføjer gruppeId til den specifikke klasse
+        db.collection("classes")
+            .document(newGroup.classId)
+            .update("groups", FieldValue.arrayUnion(newGroup.id))
+            .await()
+        return newGroup
     }
 
     suspend fun loginStudent(

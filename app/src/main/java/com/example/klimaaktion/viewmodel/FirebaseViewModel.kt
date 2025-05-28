@@ -38,11 +38,56 @@ class FirebaseViewModel(
         }
     }
 
-    fun registerStudent(username: String, password: String, classId: String) {
+    fun createGroup(groupName: String, classId: String) {
+        viewModelScope.launch {
+            val created = repo.createGroup(
+                Group(
+                    name = groupName,
+                    classId = classId
+                )
+            )
+
+            groups = groups + created // opdaterer vores local state i UI
+
+            classes = classes.map {
+                if (it.id == classId) it.copy(groups = it.groups + created.id)
+                else it
+            }
+        }
+    }
+
+    fun registerStudent(
+        username: String,
+        password: String,
+        classId: String,
+        groupId: String?
+    ) {
+
         registerResult = null
 
         viewModelScope.launch {
-            registerResult = repo.registerStudent(username, password, classId)
+            val result = repo.registerStudent(username, password, classId, groupId)
+            registerResult = result
+
+            result.onSuccess { student ->
+                // update local cache so UI sees the new student in both places
+                classes = classes.map {
+                    if (it.id == classId) it.copy(students = it.students + student.id)
+                    else it
+                }
+                groupId?.let { gid ->
+                    groups = groups.map {
+                        if (it.id == gid) it.copy(students = it.students + student.id)
+                        else it
+                    }
+                }
+            }
+        }
+    }
+
+    fun fetchGroupsForClass(classId: String) {
+        viewModelScope.launch {
+            groups = repo.getGroupsForClass(classId)
         }
     }
 
@@ -53,5 +98,4 @@ class FirebaseViewModel(
             loginResult = repo.loginStudent(username, password)
         }
     }
-
 }

@@ -72,6 +72,13 @@ fun CreateUserScreen(
             }
     }
 
+    LaunchedEffect(selectedClassId) {
+        selectedClassId?.let {
+            viewModel.fetchGroupsForClass(it.id)
+            selectedGroup = null
+        }
+    }
+
     var usernameText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
@@ -150,6 +157,7 @@ fun CreateUserScreen(
                             unfocusedContainerColor = Color.White
                         )
                     )
+
                     Spacer(modifier = Modifier.height(12.dp))
 
                     OutlinedTextField(
@@ -167,6 +175,8 @@ fun CreateUserScreen(
                         )
                     )
 
+                    Spacer(modifier = Modifier.height(12.dp))
+
                     // mere nicholas har skrevet
                     ClassSelectorButton(
                         classes = classList,
@@ -175,17 +185,20 @@ fun CreateUserScreen(
                     )
 
                     if (selectedClassId != null) {
-
-                        CreateGroupButton {  }
-
+                        CreateGroupButton {
+                            viewModel.createGroup(
+                                groupName = it,
+                                classId = selectedClassId!!.id
+                            )
+                        }
                         GroupSelectorButton(
                             groups = groupList,
                             selectedGroup = selectedGroup,
                             onSelect = { selectedGroup = it }
                         )
+                    } else {
+                        Spacer(modifier = Modifier.height(96.dp))
                     }
-
-                    Spacer(modifier = Modifier.height(80.dp))
 
                     // mere Nicholas, til hvis registrering fejler
                     registerResult?.onFailure { error ->
@@ -198,7 +211,7 @@ fun CreateUserScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(285.dp))
+            Spacer(modifier = Modifier.height(280.dp))
         }
 
         Row(
@@ -217,7 +230,8 @@ fun CreateUserScreen(
                         viewModel.registerStudent(
                             username = usernameText,
                             password = passwordText,
-                            classId = it.id
+                            classId = it.id,
+                            groupId = selectedGroup?.id
                         )
                     }
                 }
