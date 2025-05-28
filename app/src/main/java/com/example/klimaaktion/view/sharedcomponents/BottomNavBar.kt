@@ -33,7 +33,7 @@ fun BottomNavBar(
 
     NavigationBar(
         modifier = Modifier
-            .height(75.dp),
+            .height(70.dp),
         tonalElevation = 4.dp
     ) {
         items.forEach { item ->
@@ -43,8 +43,8 @@ fun BottomNavBar(
                         painter = painterResource(id = item.iconResId),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(56.dp)
-                            .padding(top = 16.dp)
+                            .size(70.dp)
+                            .padding(top = 13.dp)
                     )
                 },
                 selected = currentRoute == item.route,

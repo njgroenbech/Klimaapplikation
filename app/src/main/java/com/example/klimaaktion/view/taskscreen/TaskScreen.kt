@@ -36,7 +36,7 @@ fun TaskScreen(viewModel: MainViewModel,
         Column(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
-                .padding(bottom = 75.dp)
+                .padding(bottom = 70.dp)
                 .fillMaxSize()
         ) {
 
