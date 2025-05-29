@@ -1,6 +1,6 @@
 package com.example.klimaaktion.model
 
-// Skrevet af Felix, med lidt AI hjælp til lige helt præcist hvad values skulle være
+// Skrevet af Felix, med hjælp fra AI til at tilføje nogle ekstra ting, som var nødvendige
 data class ChatRequest(
     val model: String,
     val messages: List<Message>,

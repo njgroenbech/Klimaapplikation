@@ -27,7 +27,7 @@ fun IntroScreen1Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF94D7F2)) // Egen blå nuance til at adskille denne intro
+            .background(Color(0xFF94D7F2))
             .padding(24.dp)
     ) {
         // Topsektion: Overskrift og indhold
@@ -57,13 +57,13 @@ fun IntroScreen1Content(navController: NavController) {
                 color = Color(0xFF202020)
             )
 
-            Spacer(modifier = Modifier.height(12.dp)) // matcher spacing på de øvrige introer
+            Spacer(modifier = Modifier.height(12.dp))
 
-            // Kort med illustrationer og opgaveeksempler
+
             IntroScreen1Cards(navController = navController)
         }
 
-        // Bundsektion: Sideindikator og næste-knap
+        // Bundsektion: Pageindicator og næste-knap
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -72,7 +72,7 @@ fun IntroScreen1Content(navController: NavController) {
         ) {
             PageIndicator(currentPage = 0) // Første side
             Spacer(modifier = Modifier.height(20.dp))
-            NextButton { navController.navigate("intro2") } // Navigerer til næste intro
+            NextButton { navController.navigate("intro2") }
         }
     }
 }

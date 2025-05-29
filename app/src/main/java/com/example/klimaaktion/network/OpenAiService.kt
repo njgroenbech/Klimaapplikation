@@ -7,6 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
+// Skrevet af chatGPT
 interface OpenAIService {
     @POST("chat/completions")
     fun getChatCompletion(

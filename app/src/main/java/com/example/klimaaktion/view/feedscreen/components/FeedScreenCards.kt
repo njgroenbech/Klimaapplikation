@@ -24,6 +24,8 @@ import com.example.klimaaktion.R
  * Viser et vertikalt feed af inspirationskort til klimahandling.
  * Hvert kort har tekst, illustration og evt. eksternt link.
  */
+
+// Skrevet af Jacob
 @Composable
 fun FeedScreenCards() {
     val context = LocalContext.current
@@ -32,7 +34,7 @@ fun FeedScreenCards() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        // 🌳 TreeCard – Aktivitet med træplantning
+        // TreeCard – Aktivitet med træplantning
         item {
             Box(
                 modifier = Modifier
@@ -76,7 +78,7 @@ fun FeedScreenCards() {
             }
         }
 
-        // ♻️ RecycleCard – Genbrug og link til Røde Kors
+        // RecycleCard – Genbrug og link til Røde Kors
         item {
             Box(
                 modifier = Modifier
@@ -110,7 +112,6 @@ fun FeedScreenCards() {
                     }
                 }
 
-                // Klikbart link til Røde Kors
                 Text(
                     text = "rodekors.dk",
                     fontSize = 23.sp,
@@ -126,7 +127,7 @@ fun FeedScreenCards() {
             }
         }
 
-        // 🌍 EarthCard – Tips med link til Klimaforlaget
+        // EarthCard – Tips med link til Klimaforlaget
         item {
             Box(
                 modifier = Modifier
@@ -160,7 +161,6 @@ fun FeedScreenCards() {
                     }
                 }
 
-                // Klikbart link til Klimaforlaget
                 Text(
                     text = "Klimaforlaget.dk",
                     fontSize = 22.sp,

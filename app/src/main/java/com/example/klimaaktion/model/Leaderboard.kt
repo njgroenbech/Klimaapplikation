@@ -1,6 +1,6 @@
 package com.example.klimaaktion.model
 
-// Kode skrevet af Elias
+// Kode skrevet af Elias: Bruges i MainViewModel
 
 data class Leaderboard(
     val rank: Int,

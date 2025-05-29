@@ -29,7 +29,8 @@ import com.example.klimaaktion.R
 @Composable
 fun IntroScreen1Cards(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // 🟢 StartTaskCard – handling med call-to-action
+
+        // StartTaskCard
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -45,7 +46,7 @@ fun IntroScreen1Cards(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                // Titel på opgave
+
                 Text(
                     text = "Tag cyklen i 3 dage",
                     fontSize = 18.sp,
@@ -53,7 +54,6 @@ fun IntroScreen1Cards(navController: NavController) {
                     color = Color.Black
                 )
 
-                // "Start"-knap (ikke funktionel endnu)
                 Box(
                     modifier = Modifier
                         .background(color = Color(0xFF114236), shape = RoundedCornerShape(20.dp))
@@ -71,7 +71,7 @@ fun IntroScreen1Cards(navController: NavController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        // 🟡 TransportCard – emnekort med illustration og point
+        // TransportCard – emnekort med illustration og point
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.8f)
@@ -92,7 +92,6 @@ fun IntroScreen1Cards(navController: NavController) {
                     color = Color.White
                 )
 
-                // Ikon af cykel
                 Image(
                     painter = painterResource(id = R.drawable.bicycle),
                     contentDescription = "Cykel ikon",
@@ -106,7 +105,6 @@ fun IntroScreen1Cards(navController: NavController) {
                     color = Color.White
                 )
 
-                // Pointbelønning
                 Text(
                     text = "30 points",
                     fontSize = 24.sp,

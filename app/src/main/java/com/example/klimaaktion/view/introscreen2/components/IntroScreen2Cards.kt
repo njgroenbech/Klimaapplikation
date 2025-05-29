@@ -25,7 +25,7 @@ fun IntroScreen2Cards() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        // 🟪 Informationskort med forklarende tekst og pointværdi
+        // Informationskort
         Box(
             modifier = Modifier
                 .width(260.dp)
@@ -35,7 +35,7 @@ fun IntroScreen2Cards() {
                 .padding(14.dp)
         ) {
             Column {
-                // Titel og "Start"-knap
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -73,7 +73,6 @@ fun IntroScreen2Cards() {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Emne og forklaring
                 Text(
                     text = "Hvorfor burde man plante træer?",
                     fontWeight = FontWeight.SemiBold,
@@ -92,7 +91,7 @@ fun IntroScreen2Cards() {
             }
         }
 
-        // 🟪 Quizkort med spørgsmål og svarmuligheder
+        //Quizkort
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
@@ -105,7 +104,7 @@ fun IntroScreen2Cards() {
                     .padding(14.dp)
             ) {
                 Column {
-                    // Titel og "Start"-knap
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -134,7 +133,6 @@ fun IntroScreen2Cards() {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Quiz-spørgsmål og svar
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
