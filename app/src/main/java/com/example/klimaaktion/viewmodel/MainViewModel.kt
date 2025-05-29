@@ -407,61 +407,41 @@ class MainViewModel : ViewModel() {
     )
 
 
-    // Linje 411- 467 er lavet af Elias.
+    // Linje 411- 447 er lavet af Elias.
     val taskList: List<Task> = listOfTasks
-
-    val totalPointsInTasks: Int = listOfTasks.sumOf { it.points }
-
     var earnedPointsState = mutableStateOf(0)
     val earnedPoints: State<Int> = earnedPointsState
-
-    val totalTasks: Int = listOfTasks.size
-
-    val completedTasksState = mutableStateOf(0)
-
-    val completedTasks: State<Int> = completedTasksState
-
-    private val leaderboardStartState = MutableStateFlow(
+    val leaderboardState = MutableStateFlow(
         listOf(
             Leaderboard(1, "Klimaklubben", 0),
-            Leaderboard(2, "Grønne Venner", 0),
-            Leaderboard(3, "Earth Savers", 0)
+            Leaderboard(2, "De Grønne Riddere", 0),
+            Leaderboard(3, "Eco Eagles", 0)
         )
-    )
-    val leaderboard: StateFlow<List<Leaderboard>> = leaderboardStartState
+    ) // Her har jeg hardcoded nogle leaderboard grupper, hvor pointene bliver opdateret i onTaskCompleted funktionen nedenfor.
+    val leaderboard: StateFlow<List<Leaderboard>> = leaderboardState
 
     fun onTaskCompleted(pointsForTask: Int) {
 
-        completedTasksState.value = completedTasks.value + 1
-
         earnedPointsState.value = earnedPointsState.value + pointsForTask
 
-        // Dette er hardcoded for at teste, om pointsystemet fungerer.
-        val updatedLeaderboard = leaderboardStartState.value
-            .map { group ->
-                if (group.rank == 1) {
-                    // tag entry.points og læg task-point oveni
-                    group.copy(points = group.points + pointsForTask)
-                } else {
-                    group
-                }
+        val updatedLeaderboard = leaderboardState.value.map { leaderBoardEntry ->
+            if (leaderBoardEntry.rank == 1) {
+                leaderBoardEntry.copy(points = leaderBoardEntry.points + pointsForTask)
+            } else {
+                leaderBoardEntry
             }
+        } /* Pointsystemet er hardcoded til kun at opdatere én bestemt gruppe.
+             Vores intention var, at det skulle afhænge af den gruppe, man havde valgt ved login,
+             men vi stødte på udfordringer med at koble pointlogikken op til Firestore.
+             Vi uddyber dette i rapportens Develop-kapitel.
+             */
 
-            .sortedByDescending { it.points }
 
-            .mapIndexed { index, entry ->
-                entry.copy(rank = index + 1)
-            }
-
-        leaderboardStartState.value = updatedLeaderboard
+        leaderboardState.value = updatedLeaderboard
     }
 
 
     fun removeTask(task: Task) {
         listOfTasks.remove(task)
-    }
-
-    fun resetEarnedPoints() {
-        earnedPointsState.value = 0
     }
 }

@@ -38,19 +38,19 @@ fun LeaderboardCard(rank: Int, name: String, points: Int) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "${rank}",
+                text = "$rank",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
             Text(
-                text = "Klimaklubben",
+                text = name,
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
             Text(
-                text = "${points}",
+                text = "$points",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

@@ -8,7 +8,6 @@ import com.example.klimaaktion.viewmodel.MainViewModel
 
 // Nedenstående kode er lavet af Elias
 // En lille smule er skrevet af Felix, se kommentare i koden.
-// hope this shit works
 // UI rettet til af Jacob
 
 @Composable
