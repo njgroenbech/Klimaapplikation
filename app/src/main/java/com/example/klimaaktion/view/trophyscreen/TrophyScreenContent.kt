@@ -6,11 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +21,11 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.trophyscreen.components.TrophyCard
 import com.example.klimaaktion.viewmodel.TrophyViewModel
 
+/**
+ * Indholdet for trofæskærmen.
+ * Viser både en horisontal billedoversigt og en vertikal liste med detaljerede trofæ-kort.
+ * Data hentes fra TrophyViewModel.
+ */
 @Composable
 fun TrophyScreenContent(
     navController: NavController,
@@ -36,10 +37,11 @@ fun TrophyScreenContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFACD8F1))
+            .background(Color(0xFFACD8F1)) // Ensartet baggrundsfarve som resten af appen
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
+        // Overskrift + knap til profilside
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -65,7 +67,7 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Horisontal liste
+        // 🏅 Horisontal visning af trofæikoner med transparens for låste trofæer
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -78,7 +80,7 @@ fun TrophyScreenContent(
                     contentDescription = "Trofæ ikon",
                     modifier = Modifier
                         .size(94.dp)
-                        .alpha(if (trophy.isCompleted) 1f else 0.3f)
+                        .alpha(if (trophy.isCompleted) 1f else 0.3f) // Faded hvis ikke opnået
                 )
             }
         }
@@ -93,7 +95,7 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Lodret liste af trophy-cards
+        // 📄 Lodret liste over trofæer med beskrivelse og status
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()

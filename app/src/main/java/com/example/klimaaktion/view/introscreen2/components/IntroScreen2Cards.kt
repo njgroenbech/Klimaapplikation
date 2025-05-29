@@ -13,22 +13,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Viser to UI-kort i introduktionsskærm 2:
+ * – Et infokort med point og viden
+ * – Et quizkort med valgmuligheder
+ *
+ */
 @Composable
 fun IntroScreen2Cards() {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        // Informationskort (venstre)
+        // 🟪 Informationskort med forklarende tekst og pointværdi
         Box(
             modifier = Modifier
-                .width(260.dp) // mindre bredde
-                .padding(start = 0.dp, end = 10.dp) // forskyd det mod venstre
+                .width(260.dp)
+                .padding(start = 0.dp, end = 10.dp)
                 .shadow(6.dp, RoundedCornerShape(20.dp))
                 .background(Color(0xFF9D91F8), RoundedCornerShape(20.dp))
                 .padding(14.dp)
         ) {
             Column {
+                // Titel og "Start"-knap
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -66,6 +73,7 @@ fun IntroScreen2Cards() {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
+                // Emne og forklaring
                 Text(
                     text = "Hvorfor burde man plante træer?",
                     fontWeight = FontWeight.SemiBold,
@@ -84,7 +92,7 @@ fun IntroScreen2Cards() {
             }
         }
 
-        // Quizkort (højre)
+        // 🟪 Quizkort med spørgsmål og svarmuligheder
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
@@ -97,6 +105,7 @@ fun IntroScreen2Cards() {
                     .padding(14.dp)
             ) {
                 Column {
+                    // Titel og "Start"-knap
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -125,7 +134,7 @@ fun IntroScreen2Cards() {
 
                     Spacer(modifier = Modifier.height(8.dp))
 
-                    // Quiz-box
+                    // Quiz-spørgsmål og svar
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()

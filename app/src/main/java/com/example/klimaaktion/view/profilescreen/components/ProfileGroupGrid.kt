@@ -2,12 +2,7 @@ package com.example.klimaaktion.view.profilescreen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
@@ -25,10 +20,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
-//Skrevet af Felix, med en del hjælp fra AI & Online ift. LazyVerticalGrid
+// Skrevet af Felix, med en del hjælp fra AI & online ift. LazyVerticalGrid
 // UI rettet til af Jacob
+
+/**
+ * Viser en grid med brugerens gruppemedlemmer.
+ * Hver celle viser et avatar-billede og et navn.
+ *
+ * Layoutet er lavet med LazyVerticalGrid for at sikre fleksibilitet og performance.
+ */
 @Composable
 fun ProfileGroupGrid() {
+    // Navne og tilhørende avatar-resurser (pt. hardkodet)
     val members = listOf("Johannes", "Torkild", "Zeynab", "Emilie")
     val avatars = listOf(
         R.drawable.johannesikon,
@@ -38,13 +41,14 @@ fun ProfileGroupGrid() {
     )
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+        columns = GridCells.Fixed(2), // To kolonner
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp),
         modifier = Modifier
             .padding(top = 8.dp)
-            .height(320.dp)
+            .height(320.dp) // Begrænser højden på grid’en
     ) {
+        // Itererer gennem medlemmer og viser én komponent per gridcelle
         itemsIndexed(members) { index, name ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,12 +58,16 @@ fun ProfileGroupGrid() {
                     .background(Color(0xFF6CD59A))
                     .padding(12.dp)
             ) {
+                // Avatarbillede
                 Image(
                     painter = painterResource(id = avatars[index]),
                     contentDescription = name,
                     modifier = Modifier.size(90.dp)
                 )
+
                 Spacer(modifier = Modifier.height(4.dp))
+
+                // Navn på medlemmet
                 Text(
                     text = name,
                     fontSize = 20.sp,
@@ -70,4 +78,3 @@ fun ProfileGroupGrid() {
         }
     }
 }
-

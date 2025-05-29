@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
+/**
+ * Viser et vertikalt feed af inspirationskort til klimahandling.
+ * Hvert kort har tekst, illustration og evt. eksternt link.
+ */
 @Composable
 fun FeedScreenCards() {
     val context = LocalContext.current
@@ -28,7 +32,7 @@ fun FeedScreenCards() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        // GreenDayCard indhold
+        // 🌳 TreeCard – Aktivitet med træplantning
         item {
             Box(
                 modifier = Modifier
@@ -72,7 +76,7 @@ fun FeedScreenCards() {
             }
         }
 
-        // RecycleCard indhold
+        // ♻️ RecycleCard – Genbrug og link til Røde Kors
         item {
             Box(
                 modifier = Modifier
@@ -106,6 +110,7 @@ fun FeedScreenCards() {
                     }
                 }
 
+                // Klikbart link til Røde Kors
                 Text(
                     text = "rodekors.dk",
                     fontSize = 23.sp,
@@ -121,7 +126,7 @@ fun FeedScreenCards() {
             }
         }
 
-        // TreeCard indhold
+        // 🌍 EarthCard – Tips med link til Klimaforlaget
         item {
             Box(
                 modifier = Modifier
@@ -155,6 +160,7 @@ fun FeedScreenCards() {
                     }
                 }
 
+                // Klikbart link til Klimaforlaget
                 Text(
                     text = "Klimaforlaget.dk",
                     fontSize = 22.sp,
@@ -170,6 +176,7 @@ fun FeedScreenCards() {
             }
         }
 
+        // Spacer nederst for at give luft i scrollen
         item {
             Spacer(modifier = Modifier.height(50.dp))
         }

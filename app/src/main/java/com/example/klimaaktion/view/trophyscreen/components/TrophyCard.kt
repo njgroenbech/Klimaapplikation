@@ -20,13 +20,18 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.klimaaktion.model.Trophy
 
 // Skrevet af Jacob
+
+/**
+ * Et enkelt trofæ-kort med ikon, titel og status.
+ * UI’et er tilpasset afhængigt af om trofæet er opnået (visuel transparens + flueben).
+ */
 @Composable
-fun TrophyCard(trophy: Trophy) { // <- ændret fra Task til Trophy
+fun TrophyCard(trophy: Trophy) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
-            .alpha(if (trophy.isCompleted) 1f else 0.3f)
+            .alpha(if (trophy.isCompleted) 1f else 0.3f) // Lavere opacitet for ufuldendte trofæer
             .background(trophy.backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
@@ -35,6 +40,7 @@ fun TrophyCard(trophy: Trophy) { // <- ændret fra Task til Trophy
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            // Ikon og titel til venstre
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     painter = painterResource(id = trophy.iconRes),
@@ -51,6 +57,7 @@ fun TrophyCard(trophy: Trophy) { // <- ændret fra Task til Trophy
                 )
             }
 
+            // Statusindikator til højre (flueben eller tom cirkel)
             if (trophy.isCompleted) {
                 Icon(
                     painter = painterResource(id = com.example.klimaaktion.R.drawable.checkmark_icon),
