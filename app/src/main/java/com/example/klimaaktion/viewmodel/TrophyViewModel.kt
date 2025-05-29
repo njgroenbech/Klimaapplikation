@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.klimaaktion.R
 import com.example.klimaaktion.model.Trophy
 
+// Skrevet af Jacob - håndtere og opdatere trofædata
 class TrophyViewModel : ViewModel() {
 
     private val _trophies = mutableStateListOf(
@@ -17,6 +18,7 @@ class TrophyViewModel : ViewModel() {
         Trophy(R.drawable.motivation_trophy_icon, "Motivér en ven!", Color(0xFFFFF9C4), false)
     )
 
+    // Markerer et trofæ som gennemført, hvis det findes og ikke allerede er gennemført.
     fun markTrophyCompleted(index: Int) {
         if (index in _trophies.indices && !_trophies[index].isCompleted) {
             _trophies[index] = _trophies[index].copy(isCompleted = true)

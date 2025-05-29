@@ -23,12 +23,11 @@ fun FeedScreenContent(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFACD8F1)) // Samme lyseblå baggrund som andre skærme
+            .background(Color(0xFFACD8F1))
             .padding(24.dp)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
-        // Skærmoverskrift
         Text(
             text = "Feed",
             fontSize = 40.sp,
@@ -38,7 +37,7 @@ fun FeedScreenContent(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Feed-kort med indhold (fx aktiviteter, notifikationer)
+        // Feed-kort med indhold (fx hjemmesider med focus på bæredygtighed )
         FeedScreenCards()
     }
 }

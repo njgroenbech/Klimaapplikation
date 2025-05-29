@@ -31,7 +31,7 @@ fun TrophyCard(trophy: Trophy) {
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
-            .alpha(if (trophy.isCompleted) 1f else 0.3f) // Lavere opacitet for ufuldendte trofæer
+            .alpha(if (trophy.isCompleted) 1f else 0.3f) // Lavere opacitet for ufuldendte tasks
             .background(trophy.backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
