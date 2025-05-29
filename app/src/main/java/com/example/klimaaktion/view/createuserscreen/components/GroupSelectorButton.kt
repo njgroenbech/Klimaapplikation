@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import com.example.klimaaktion.model.firebasemodel.Group
 import kotlin.collections.forEach
 
+// Skrevet af Nicholas, hjælp fra AI til at få grupperne til at blive vist
 @Composable
 fun GroupSelectorButton(
     groups: List<Group>,
@@ -20,14 +21,11 @@ fun GroupSelectorButton(
     onSelect: (Group) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-
     Box {
-        // The main button shows either the selected group or a prompt
         Button(onClick = { expanded = true }) {
             Text(text = selectedGroup?.name ?: "Vælg gruppe")
         }
 
-        // The dropdown menu anchors to that button
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }

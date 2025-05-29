@@ -9,7 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
 
-// Repository skrevet af Nicholas, brugt AI som hjælpemiddel til løsningsforslag
+// Repository skrevet af Nicholas, brugt AI som hjælpemiddel til løsningsforslag + YouTube
 
 class FirebaseRepository(
     private val authentication: FirebaseAuth = FirebaseAuth.getInstance(),
@@ -38,6 +38,7 @@ class FirebaseRepository(
                 .await()
 
             val firebaseUser = result.user!!
+
             val student = Student(
                 id = firebaseUser.uid,
                 username= username,

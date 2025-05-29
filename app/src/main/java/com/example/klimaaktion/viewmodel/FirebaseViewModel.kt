@@ -12,7 +12,8 @@ import com.example.klimaaktion.network.FirebaseRepository
 import kotlinx.coroutines.launch
 
 
-// Viewmodel skrevet af Nicholas
+// Viewmodel skrevet af Nicholas med hjælp fra AI og YouTube tutorials
+
 class FirebaseViewModel(
     private val repo: FirebaseRepository = FirebaseRepository()
 ): ViewModel() {
@@ -27,11 +28,8 @@ class FirebaseViewModel(
     var registerResult by mutableStateOf<Result<Student>?>(null)
         private set
 
-    var loginResult by mutableStateOf<Result<Student>?>(null)
-        private set
-
-    // init block sørger for, at all klasser er tilgængelige så snart denne viewmodel er
-    // initialized
+    // init block sørger for, at all klasser er tilgængelige så snart asynkron kode er
+    // kørt igennem
     init {
         viewModelScope.launch {
             classes = repo.getAllClasses()
@@ -88,14 +86,6 @@ class FirebaseViewModel(
     fun fetchGroupsForClass(classId: String) {
         viewModelScope.launch {
             groups = repo.getGroupsForClass(classId)
-        }
-    }
-
-    fun loginStudent(username: String, password: String) {
-        loginResult = null
-
-        viewModelScope.launch {
-            loginResult = repo.loginStudent(username, password)
         }
     }
 }

@@ -12,8 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Nick har ændret navController til en onclick for at kunne oprette brugere på knappen og
-// få dem ind i firebase db
+// Skrevet af Nicholas
 @Composable
 fun CreateUserButton(onClick: () -> Unit) {
     // Knappen er taget fra frontscreen.components.Buttons

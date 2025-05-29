@@ -12,8 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 
-// skrevet af Nicholas
-
+// skrevet af Nicholas, hjælp fra AI til dropdownmenu
 @Composable
 fun ClassSelectorButton(
     classes: List<SchoolClass>,

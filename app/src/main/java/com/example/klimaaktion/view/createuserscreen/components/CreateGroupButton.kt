@@ -18,7 +18,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.input.ImeAction
 
-
+// Skrevet af Nicholas, hjælp fra AI til showDialog opsætning
 @Composable
 fun CreateGroupButton(
     onCreate: (String) -> Unit

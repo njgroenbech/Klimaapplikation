@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.viewmodel.MainViewModel
 
-// Nicholas
 // UI rettet til af Jacob
 // UI lavet af Nicholas.
 // Funktionalitet tilføjet af Elias: Linje 30-73

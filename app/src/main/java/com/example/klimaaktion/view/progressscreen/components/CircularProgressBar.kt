@@ -14,9 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 
+// Lavet af Nicholas med hjælp fra AI til opsætningen af den cirkulære datavisualisering
 @Composable
 fun CircularProgressBar(
-    percentage: Float, // e.g., 0.06 for 6%
+    percentage: Float,
     modifier: Modifier = Modifier,
     radius: Dp = 100.dp,
     strokeWidth: Dp = 20.dp,
@@ -31,7 +32,6 @@ fun CircularProgressBar(
             val size = size.minDimension
             val sweepAngle = percentage * 360f
 
-            // Background Circle
             drawArc(
                 color = backgroundColor,
                 startAngle = -90f,
@@ -40,7 +40,6 @@ fun CircularProgressBar(
                 style = Stroke(width = strokeWidth.toPx(), cap = StrokeCap.Round)
             )
 
-            // Foreground Arc
             drawArc(
                 color = foregroundColor,
                 startAngle = -90f,

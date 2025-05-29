@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// Skrevet af Nicholas
 @Composable
 fun LeaderboardCard(rank: Int, name: String, points: Int) {
     Card(
