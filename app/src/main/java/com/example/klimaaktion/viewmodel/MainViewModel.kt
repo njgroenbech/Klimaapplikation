@@ -40,22 +40,62 @@ class MainViewModel : ViewModel() {
 
     fun fetchTasksFromOpenAI() {
         Log.d("OpenAITest", "🔁 fetchTasksFromOpenAI() kaldt")
+// Promptets mål indledende var at kunne leverere 10 opgaver i vores LazyList som man kan scroll igennem
+        // på baggrund af grundig testning af AI, tests på querytimes og svarindhold.
+        // Er vi nået frem til dette prompt som der leverer 4 opgaver uden fejl
+        // Og en svar tid der føles naturligt for brugeren i det reele flow.
+        // Det er lavet i samarbejde med CHATgpt, og dens inputs på hvordan AI bedst kan læse og forstå hurtigt indhold af promptet.
+        // Yderligere dokumentation findes i rapporten
+        val prompt = """## OPGAVE
 
-        val prompt = """
- Generer 2 klimaopgaver til børn mellem 10 og 14 år. Returnér dem som en gyldig JSON-liste, hvor hvert objekt indeholder disse felter:
+Generér en JSON-liste med præcis 4 klimaopgaver til børn i alderen 10–14 år.  
+Returnér **kun gyldig JSON** — ingen ekstra tekst, ingen kommentarer.
 
- 1. "id": Et unikt 2-cifret heltal    (alle 10 opgaver skal have forskelligt ID)
- 2. "title": En kort sætning, der beskriver opgaven (f.eks. "Sluk lyset efter dig", "Plant 1 træ" eller "tag cyklen 2 gange" )
- 3. "points": Et tal mellem 5 og 50, som skal være deleligt med 5 (kun 5, 10, 15, ..., 50). Brug lavere point til nemme opgaver og højere til svære.
- 4. "backgroundColor": En frugt-agtig farvekode i hex-format, undgå farver tæt på lyseblå, eller farver som: hvid, sort, mørkegrøn
- 5. "fact": En kort faktatekst (max én linje) om klima, relateret til opgaven
- 6. "details": En forklarende tekst på cirka 150 ord, skrevet i et let forståeligt sprog for børn i alderen 10-14 år. Den skal forklare hvorfor opgaven er vigtig for klima og miljø.
- 7. "quiz": En liste med 3 spørgsmål. Hvert spørgsmål skal have:
-    - "question": selve spørgsmålet
-    - "answers": en liste med præcis 3 svarmuligheder
-    - "correctAnswerIndex": et heltal mellem 0 og 2, som angiver det rigtige svar
+---
 
- Returnér kun gyldig JSON. Svar må ikke indeholde nogen forklarende eller anden tekst.
+## FORMATKRAV
+
+Hver opgave skal være et objekt med følgende felter:
+
+- `"id"`: Unikt 2-cifret heltal (alle 4 opgaver skal have forskelligt id)
+- `"title"`: Kort og unik titel (en hverdagsopgave, let at forstå)
+- `"points"`: Et tal mellem 5 og 50, der er deleligt med 5  
+  _(Brug lavere point til nemme opgaver og højere til svære)_
+- `"backgroundColor"`: En frugtinspireret hex-farve  
+  _(Undgå farver som lyseblå, hvid, sort og mørkegrøn)_
+- `"fact"`: En kort faktatekst (maks én linje) om klimaet relateret til opgaven
+- `"details"`: En letforståelig forklaring (max 150 ord) om hvorfor opgaven er vigtig for klimaet
+- `"quiz"`: En liste med 2 quizspørgsmål. Hvert spørgsmål skal indeholde:
+  - `"question"`: Spørgsmålet
+  - `"answers"`: Liste med præcis 3 svarmuligheder
+  - `"correctAnswerIndex"`: Index på det rigtige svar (0, 1 eller 2)
+
+---
+
+## SÆRLIGE REGLER
+
+- Brug enkelt og børnevenligt sprog.
+- `"title"` og `"id"` skal være unikke for hver opgave.
+- `"backgroundColor"` skal være inspireret af frugter (fx appelsin, melon, fersken, jordbær).
+- Quizspørgsmål skal være forståelige uden at læse hele teksten.
+EKSEMPLER PÅ ALLEREDE EKSISTERENDE OPGAVE TITLER -
+"Sluk lyset efter jer!"
+"Plant et træ i gården"
+"Spis grønt 1 dag"
+"Tag cyklen 3 dage"
+"Spis vegetarisk i 2 dage"
+"Sluk elektronik"
+"Undgå madspild i en uge"
+"Brug stofpose til indkøb"
+"Drik vand fra hanen"
+"Køb genbrugstøj"
+---
+
+## OUTPUT
+
+Returnér en gyldig JSON-array med de 4 opgaver.
+Returnér **kun JSON** — ingen ekstra output.
+
  """.trimIndent()
 
 

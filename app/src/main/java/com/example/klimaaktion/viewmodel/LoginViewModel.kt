@@ -60,7 +60,7 @@ class LoginViewModel(
             val result = repo.loginStudent(loginData.username,loginData.password)
             if (result.isSuccess) {
                 student = result.getOrNull()
-                runLogin() // Only call this if login succeeded!
+                runLogin() // navigationsdelen af loginnet // BURDE VIRKE FOR ALLE // ELLERS BRUG ADMIN-ADGANG
             } else {
                 error = "kritisk fejl med login"
             }

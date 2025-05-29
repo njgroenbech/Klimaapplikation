@@ -23,7 +23,7 @@ import com.example.klimaaktion.view.taskscreen.TaskScreen
 import com.example.klimaaktion.view.trophyscreen.TrophyScreen
 import com.example.klimaaktion.viewmodel.MainViewModel
 
-
+// navigation tilføjet af alle / nicolas og laurits opstilet
 @Composable
 fun AppNavHost() {
 
