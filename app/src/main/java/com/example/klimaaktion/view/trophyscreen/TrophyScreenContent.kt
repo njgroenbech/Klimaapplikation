@@ -37,7 +37,7 @@ fun TrophyScreenContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFACD8F1)) // Ensartet baggrundsfarve som resten af appen
+            .background(Color(0xFFACD8F1))
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
@@ -67,7 +67,7 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // 🏅 Horisontal visning af trofæikoner med transparens for låste trofæer
+        // Horisontal visning af trofæikoner
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -80,7 +80,7 @@ fun TrophyScreenContent(
                     contentDescription = "Trofæ ikon",
                     modifier = Modifier
                         .size(94.dp)
-                        .alpha(if (trophy.isCompleted) 1f else 0.3f) // Faded hvis ikke opnået
+                        .alpha(if (trophy.isCompleted) 1f else 0.3f)
                 )
             }
         }
@@ -95,7 +95,7 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // 📄 Lodret liste over trofæer med beskrivelse og status
+        // Lodret liste over trofæer med beskrivelse og status
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()

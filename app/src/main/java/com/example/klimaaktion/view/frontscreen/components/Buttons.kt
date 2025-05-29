@@ -60,7 +60,7 @@ fun FrontScreenButtons(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Admin-knap til hurtig adgang (skipper login)
+        // DEVELOPMENT ONLY – Admin-knap til bypass af login (not included in final build)
         Button(
             onClick = { navController.navigate(Routes.Feed) },
             shape = RoundedCornerShape(50),

@@ -24,7 +24,7 @@ fun IntroScreen3Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF8ECBEA)) // Samme blå som øvrige intro-sider
+            .background(Color(0xFF8ECBEA))
             .padding(24.dp)
     ) {
         // Øverste sektion med tekst og illustrationer
@@ -36,7 +36,6 @@ fun IntroScreen3Content(navController: NavController) {
         ) {
             Spacer(modifier = Modifier.height(100.dp))
 
-            // Overskrift
             Text(
                 text = "Følg",
                 fontSize = 32.sp,
@@ -46,7 +45,7 @@ fun IntroScreen3Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            // Undertekst
+
             Text(
                 text = "Se din fremgang og optjen trofæer!",
                 fontSize = 18.sp,
@@ -56,21 +55,19 @@ fun IntroScreen3Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            // Komponent der viser infokort relateret til fremgang og trofæer
             IntroScreen3Cards()
         }
 
-        // Bundsektion med sidemarkør og næste-knap
+        // Bundsektion med Pageindicator og næste-knap
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 24.dp)
         ) {
-            PageIndicator(currentPage = 2) // Viser at vi er på tredje (sidste) intro-side
+            PageIndicator(currentPage = 2)
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Næste-knap navigerer videre til forsiden
             NextButton {
                 navController.navigate("frontScreen")
             }

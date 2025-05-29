@@ -28,7 +28,7 @@ fun IntroScreen2Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFACD8F1)) // Blå baggrund, adskiller denne intro fra de andre
+            .background(Color(0xFFACD8F1))
             .padding(24.dp)
     ) {
         // Topindhold: tekst og forklarende kort
@@ -40,7 +40,6 @@ fun IntroScreen2Content(navController: NavController) {
         ) {
             Spacer(modifier = Modifier.height(100.dp))
 
-            // Overskrift
             Text(
                 text = "Lær",
                 fontSize = 32.sp,
@@ -50,7 +49,6 @@ fun IntroScreen2Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            // Undertekst
             Text(
                 text = "Undersøg viden og quiz om klimaet",
                 fontSize = 18.sp,
@@ -60,11 +58,10 @@ fun IntroScreen2Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Visuelle kort relateret til læring og quiz
             IntroScreen2Cards()
         }
 
-        // Bund: sideindikator og næste-knap
+        // Bund: Pageindicator og næste-knap
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -74,7 +71,6 @@ fun IntroScreen2Content(navController: NavController) {
             PageIndicator(currentPage = 1) // Angiver at dette er side 2 af 3
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Går videre til næste intro-skærm
             NextButton {
                 navController.navigate("intro3")
             }
