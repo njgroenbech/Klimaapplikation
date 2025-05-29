@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+// Skrevet af Felix, med med fra AI, til implementering af OkHttpClient
 object Api {
 
     private val client = OkHttpClient.Builder()
@@ -16,7 +17,7 @@ object Api {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://api.openai.com/v1/")
         .addConverterFactory(GsonConverterFactory.create())
-        .client(client) // ← vigtig linje
+        .client(client)
         .build()
 
     val openAIService: OpenAIService = retrofit.create(OpenAIService::class.java)

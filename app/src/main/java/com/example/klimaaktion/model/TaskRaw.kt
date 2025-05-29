@@ -1,5 +1,7 @@
 package com.example.klimaaktion.model
 
+// Skrevet af ChatGPT
+
 data class TaskRaw(
     val id: Int,
     val title: String,
