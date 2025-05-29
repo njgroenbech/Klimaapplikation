@@ -121,6 +121,8 @@ fun ProgressScreenContent(
 
         Spacer(modifier = Modifier.height(10.dp))
 
+        // Elias: Nedenstående fik jeg hjælp til af AI ift. syntaks, da jeg fik lidt problemer med mit oprindelige.
+
         viewModel.leaderboard.collectAsState().value.forEach { entry ->
             LeaderboardCard(
                 rank = entry.rank,
