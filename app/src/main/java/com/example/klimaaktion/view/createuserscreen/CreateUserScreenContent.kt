@@ -22,7 +22,7 @@ import com.example.klimaaktion.R
 import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
-
+// Lavet af Elias og Nicholas
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun CreateUserScreenContent(
