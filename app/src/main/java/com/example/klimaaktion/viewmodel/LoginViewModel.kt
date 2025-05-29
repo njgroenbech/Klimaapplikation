@@ -9,17 +9,17 @@ import kotlinx.coroutines.launch
 import com.example.klimaaktion.network.FirebaseRepository
 import com.example.klimaaktion.model.firebasemodel.Student
 
-
+// skrevet af laurits
 class LoginViewModel(
     private val repo: FirebaseRepository = FirebaseRepository()
 ) : ViewModel() {
-    var student by mutableStateOf<Student?>(null)   // <-- ADD THIS LINE
+    var student by mutableStateOf<Student?>(null)   // null for at fungerere
         private set
-    var username by mutableStateOf("Indtast Login!")
+    var username by mutableStateOf("")
         private set
-    var password by mutableStateOf("kodeord")
+    var password by mutableStateOf("")
         private set
-    var error by mutableStateOf<String?>(null)
+    var error by mutableStateOf<String?>(null) // null for at fungere
         private set
 
 
