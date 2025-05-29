@@ -1,13 +1,8 @@
 package com.example.klimaaktion.view.frontscreen.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,9 +12,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.navigation.Routes
 
+/**
+ * Viser tre knapper på forsiden:
+ * – Opret bruger
+ * – Allerede bruger (login)
+ * – Admin adgang (skipper login)
+ */
+// Skrevet af Felix
 @Composable
-fun FrontScreenButtons(navController: NavController){
+fun FrontScreenButtons(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        // Grøn knap til at oprette ny bruger
         Button(
             onClick = { navController.navigate("createUserScreen") },
             shape = RoundedCornerShape(50),
@@ -38,6 +41,7 @@ fun FrontScreenButtons(navController: NavController){
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Knap til eksisterende brugere der vil logge ind
         Button(
             onClick = { navController.navigate("loginscreen") },
             shape = RoundedCornerShape(50),
@@ -54,13 +58,13 @@ fun FrontScreenButtons(navController: NavController){
             )
         }
 
-        // Admin knap til at skippe login
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Admin-knap til hurtig adgang (skipper login)
         Button(
             onClick = { navController.navigate(Routes.Feed) },
             shape = RoundedCornerShape(50),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF9A9A)), // evt. en anden farve for admin
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF9A9A)), // Rødlig farve for at skille sig ud
             elevation = ButtonDefaults.buttonElevation(6.dp),
             modifier = Modifier
                 .width(220.dp)
@@ -72,6 +76,5 @@ fun FrontScreenButtons(navController: NavController){
                 fontSize = 12.sp
             )
         }
-
     }
 }

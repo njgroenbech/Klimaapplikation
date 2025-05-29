@@ -9,6 +9,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.klimaaktion.R
 
+/**
+ * Viser logoet for appen øverst på loginskærmen.
+ * Bruges som visuel branding og genkendelse.
+ */
+// Skrevet af Laurits
 @Composable
 fun LogoHeader() {
     Box(

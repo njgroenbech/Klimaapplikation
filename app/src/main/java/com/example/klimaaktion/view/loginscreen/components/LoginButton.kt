@@ -11,12 +11,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
+/**
+ * Knap til login-handling.
+ * Udløser en callback-funktion ved klik, som håndterer login og navigation.
+ * Designet med afrundede hjørner og grøn baggrund for at signalere handling.
+ */
+// Skrevet af Laurits
 @Composable
 fun LoginButton(onClick: () -> Unit) {
     Button(
-        onClick =  onClick,
+        onClick = onClick, // Kaldes når brugeren klikker på knappen
         shape = RoundedCornerShape(50),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6CD59A)),
         elevation = ButtonDefaults.buttonElevation(6.dp),

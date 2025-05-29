@@ -1,14 +1,7 @@
 package com.example.klimaaktion.view.frontscreen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,12 +11,19 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.frontscreen.components.FrontScreenButtons
 import com.example.klimaaktion.view.frontscreen.components.FrontScreenImages
 
+/**
+ * Indholdet for appens forside efter introforløbet.
+ * Består af to sektioner:
+ * – FrontScreenImages: Logo og illustrationer
+ * – FrontScreenButtons: Navigation videre i appen
+ */
+// Skrevet af Felix
 @Composable
-fun FrontScreenContent (navController: NavController){
+fun FrontScreenContent(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF8ECBEA)),
+            .background(Color(0xFF8ECBEA)), // Konsistent blå baggrund
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -35,10 +35,12 @@ fun FrontScreenContent (navController: NavController){
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
+            // Øverste sektion med logo og billede
             FrontScreenImages()
 
             Spacer(modifier = Modifier.height(40.dp))
 
+            // Nederste sektion med knapper
             FrontScreenButtons(navController = navController)
 
             Spacer(modifier = Modifier.height(20.dp))

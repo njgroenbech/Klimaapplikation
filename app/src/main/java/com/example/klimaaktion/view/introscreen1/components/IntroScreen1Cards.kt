@@ -18,10 +18,18 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.R
 
 // Skrevet af Jacob
+
+/**
+ * Viser kort på introduktionsskærm 1:
+ * – Et opgavekort med "Start"-knap
+ * – Et temakort med illustration og point
+ *
+ * Formålet er at visualisere handling og belønning i klimaaktiviteter.
+ */
 @Composable
 fun IntroScreen1Cards(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // StartTaskCard
+        // 🟢 StartTaskCard – handling med call-to-action
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -37,12 +45,15 @@ fun IntroScreen1Cards(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
+                // Titel på opgave
                 Text(
                     text = "Tag cyklen i 3 dage",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Medium,
                     color = Color.Black
                 )
+
+                // "Start"-knap (ikke funktionel endnu)
                 Box(
                     modifier = Modifier
                         .background(color = Color(0xFF114236), shape = RoundedCornerShape(20.dp))
@@ -60,7 +71,7 @@ fun IntroScreen1Cards(navController: NavController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        // TransportCard
+        // 🟡 TransportCard – emnekort med illustration og point
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.8f)
@@ -81,6 +92,7 @@ fun IntroScreen1Cards(navController: NavController) {
                     color = Color.White
                 )
 
+                // Ikon af cykel
                 Image(
                     painter = painterResource(id = R.drawable.bicycle),
                     contentDescription = "Cykel ikon",
@@ -94,6 +106,7 @@ fun IntroScreen1Cards(navController: NavController) {
                     color = Color.White
                 )
 
+                // Pointbelønning
                 Text(
                     text = "30 points",
                     fontSize = 24.sp,
