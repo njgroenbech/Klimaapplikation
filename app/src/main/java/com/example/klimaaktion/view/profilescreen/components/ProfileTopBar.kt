@@ -17,24 +17,17 @@ import com.example.klimaaktion.R
 // Skrevet af Felix
 // UI rettet til af Jacob
 
-/**
- * Topbjælke på profilsiden med overskrift og to ikoner:
- * – Trofæ (navigerer til trofæoversigt)
- * – Indstillinger (åbner drawer)
- *
- * Modtager to callbacks, som kaldes når brugeren klikker på de respektive ikoner.
- */
+
 @Composable
 fun ProfileTopBar(
-    onSettingsClick: () -> Unit, // Kaldes når brugeren klikker på indstillingsikonet
-    onTrophyClick: () -> Unit    // Kaldes når brugeren klikker på trofæikonet
+    onSettingsClick: () -> Unit,
+    onTrophyClick: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Overskrift for profilsiden
         Text(
             text = "Profil",
             fontWeight = FontWeight.Bold,
@@ -42,9 +35,8 @@ fun ProfileTopBar(
             color = Color(0xFF343434)
         )
 
-        // Højre side af topbaren med ikoner
         Row {
-            // Trofæ-ikon med klikbar funktion
+
             Image(
                 painter = painterResource(R.drawable.profiltrophy),
                 contentDescription = "Trofæ",
@@ -55,7 +47,7 @@ fun ProfileTopBar(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Indstillingsikon, åbner drawer via callback
+
             Image(
                 painter = painterResource(R.drawable.settings),
                 contentDescription = "Indstillinger",

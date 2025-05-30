@@ -12,17 +12,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.navigation.Routes
 
-/**
- * Viser tre knapper på forsiden:
- * – Opret bruger
- * – Allerede bruger (login)
- * – Admin adgang (skipper login)
- */
+
 // Skrevet af Felix
 @Composable
 fun FrontScreenButtons(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // Grøn knap til at oprette ny bruger
+
         Button(
             onClick = { navController.navigate("createUserScreen") },
             shape = RoundedCornerShape(50),
@@ -41,7 +36,7 @@ fun FrontScreenButtons(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Knap til eksisterende brugere der vil logge ind
+
         Button(
             onClick = { navController.navigate("loginscreen") },
             shape = RoundedCornerShape(50),
@@ -60,11 +55,11 @@ fun FrontScreenButtons(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // DEVELOPMENT ONLY – Admin-knap til bypass af login (not included in final build)
+
         Button(
             onClick = { navController.navigate(Routes.Feed) },
             shape = RoundedCornerShape(50),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF9A9A)), // Rødlig farve for at skille sig ud
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF9A9A)),
             elevation = ButtonDefaults.buttonElevation(6.dp),
             modifier = Modifier
                 .width(220.dp)

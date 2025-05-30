@@ -13,19 +13,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-/**
- * Viser to UI-kort i introduktionsskærm 2:
- * – Et infokort med point og viden
- * – Et quizkort med valgmuligheder
- *
- */
+
 @Composable
 fun IntroScreen2Cards() {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        // Informationskort
+
         Box(
             modifier = Modifier
                 .width(260.dp)

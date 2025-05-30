@@ -10,13 +10,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.klimaaktion.R
 
-/**
- * Viser logo og illustration på forsiden.
- * Logo vises i toppen, og derefter en skalerbar illustration.
- */
+
 @Composable
 fun FrontScreenImages() {
-    // App-logo i fast størrelse
+
     Image(
         painter = painterResource(id = R.drawable.logofrontscreen),
         contentDescription = "Logo",
@@ -25,7 +22,7 @@ fun FrontScreenImages() {
             .height(60.dp)
     )
 
-    // Illustration under logoet – skaleres lidt bredere end skærmen for visuel effekt
+
     BoxWithConstraints(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.Center

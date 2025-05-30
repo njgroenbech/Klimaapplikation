@@ -16,19 +16,14 @@ import kotlin.math.roundToInt
 
 // Skrevet af Felix/Jacob
 
-/**
- * Fremgangsbar-komponent der viser brugerens nuværende point
- * i forhold til et foruddefineret mål (maxPoints).
- *
- * Procenten beregnes og vises som tekst samt grafisk indikator.
- */
+
 @Composable
 fun ProfileProgressBar(points: Int = 35, maxPoints: Int = 250) {
-    val progress = points.toFloat() / maxPoints               // Procentværdi som float mellem 0 og 1
-    val progressPercent = (progress * 100).roundToInt()       // Afrundet procent til visning
+    val progress = points.toFloat() / maxPoints
+    val progressPercent = (progress * 100).roundToInt()
 
     Column(horizontalAlignment = Alignment.Start) {
-        // Viser procenten som tekst over progress baren
+
         Text(
             text = "$progressPercent%",
             fontWeight = FontWeight.Bold,
@@ -37,7 +32,7 @@ fun ProfileProgressBar(points: Int = 35, maxPoints: Int = 250) {
             modifier = Modifier.padding(start = 8.dp, bottom = 4.dp)
         )
 
-        // Selve fremgangsbjælken
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -45,16 +40,16 @@ fun ProfileProgressBar(points: Int = 35, maxPoints: Int = 250) {
                 .clip(RoundedCornerShape(50))
                 .background(Color.White)
         ) {
-            // Grøn del der viser hvor langt brugeren er nået
+
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .fillMaxWidth(progress.coerceIn(0f, 1f)) // Sikrer at fremgang aldrig overstiger 100%
+                    .fillMaxWidth(progress.coerceIn(0f, 1f))
                     .clip(RoundedCornerShape(50))
                     .background(Color(0xFF2F713C))
             )
 
-            // Centreret tekst inde i fremgangsbjælken
+
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center

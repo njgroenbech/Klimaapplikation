@@ -11,19 +11,14 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.frontscreen.components.FrontScreenButtons
 import com.example.klimaaktion.view.frontscreen.components.FrontScreenImages
 
-/**
- * Indholdet for appens forside efter introforløbet.
- * Består af to sektioner:
- * – FrontScreenImages: Logo og illustrationer
- * – FrontScreenButtons: Navigation videre i appen
- */
+
 // Skrevet af Felix
 @Composable
 fun FrontScreenContent(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF8ECBEA)), // Konsistent blå baggrund
+            .background(Color(0xFF8ECBEA)),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -35,12 +30,12 @@ fun FrontScreenContent(navController: NavController) {
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Øverste sektion med logo og billede
+
             FrontScreenImages()
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            // Nederste sektion med knapper
+
             FrontScreenButtons(navController = navController)
 
             Spacer(modifier = Modifier.height(20.dp))

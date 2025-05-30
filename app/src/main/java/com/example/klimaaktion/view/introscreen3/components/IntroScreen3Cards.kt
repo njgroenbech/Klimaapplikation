@@ -18,20 +18,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
-/**
- * Viser to kort (Cards) med introduktion til:
- * – Brugernes fremgang og leaderboard
- * – Visuelle trofæer, som kan opnås
- *
- * Bruges som en del af IntroScreen3Content til at gøre progression og belønning synlig.
- */
+
 // Skrevet af Jacob
 @Composable
 fun IntroScreen3Cards() {
     Column(
-        verticalArrangement = Arrangement.spacedBy(32.dp) // Giver god afstand mellem kortene
+        verticalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        // 🔵 Fremgangskort med cirkulær fremgang og leaderboard
+
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -46,7 +40,7 @@ fun IntroScreen3Cards() {
                     .padding(start = 20.dp, top = 24.dp, bottom = 24.dp, end = 12.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // 🔘 Venstre: Cirkulært fremgangsdiagram + point
+
                 Column(
                     modifier = Modifier.width(100.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -101,7 +95,7 @@ fun IntroScreen3Cards() {
 
                 Spacer(modifier = Modifier.width(20.dp))
 
-                // 🏆 Højre: Leaderboard med top 3 hold
+
                 Column(
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                     modifier = Modifier.fillMaxHeight()
@@ -135,7 +129,7 @@ fun IntroScreen3Cards() {
             }
         }
 
-        // 🏅 Trofæ-kort med ikonvisning
+
         Card(
             modifier = Modifier
                 .fillMaxWidth()
@@ -149,7 +143,7 @@ fun IntroScreen3Cards() {
                     .fillMaxSize()
                     .padding(horizontal = 20.dp, vertical = 12.dp)
             ) {
-                // Titel og ikoner i topbjælken
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
@@ -181,7 +175,7 @@ fun IntroScreen3Cards() {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Række af trofæikoner
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly,

@@ -40,7 +40,7 @@ class MainViewModel : ViewModel() {
 
     fun fetchTasksFromOpenAI() {
         Log.d("OpenAITest", "🔁 fetchTasksFromOpenAI() kaldt")
-// Promptets mål indledende var at kunne leverere 10 opgaver i vores LazyList som man kan scroll igennem
+//      Promptets mål indledende var at kunne leverere 10 opgaver i vores LazyList som man kan scroll igennem
         // på baggrund af grundig testning af AI, tests på querytimes og svarindhold.
         // Er vi nået frem til dette prompt som der leverer 4 opgaver uden fejl
         // Og en svar tid der føles naturligt for brugeren i det reele flow.
@@ -473,7 +473,7 @@ Returnér **kun JSON** — ingen ekstra output.
         } /* Pointsystemet er hardcoded til kun at opdatere én bestemt gruppe.
              Vores intention var, at det skulle afhænge af den gruppe, man havde valgt ved login,
              men vi stødte på udfordringer med at koble pointlogikken op til Firestore.
-             Vi uddyber dette i rapportens Develop-kapitel.
+             Vi uddyber dette i rapportens Develop-kapitel+ konklusionen indeholder referance.
              */
 
 

@@ -18,16 +18,7 @@ import com.example.klimaaktion.R
 // Skrevet af Felix med meget hjælp fra AI til Drawer-funktioner
 // UI rettet til af Jacob
 
-/**
- * Drawer-indhold til profilsiden.
- * Viser brugeroplysninger, informationslinks, logout-knap og sprogvalg.
- *
- * Modtager tre callbacks:
- * – onClose: bruges til at lukke drawer (ikke brugt her endnu, da man bare kan klikke uden for draweren,
- * og så lukker draweren af sig selv.
- * – onLogout: kaldes når brugeren klikker på "Log ud", gør dog ikke noget endnu
- * – onLinkClick: kaldes når brugeren klikker på et eksternt link
- */
+
 @Composable
 fun ProfileDrawerContent(
     onClose: () -> Unit,
@@ -43,7 +34,7 @@ fun ProfileDrawerContent(
             .padding(24.dp)
     ) {
         Column {
-            // Avatar og brugeroplysninger
+
             Image(
                 painter = painterResource(R.drawable.stefanikon),
                 contentDescription = "Bruger avatar",
@@ -67,7 +58,6 @@ fun ProfileDrawerContent(
             HorizontalDivider(thickness = 2.dp, color = Color.LightGray)
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Liste over informationslinks (hardcoded løsning så klikfunktion mangler)
             val items = listOf(
                 "Intro til appen",
                 "FAQ",
@@ -91,7 +81,7 @@ fun ProfileDrawerContent(
             HorizontalDivider(thickness = 2.dp, color = Color.LightGray)
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Eksterne links – kalder callback med URL
+
             Text(
                 text = "Runddelensriddere.dk",
                 color = Color(0xFF6CD59A),
@@ -111,7 +101,7 @@ fun ProfileDrawerContent(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Log ud-knap (rød og tydelig)
+
             Text(
                 text = "Log ud",
                 color = Color.Red,
@@ -125,7 +115,7 @@ fun ProfileDrawerContent(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Sprogvalg med flagikoner (funktionalitet mangler pt.)
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -135,14 +125,14 @@ fun ProfileDrawerContent(
                 contentDescription = "Dansk",
                 modifier = Modifier
                     .size(50.dp)
-                    .clickable { /* Skift sprog til dansk (TODO) */ }
+                    .clickable {  }
             )
             Image(
                 painter = painterResource(R.drawable.flag_uk),
                 contentDescription = "Engelsk",
                 modifier = Modifier
                     .size(50.dp)
-                    .clickable { /* Skift sprog til engelsk (TODO) */ }
+                    .clickable { }
             )
         }
     }

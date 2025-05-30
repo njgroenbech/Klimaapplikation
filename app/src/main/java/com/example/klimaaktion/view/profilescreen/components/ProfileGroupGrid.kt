@@ -23,15 +23,9 @@ import com.example.klimaaktion.R
 // Skrevet af Felix, med en del hjælp fra AI & online ift. LazyVerticalGrid
 // UI rettet til af Jacob
 
-/**
- * Viser en grid med brugerens gruppemedlemmer.
- * Hver celle viser et avatar-billede og et navn.
- *
- * Layoutet er lavet med LazyVerticalGrid for at sikre fleksibilitet og performance.
- */
+
 @Composable
 fun ProfileGroupGrid() {
-    // Navne og tilhørende avatar-resurser (pt. hardkodet)
     val members = listOf("Johannes", "Torkild", "Zeynab", "Emilie")
     val avatars = listOf(
         R.drawable.johannesikon,
@@ -41,14 +35,13 @@ fun ProfileGroupGrid() {
     )
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2), // To kolonner
+        columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp),
         modifier = Modifier
             .padding(top = 8.dp)
-            .height(320.dp) // Begrænser højden på grid’en
+            .height(320.dp)
     ) {
-        // Itererer gennem medlemmer og viser én komponent per gridcelle
         itemsIndexed(members) { index, name ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -58,7 +51,6 @@ fun ProfileGroupGrid() {
                     .background(Color(0xFF6CD59A))
                     .padding(12.dp)
             ) {
-                // Avatarbillede
                 Image(
                     painter = painterResource(id = avatars[index]),
                     contentDescription = name,
@@ -67,7 +59,6 @@ fun ProfileGroupGrid() {
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                // Navn på medlemmet
                 Text(
                     text = name,
                     fontSize = 20.sp,

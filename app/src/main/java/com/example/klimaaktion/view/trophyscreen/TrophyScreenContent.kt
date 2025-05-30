@@ -21,11 +21,7 @@ import androidx.navigation.NavController
 import com.example.klimaaktion.view.trophyscreen.components.TrophyCard
 import com.example.klimaaktion.viewmodel.TrophyViewModel
 
-/**
- * Indholdet for trofæskærmen.
- * Viser både en horisontal billedoversigt og en vertikal liste med detaljerede trofæ-kort.
- * Data hentes fra TrophyViewModel.
- */
+
 @Composable
 fun TrophyScreenContent(
     navController: NavController,
@@ -41,7 +37,7 @@ fun TrophyScreenContent(
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
-        // Overskrift + knap til profilside
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -67,7 +63,6 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Horisontal visning af trofæikoner
         LazyRow(
             modifier = Modifier
                 .fillMaxWidth()
@@ -95,7 +90,6 @@ fun TrophyScreenContent(
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Lodret liste over trofæer med beskrivelse og status
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()

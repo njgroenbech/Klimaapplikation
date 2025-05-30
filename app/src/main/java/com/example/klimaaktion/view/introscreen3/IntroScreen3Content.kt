@@ -13,11 +13,7 @@ import com.example.klimaaktion.view.introscreen3.components.IntroScreen3Cards
 import com.example.klimaaktion.view.sharedcomponents.NextButton
 import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 
-/**
- * Indholdet for introduktionsskærm 3.
- * Viser overskrift, beskrivelse, en række infokort og navigationskontroller i bunden.
- * Skærmen guider brugeren videre til forsiden.
- */
+
 // Skrevet af Jacob
 @Composable
 fun IntroScreen3Content(navController: NavController) {
@@ -27,7 +23,7 @@ fun IntroScreen3Content(navController: NavController) {
             .background(Color(0xFF8ECBEA))
             .padding(24.dp)
     ) {
-        // Øverste sektion med tekst og illustrationer
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -58,7 +54,7 @@ fun IntroScreen3Content(navController: NavController) {
             IntroScreen3Cards()
         }
 
-        // Bundsektion med Pageindicator og næste-knap
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier

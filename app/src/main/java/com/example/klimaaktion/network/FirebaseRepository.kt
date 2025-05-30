@@ -112,7 +112,7 @@ class FirebaseRepository(
 
     suspend fun getGroupsForClass(classId: String): List<Group> {
         val query = db.collection("groups")
-            .whereEqualTo("classId", classId) // check if classId is correct
+            .whereEqualTo("classId", classId)
             .get()
             .await()
         return query.documents.mapNotNull {

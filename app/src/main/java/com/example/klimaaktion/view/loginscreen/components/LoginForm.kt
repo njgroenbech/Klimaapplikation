@@ -21,20 +21,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
-/**
- * Formular-komponent til loginskærmen.
- * Indeholder felter til brugernavn og adgangskode, samt visning af fejlbesked.
- * Baggrundsbilledet vises svagt for visuel effekt, uden at forstyrre UI.
- */
+
 // Skrevet af Laurits
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun LoginForm(
     username: String,
-    onUsernameChange: (String) -> Unit,   // Kaldes når brugernavn opdateres
+    onUsernameChange: (String) -> Unit,
     password: String,
-    onPasswordChange: (String) -> Unit,   // Kaldes når adgangskode opdateres
-    errorMessage: String?                 // Vises, hvis der er en fejl i login
+    onPasswordChange: (String) -> Unit,
+    errorMessage: String?
 ) {
     BoxWithConstraints(
         modifier = Modifier.fillMaxWidth(),
@@ -42,7 +38,7 @@ fun LoginForm(
     ) {
         val imageWidth = maxWidth * 1.15f // Gør billedet lidt bredere end skærmen for visuel effekt
 
-        // Illustrativ baggrundsfigur (svag gennemsigtighed)
+
         Image(
             painter = painterResource(id = R.drawable.frontscreenimage),
             contentDescription = "Illustration",
@@ -53,14 +49,14 @@ fun LoginForm(
                 .alpha(0.22f)
         )
 
-        // Formularens faktiske indhold
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp, vertical = 18.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Introduktionstekst
+
             Text(
                 text = "Log ind med dit brugernavn og adgangskode",
                 color = Color(0xFF343434),
@@ -72,7 +68,7 @@ fun LoginForm(
 
             Spacer(modifier = Modifier.height(22.dp))
 
-            // Brugernavn-tekstfelt
+
             OutlinedTextField(
                 value = username,
                 onValueChange = onUsernameChange,
@@ -87,14 +83,14 @@ fun LoginForm(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Adgangskode-tekstfelt (skjult input)
+
             OutlinedTextField(
                 value = password,
                 onValueChange = onPasswordChange,
                 label = { Text("Adgangskode") },
                 placeholder = { Text("Adgangskode") },
                 shape = RoundedCornerShape(28.dp),
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = PasswordVisualTransformation(), //  STJERNER TIL PASSWORD
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White
@@ -103,7 +99,7 @@ fun LoginForm(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Fejlmeddelelse vises kun hvis errorMessage ikke er null
+            // fejlmeddelse med if sentence
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

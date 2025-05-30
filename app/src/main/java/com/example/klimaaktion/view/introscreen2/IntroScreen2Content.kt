@@ -18,11 +18,7 @@ import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 // Skrevet af Elias
 // UI rettet af Jacob
 
-/**
- * Indholdet for introduktionsskærm 2.
- * Formidler læring og quiz som en del af brugerens rejse.
- * Viser kort med information samt navigation til næste intro-skærm.
- */
+
 @Composable
 fun IntroScreen2Content(navController: NavController) {
     Box(
@@ -31,7 +27,7 @@ fun IntroScreen2Content(navController: NavController) {
             .background(Color(0xFFACD8F1))
             .padding(24.dp)
     ) {
-        // Topindhold: tekst og forklarende kort
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -61,7 +57,7 @@ fun IntroScreen2Content(navController: NavController) {
             IntroScreen2Cards()
         }
 
-        // Bund: Pageindicator og næste-knap
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier

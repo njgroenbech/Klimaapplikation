@@ -19,18 +19,10 @@ import com.example.klimaaktion.R
 // Skrevet af Felix
 // UI rettet til af Jacob
 
-/**
- * Viser brugerens primære profilindhold:
- * – Avatarbillede
- * – Brugernavn
- * – Gruppetilhørsforhold
- *
- * Bruges centralt på profilsiden som visuel introduktion til brugeren.
- */
+
 @Composable
 fun ProfileMainContent() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        // Avatar-ikon for brugeren (midlertidigt hardkodet til "Stefan")
         Image(
             painter = painterResource(R.drawable.stefanikon),
             contentDescription = "Avatar",
@@ -39,7 +31,7 @@ fun ProfileMainContent() {
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Brugernavn
+
         Text(
             text = "Stefan",
             fontSize = 36.sp,
@@ -47,7 +39,7 @@ fun ProfileMainContent() {
             color = Color(0xFF343434)
         )
 
-        // Gruppenavn (evt. klasse eller hold)
+
         Text(
             text = "Klimaklubben",
             fontSize = 32.sp,
@@ -55,7 +47,7 @@ fun ProfileMainContent() {
             color = Color(0xFF343434)
         )
 
-        // Forklaringstekst under gruppenavnet
+
         Text(
             text = "Din gruppe",
             fontSize = 20.sp,

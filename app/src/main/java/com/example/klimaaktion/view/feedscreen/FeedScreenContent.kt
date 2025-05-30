@@ -12,11 +12,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.klimaaktion.view.feedscreen.components.FeedScreenCards
 
-/**
- * Indholdet for Feed-skærmen.
- * Viser overskrift og en række feedkort med relevant indhold.
- * Layout og farver følger appens overordnede stil.
- */
+
 // Skrevet af Jacob
 @Composable
 fun FeedScreenContent(navController: NavController) {
@@ -37,7 +33,7 @@ fun FeedScreenContent(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Feed-kort med indhold (fx hjemmesider med focus på bæredygtighed )
+
         FeedScreenCards()
     }
 }

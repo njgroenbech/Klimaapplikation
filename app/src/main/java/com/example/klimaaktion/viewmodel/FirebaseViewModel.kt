@@ -18,7 +18,6 @@ class FirebaseViewModel(
     private val repo: FirebaseRepository = FirebaseRepository()
 ): ViewModel() {
 
-    // create state to choose classes from in signup
     var classes by mutableStateOf<List<SchoolClass>>(emptyList())
         private set
 
@@ -28,8 +27,7 @@ class FirebaseViewModel(
     var registerResult by mutableStateOf<Result<Student>?>(null)
         private set
 
-    // init block sørger for, at all klasser er tilgængelige så snart asynkron kode er
-    // kørt igennem
+    // init block for at få alle klasser
     init {
         viewModelScope.launch {
             classes = repo.getAllClasses()
@@ -45,7 +43,7 @@ class FirebaseViewModel(
                 )
             )
 
-            groups = groups + created // opdaterer vores local state i UI
+            groups = groups + created
 
             classes = classes.map {
                 if (it.id == classId) it.copy(groups = it.groups + created.id)
@@ -68,7 +66,6 @@ class FirebaseViewModel(
             registerResult = result
 
             result.onSuccess { student ->
-                // update local cache so UI sees the new student in both places
                 classes = classes.map {
                     if (it.id == classId) it.copy(students = it.students + student.id)
                     else it

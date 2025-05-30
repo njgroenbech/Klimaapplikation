@@ -19,18 +19,11 @@ import com.example.klimaaktion.R
 
 // Skrevet af Jacob
 
-/**
- * Viser kort på introduktionsskærm 1:
- * – Et opgavekort med "Start"-knap
- * – Et temakort med illustration og point
- *
- * Formålet er at visualisere handling og belønning i klimaaktiviteter.
- */
+
 @Composable
 fun IntroScreen1Cards(navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-        // StartTaskCard
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -71,7 +64,7 @@ fun IntroScreen1Cards(navController: NavController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        // TransportCard – emnekort med illustration og point
+
         Box(
             modifier = Modifier
                 .fillMaxWidth(0.8f)

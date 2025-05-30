@@ -10,23 +10,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.klimaaktion.viewmodel.LoginViewModel
 
-/**
- * Entry point for loginskærmen.
- * Initialiserer LoginViewModel og placerer LoginScreenContent i en farvet baggrund.
- *
- * LoginViewModel håndterer brugerinput og logik, mens UI deles op i komponenter.
- */
+
 // Skrever af Laurits
 @Composable
 fun LoginScreen(navController: NavController) {
-    val vm: LoginViewModel = viewModel() // ViewModel til håndtering af loginstatus og input
+    val vm: LoginViewModel = viewModel()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF8ECBEA)) // Lyseblå baggrund
+            .background(Color(0xFF8ECBEA))
     ) {
-        // Videresender ViewModel og NavController til selve UI-indholdet
+
         LoginScreenContent(
             navController = navController,
             viewModel = vm
