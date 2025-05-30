@@ -13,9 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.TextButton
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 
 // Skrevet af Nicholas, hjælp fra AI til showDialog opsætning
@@ -28,8 +30,11 @@ fun CreateGroupButton(
 
     Button(
         onClick = { showDialog = true },
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF6CD59A),
+        )
     ) {
-        Text("Opret Gruppe")
+        Text("Opret Gruppe",color = Color(0xFF343434))
     }
 
     if (showDialog) {
