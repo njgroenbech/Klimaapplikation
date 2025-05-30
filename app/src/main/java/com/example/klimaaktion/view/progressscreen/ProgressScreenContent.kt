@@ -123,11 +123,11 @@ fun ProgressScreenContent(
 
         // Elias: Nedenstående fik jeg hjælp til af AI ift. syntaks, da jeg fik lidt problemer med mit oprindelige.
 
-        viewModel.leaderboard.collectAsState().value.forEach { entry ->
+        viewModel.leaderboard.collectAsState().value.forEach { leaderBoardEntry ->
             LeaderboardCard(
-                rank = entry.rank,
-                name = entry.name,
-                points = entry.points
+                rank = leaderBoardEntry.rank,
+                name = leaderBoardEntry.name,
+                points = leaderBoardEntry.points
             )
         }
     }
