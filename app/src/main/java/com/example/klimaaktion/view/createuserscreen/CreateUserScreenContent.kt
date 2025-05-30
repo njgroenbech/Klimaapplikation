@@ -22,14 +22,16 @@ import com.example.klimaaktion.R
 import com.example.klimaaktion.model.firebasemodel.Group
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
-// Lavet af Elias og Nicholas
+
+// Lavet af Elias og Nicholas. AI/tutorials som hjælpemiddel til at få indført funktionalitet
+
 @SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun CreateUserScreenContent(
     viewModel: FirebaseViewModel = viewModel()
 ) {
     val classList = viewModel.classes
-    var selectedClassId by remember { mutableStateOf<SchoolClass?>(null) }
+    var selectedClass by remember { mutableStateOf<SchoolClass?>(null) }
     val groupList = viewModel.groups
     var selectedGroup by remember { mutableStateOf<Group?>(null) }
     val registerResult = viewModel.registerResult
@@ -37,8 +39,8 @@ fun CreateUserScreenContent(
     var usernameText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
-    LaunchedEffect(selectedClassId) {
-        selectedClassId?.let {
+    LaunchedEffect(selectedClass) {
+        selectedClass?.let {
             viewModel.fetchGroupsForClass(it.id)
             selectedGroup = null
         }
@@ -132,13 +134,13 @@ fun CreateUserScreenContent(
 
                     ClassSelectorButton(
                         classes = classList,
-                        selectedClass = selectedClassId,
-                        onSelect = { selectedClassId = it }
+                        selectedClass = selectedClass,
+                        onSelect = { selectedClass = it }
                     )
 
-                    if (selectedClassId != null) {
+                    if (selectedClass != null) {
                         CreateGroupButton {
-                            viewModel.createGroup(it, selectedClassId!!.id)
+                            viewModel.createGroup(it, selectedClass!!.id)
                         }
                         GroupSelectorButton(
                             groups = groupList,
@@ -146,7 +148,7 @@ fun CreateUserScreenContent(
                             onSelect = { selectedGroup = it }
                         )
                     } else {
-                        Spacer(modifier = Modifier.height(96.dp))
+                        Spacer(modifier = Modifier.height(96.dp)) // sørger for UI ikke bliver rykket op
                     }
 
                     registerResult?.onFailure {
@@ -169,8 +171,9 @@ fun CreateUserScreenContent(
                 .padding(bottom = 160.dp),
             horizontalArrangement = Arrangement.Center
         ) {
+
             CreateUserButton {
-                selectedClassId?.let {
+                selectedClass?.let {
                     viewModel.registerStudent(
                         username = usernameText,
                         password = passwordText,
