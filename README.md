@@ -9,7 +9,9 @@ Et værktøj designet til at engagere skoleelever i klimahandling gennem leg, f�
    For at aktivere AI-funktioner skal du tilføje din nøgle i `local.properties`:
 
 2. **Firebase login**  
-Firebase er sat op til brugeroprettelse og login. Nye brugere gemmes automatisk og burde kunne login lige efter
+Firebase er sat op til brugeroprettelse og login.
+Du skal lave en NY bruger for at kunne login
+ det burde fungerere at tilføje en bruger derefter login på den samme bruger.
 
 ## Testadgang
 Vil du hurtigt teste appen?
