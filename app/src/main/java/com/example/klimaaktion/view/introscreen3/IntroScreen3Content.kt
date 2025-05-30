@@ -1,5 +1,3 @@
-package com.example.klimaaktion.view.introscreen3.components
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
@@ -11,17 +9,25 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.klimaaktion.view.introscreen3.components.IntroScreen3Cards
 import com.example.klimaaktion.view.sharedcomponents.NextButton
+import com.example.klimaaktion.view.sharedcomponents.PageIndicator
 
+/**
+ * Indholdet for introduktionsskærm 3.
+ * Viser overskrift, beskrivelse, en række infokort og navigationskontroller i bunden.
+ * Skærmen guider brugeren videre til forsiden.
+ */
 // Skrevet af Jacob
 @Composable
 fun IntroScreen3Content(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF94D7F2))
+            .background(Color(0xFF8ECBEA))
             .padding(24.dp)
     ) {
+        // Øverste sektion med tekst og illustrationer
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -39,6 +45,7 @@ fun IntroScreen3Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(4.dp))
 
+
             Text(
                 text = "Se din fremgang og optjen trofæer!",
                 fontSize = 18.sp,
@@ -48,13 +55,10 @@ fun IntroScreen3Content(navController: NavController) {
 
             Spacer(modifier = Modifier.height(40.dp))
 
-            ProgressCard()
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            TrophyCard()
+            IntroScreen3Cards()
         }
 
+        // Bundsektion med Pageindicator og næste-knap
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -64,7 +68,9 @@ fun IntroScreen3Content(navController: NavController) {
             PageIndicator(currentPage = 2)
             Spacer(modifier = Modifier.height(20.dp))
 
-            NextButton{ navController.navigate("frontScreen") }
+            NextButton {
+                navController.navigate("frontScreen")
+            }
         }
     }
 }

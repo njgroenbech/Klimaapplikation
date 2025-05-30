@@ -17,18 +17,49 @@ import androidx.compose.ui.unit.sp
 import com.example.klimaaktion.R
 
 // Skrevet af Felix
+// UI rettet til af Jacob
+
+/**
+ * Viser brugerens primære profilindhold:
+ * – Avatarbillede
+ * – Brugernavn
+ * – Gruppetilhørsforhold
+ *
+ * Bruges centralt på profilsiden som visuel introduktion til brugeren.
+ */
 @Composable
 fun ProfileMainContent() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        // Avatar-ikon for brugeren (midlertidigt hardkodet til "Stefan")
         Image(
             painter = painterResource(R.drawable.stefanikon),
             contentDescription = "Avatar",
             modifier = Modifier.size(140.dp)
         )
+
         Spacer(modifier = Modifier.height(12.dp))
-        Text("Stefan", fontSize = 38.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
-        Text("Klimaklubben", fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color(0xFF343434))
-        Text("Din gruppe", fontSize = 24.sp, color = Color(0xFF000000))
+
+        // Brugernavn
+        Text(
+            text = "Stefan",
+            fontSize = 36.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF343434)
+        )
+
+        // Gruppenavn (evt. klasse eller hold)
+        Text(
+            text = "Klimaklubben",
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF343434)
+        )
+
+        // Forklaringstekst under gruppenavnet
+        Text(
+            text = "Din gruppe",
+            fontSize = 20.sp,
+            color = Color.Black
+        )
     }
 }
-

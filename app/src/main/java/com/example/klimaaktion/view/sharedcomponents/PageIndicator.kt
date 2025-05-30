@@ -1,4 +1,4 @@
-package com.example.klimaaktion.view.introscreen1.components
+package com.example.klimaaktion.view.sharedcomponents
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,7 +10,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-// Skrevet af Jacob
+// Skrevet af Jacob: PageIndicator funktionalitet delvist skrevet af AI
 @Composable
 fun PageIndicator(currentPage: Int = 0, totalPages: Int = 3) {
     Row(

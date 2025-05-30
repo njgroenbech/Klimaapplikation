@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826556073105",
+    "project_id": "klima-aktion-database",
+    "storage_bucket": "klima-aktion-database.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826556073105:android:0071ef996a7bd0aa2aab30",
+        "android_client_info": {
+          "package_name": "com.example.klimaaktion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBof7n16ViHuCnoy3uUv5-h8wi3ShP9dyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

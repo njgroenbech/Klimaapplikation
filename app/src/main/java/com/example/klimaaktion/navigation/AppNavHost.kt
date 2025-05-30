@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.klimaaktion.view.createuserscreen.CreateUserScreen
 import com.example.klimaaktion.view.feedscreen.FeedScreen
 import com.example.klimaaktion.view.frontscreen.FrontScreen
 import com.example.klimaaktion.view.introscreen1.IntroScreen1
@@ -18,10 +20,14 @@ import com.example.klimaaktion.view.progressscreen.ProgressScreen
 import com.example.klimaaktion.view.sharedcomponents.BottomNavBar
 import com.example.klimaaktion.view.startscreen.StartScreen
 import com.example.klimaaktion.view.taskscreen.TaskScreen
+import com.example.klimaaktion.view.trophyscreen.TrophyScreen
+import com.example.klimaaktion.viewmodel.MainViewModel
 
-
+// navigation tilføjet af alle / nicolas og laurits opstilet
 @Composable
 fun AppNavHost() {
+
+    val mainViewModel: MainViewModel = viewModel()
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "startScreen") {
         composable("startScreen") {StartScreen(navController)}
@@ -30,6 +36,9 @@ fun AppNavHost() {
         composable("intro2") { IntroScreen2(navController) }
         composable("intro3") { IntroScreen3(navController) }
         composable("LoginScreen") { LoginScreen(navController) }
+        composable("createUserScreen") { CreateUserScreen(navController) }
+        composable("profilescreen") { ProfileScreen(navController) }
+        composable("trophyscreen") { TrophyScreen(navController) }
 
         // Tilføje navbar til bunden af skærme (Nicholas)
         composable(Routes.Feed) {
@@ -51,7 +60,7 @@ fun AppNavHost() {
                 }
             ) {
                     innerPadding ->
-                ProgressScreen(navController, modifier = Modifier.padding(innerPadding))
+                ProgressScreen(navController, modifier = Modifier.padding(innerPadding), mainViewModel)
             }
         }
 
@@ -62,7 +71,7 @@ fun AppNavHost() {
                 }
             ) {
                     innerPadding ->
-                TaskScreen(navController = navController,
+                TaskScreen(mainViewModel, navController = navController,
                     modifier = Modifier.padding(innerPadding))
             }
         }

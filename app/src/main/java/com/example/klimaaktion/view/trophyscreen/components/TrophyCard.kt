@@ -1,37 +1,38 @@
-package com.example.klimaaktion.view.trophyscreen.components.cards
+package com.example.klimaaktion.view.trophyscreen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.Icon
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
-import com.example.klimaaktion.R
+import com.example.klimaaktion.model.Trophy
 
+// Skrevet af Jacob
+
+/**
+ * Et enkelt trofæ-kort med ikon, titel og status.
+ * UI’et er tilpasset afhængigt af om trofæet er opnået (visuel transparens + flueben).
+ */
 @Composable
-fun BikeCard(
-    isCompleted: Boolean = false,
-    ) {
+fun TrophyCard(trophy: Trophy) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
-            .alpha(if (isCompleted) 1f else 0.3f)
-            .background(
-                color = Color(0xFFFFCB69),
-                shape = RoundedCornerShape(20.dp)
-            )
+            .alpha(if (trophy.isCompleted) 1f else 0.3f) // Lavere opacitet for ufuldendte tasks
+            .background(trophy.backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
         Row(
@@ -39,25 +40,27 @@ fun BikeCard(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            // Ikon og titel til venstre
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    painter = painterResource(id = R.drawable.bike_trophy_icon),
-                    contentDescription = "Bike icon",
+                    painter = painterResource(id = trophy.iconRes),
+                    contentDescription = null,
                     modifier = Modifier.size(48.dp),
                     tint = Color.Unspecified
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "Tag cyklen 3 gange!",
+                    text = trophy.title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color.Black
                 )
             }
 
-            if (isCompleted) {
+            // Statusindikator til højre (flueben eller tom cirkel)
+            if (trophy.isCompleted) {
                 Icon(
-                    painter = painterResource(id = R.drawable.checkmark_icon),
+                    painter = painterResource(id = com.example.klimaaktion.R.drawable.checkmark_icon),
                     contentDescription = "Fuldført",
                     modifier = Modifier.size(28.dp),
                     tint = Color.Black

@@ -2,7 +2,6 @@ package com.example.klimaaktion.view.feedscreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,10 +10,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.klimaaktion.view.feedscreen.components.GreenDayCard
-import com.example.klimaaktion.view.feedscreen.components.RecycleCard
-import com.example.klimaaktion.view.feedscreen.components.TreeCard
+import com.example.klimaaktion.view.feedscreen.components.FeedScreenCards
 
+/**
+ * Indholdet for Feed-skærmen.
+ * Viser overskrift og en række feedkort med relevant indhold.
+ * Layout og farver følger appens overordnede stil.
+ */
 // Skrevet af Jacob
 @Composable
 fun FeedScreenContent(navController: NavController) {
@@ -35,12 +37,7 @@ fun FeedScreenContent(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            item { GreenDayCard() }
-            item { RecycleCard() }
-            item { TreeCard() }
-        }
+        // Feed-kort med indhold (fx hjemmesider med focus på bæredygtighed )
+        FeedScreenCards()
     }
 }

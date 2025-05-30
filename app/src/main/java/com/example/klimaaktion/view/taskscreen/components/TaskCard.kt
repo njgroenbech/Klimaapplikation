@@ -24,17 +24,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.klimaaktion.R
 import com.example.klimaaktion.model.Task
+import com.example.klimaaktion.viewmodel.MainViewModel
 
 // Nedenstående kode er lavet af Elias
 // En lille smule er skrevet af Felix, se kommentare i koden.
 // hope this shit works
+// UI rettet til af Jacob
+
 @Composable
 fun TaskCard(
     task: Task,
@@ -44,10 +49,13 @@ fun TaskCard(
     var detailsExpanded by remember { mutableStateOf(false) }
     var quizExpanded by remember { mutableStateOf(false) }
 
+
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .shadow(6.dp, RoundedCornerShape(20.dp))
             .background(task.backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
@@ -60,7 +68,7 @@ fun TaskCard(
                 Text(
                     text = task.title,
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.ExtraBold,
                     color = Color.Black
                 )
 
@@ -70,6 +78,7 @@ fun TaskCard(
                 // De 2 boxes (bog og spørgsmålstegn ikon, linje 69 - 104) her er skrevet af Felix
                 Box(
                     modifier = Modifier
+                        .shadow(6.dp, RoundedCornerShape(20.dp))
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
                         .size(50.dp)
                         .clickable { detailsExpanded = !detailsExpanded },
@@ -80,7 +89,8 @@ fun TaskCard(
                             id = if (detailsExpanded) R.drawable.arrowup else R.drawable.book
                         ),
                         contentDescription = "",
-                        modifier = Modifier.size(30.dp)
+                        modifier = Modifier
+                            .size(30.dp)
                     )
                 }
 
@@ -89,6 +99,7 @@ fun TaskCard(
 
                 Box(
                     modifier = Modifier
+                        .shadow(6.dp, RoundedCornerShape(20.dp))
                         .background(Color(0xFFABE8E4), RoundedCornerShape(50.dp))
                         .size(50.dp)
                         .clickable {quizExpanded = !quizExpanded},
@@ -110,13 +121,13 @@ fun TaskCard(
 
             Text(
                 text = "${task.points} Point",
-                fontSize = 14.sp,
+                fontSize = 18.sp,
                 color = Color.DarkGray
             )
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            // Details og Quiz (linje 118-164) er lavet af Felix
+            // Details og Quiz (linje 120-164) er lavet af Felix
             if (detailsExpanded) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -126,7 +137,7 @@ fun TaskCard(
             }
 
             if (quizExpanded) {
-                Column {
+                Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                     task.quiz.forEach { quizQuestion ->
                         Box(
                             modifier = Modifier
@@ -143,28 +154,30 @@ fun TaskCard(
                                     color = Color.Black
                                 )
 
-                                quizQuestion.answers.forEach { answer ->
-                                    Button(
-                                        onClick = {},
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(vertical = 4.dp),
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = Color.White,
-                                            contentColor = Color(0xFF224B43)
-                                        ),
-                                        shape = RoundedCornerShape(20.dp)
-                                    ) {
-                                        Text(text = answer)
+                                    quizQuestion.answers.forEach { answer ->
+                                        Button(
+                                            onClick = {},
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
+                                                .padding(vertical = 4.dp),
+                                            colors = ButtonDefaults.buttonColors(
+                                                containerColor = Color.White,
+                                                contentColor = Color(0xFF224B43)
+                                            ),
+                                            shape = RoundedCornerShape(20.dp)
+                                        ) {
+                                            Text(text = answer)
+                                        }
                                     }
-                                }
+
                             }
                         }
                     }
                 }
             }
 
-            if (isExpanded == false) {
+            else if (isExpanded == false) {
 
                 Row(
                     horizontalArrangement = Arrangement.End,
@@ -173,10 +186,11 @@ fun TaskCard(
                     Button(
                         onClick = { isExpanded = true },
                         modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp))
                             .size(width = 115.dp, height = 50.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF224B43),
-                            contentColor = Color.White
+                            contentColor = Color.White,
                         )
                     ) {
                         Text(
@@ -194,18 +208,24 @@ fun TaskCard(
                 )
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ){
 
                     Button(
-                        onClick = onTaskDone,
+                        modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
+                        onClick = {
+                            onTaskDone()},
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {
                         Text("Vi har gjort det! (${task.points} point)", color = Color.White)
                     }
 
                     Button(
+                        modifier = Modifier
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(20.dp)),
                         onClick = { isExpanded = false },
                         colors = ButtonDefaults.buttonColors(Color(0xFF005F3D))
                     ) {
