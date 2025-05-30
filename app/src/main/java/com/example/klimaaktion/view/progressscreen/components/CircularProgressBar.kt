@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 
-// Lavet af Nicholas med hjælp fra AI til opsætningen af den cirkulære datavisualisering
+// Skrevet af ChatGPT
 @Composable
 fun CircularProgressBar(
     percentage: Float,
@@ -29,7 +29,6 @@ fun CircularProgressBar(
         modifier = modifier.size(radius * 2)
     ) {
         Canvas(modifier = Modifier.size(radius * 2)) {
-            val size = size.minDimension
             val sweepAngle = percentage * 360f
 
             drawArc(
