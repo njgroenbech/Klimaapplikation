@@ -6,7 +6,7 @@ Et værktøj designet til at engagere skoleelever i klimahandling gennem leg, f�
 ## Sådan kommer du i gang
 
 1. **Tilføj din OpenAI API-nøgle**  
-   For at aktivere AI-funktioner skal du tilføje din nøgle i `local.properties`, hvor du skriver OPENAI_API_KEY= efterfulgt af din OpenAI Api Key, f.eks. OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+   For at aktivere AI-funktioner skal du tilføje din nøgle i `local.properties`, hvor du skriver OPENAI_API_KEY= efterfulgt af din OpenAI Api Key, f.eks. `OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`:
 
 2. **Firebase login**  
 Firebase er sat op til brugeroprettelse og login.
