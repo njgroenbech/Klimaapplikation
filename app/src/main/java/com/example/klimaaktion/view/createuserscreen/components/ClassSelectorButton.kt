@@ -2,6 +2,7 @@ package com.example.klimaaktion.view.createuserscreen.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -10,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import com.example.klimaaktion.model.firebasemodel.SchoolClass
 
 // skrevet af Nicholas, hjælp fra AI til dropdownmenu
@@ -23,12 +25,16 @@ fun ClassSelectorButton(
     var expanded by remember { mutableStateOf(false) }
 
     Box {
-        Button(onClick = { expanded = true }) {
-            Text(text = if (selectedClass != null) {
-                selectedClass.name
-            } else {
-                "Vælg klasse"
-            }) // viser selected class når man trykker
+        Button(
+            onClick = { expanded = true },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6CD59A),
+            )
+        ) {
+            Text(
+                text = if (selectedClass != null) selectedClass.name else "Vælg klasse",
+                color = Color(0xFF343434)
+            )
         }
         DropdownMenu(
             expanded = expanded,

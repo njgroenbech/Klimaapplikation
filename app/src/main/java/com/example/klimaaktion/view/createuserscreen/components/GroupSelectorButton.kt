@@ -2,6 +2,7 @@ package com.example.klimaaktion.view.createuserscreen.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -10,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import com.example.klimaaktion.model.firebasemodel.Group
 import kotlin.collections.forEach
 
@@ -22,8 +24,11 @@ fun GroupSelectorButton(
 ) {
     var expanded by remember { mutableStateOf(false) }
     Box {
-        Button(onClick = { expanded = true }) {
-            Text(text = selectedGroup?.name ?: "Vælg gruppe")
+        Button(onClick = { expanded = true },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF6CD59A),
+            )) {
+            Text(text = selectedGroup?.name ?: "Vælg gruppe",color = Color(0xFF343434))
         }
 
         DropdownMenu(
