@@ -6,3 +6,4 @@ data class Task(
     val name: String = "",
     val points: Int = 0
 )
+

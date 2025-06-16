@@ -28,6 +28,58 @@ class FirebaseViewModel(
     var registerResult by mutableStateOf<Result<Student>?>(null)
         private set
 
+    var selectedClass = mutableStateOf<SchoolClass?>(null)
+    private set
+
+    var selectedGroup = mutableStateOf<Group?>(null)
+    private set
+
+
+    // state for username og password i vores
+    var usernameText = mutableStateOf("")
+    private set
+
+    var passwordText = mutableStateOf("")
+    private set
+
+    fun onCreateUserClick () {
+        val selectedClass = selectedClass.value
+        if (selectedClass != null) {
+            val classId = selectedClass.id
+            val groupId = selectedGroup.value?.id
+            val username = usernameText.value
+            val password = passwordText.value
+
+            registerStudent(username, password, classId, groupId)
+        }
+    }
+
+    fun onUsernameChange(newValue: String) {
+        usernameText.value = newValue
+    }
+
+    fun onPasswordChange(newValue: String) {
+        passwordText.value = newValue
+    }
+
+    fun onClassSelectedFromUI(schoolClass: SchoolClass) {
+        selectedClass.value = schoolClass
+        selectedGroup.value = null
+        fetchGroupsForClass(schoolClass.id)
+    }
+
+    fun onCreateGroupClick(name: String) {
+        val selectedClass = selectedClass.value
+        if (selectedClass != null) {
+            val classId = selectedClass.id
+            createGroup(name, classId)
+        }
+    }
+
+    fun onGroupSelectedFromUI(group: Group) {
+        selectedGroup.value = group
+    }
+
     // init block sørger for, at all klasser er tilgængelige så snart asynkron kode er
     // kørt igennem
     init {
@@ -68,7 +120,6 @@ class FirebaseViewModel(
             registerResult = result
 
             result.onSuccess { student ->
-                // update local cache so UI sees the new student in both places
                 classes = classes.map {
                     if (it.id == classId) it.copy(students = it.students + student.id)
                     else it
@@ -81,6 +132,10 @@ class FirebaseViewModel(
                 }
             }
         }
+    }
+
+    fun onRegisterResultSuccess () {
+
     }
 
     fun fetchGroupsForClass(classId: String) {

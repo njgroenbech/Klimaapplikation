@@ -30,7 +30,7 @@ fun AppNavHost() {
     val mainViewModel: MainViewModel = viewModel()
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "startScreen") {
-        composable("startScreen") {StartScreen(navController)}
+        composable("startScreen") { StartScreen(navController) }
         composable("frontScreen") {FrontScreen(navController) }
         composable("intro1") { IntroScreen1(navController) }
         composable("intro2") { IntroScreen2(navController) }
@@ -51,7 +51,6 @@ fun AppNavHost() {
                 FeedScreen(navController, modifier = Modifier.padding(innerPadding))
             }
         }
-
 
         composable(Routes.Progress) {
             Scaffold(

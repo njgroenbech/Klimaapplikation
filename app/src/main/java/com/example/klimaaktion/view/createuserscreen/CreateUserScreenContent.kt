@@ -19,8 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.klimaaktion.R
-import com.example.klimaaktion.model.firebasemodel.Group
-import com.example.klimaaktion.model.firebasemodel.SchoolClass
 import com.example.klimaaktion.viewmodel.FirebaseViewModel
 
 // Lavet af Elias og Nicholas. AI/tutorials som hjælpemiddel til at få indført funktionalitet
@@ -31,20 +29,12 @@ fun CreateUserScreenContent(
     viewModel: FirebaseViewModel = viewModel()
 ) {
     val classList = viewModel.classes
-    var selectedClass by remember { mutableStateOf<SchoolClass?>(null) }
+    val selectedClass = viewModel.selectedClass
     val groupList = viewModel.groups
-    var selectedGroup by remember { mutableStateOf<Group?>(null) }
+    val selectedGroup = viewModel.selectedGroup
     val registerResult = viewModel.registerResult
-
-    var usernameText by remember { mutableStateOf("") }
-    var passwordText by remember { mutableStateOf("") }
-
-    LaunchedEffect(selectedClass) {
-        selectedClass?.let {
-            viewModel.fetchGroupsForClass(it.id)
-            selectedGroup = null
-        }
-    }
+    val usernameText by viewModel.usernameText
+    val passwordText by viewModel.passwordText
 
     Box(
         modifier = Modifier
@@ -106,7 +96,7 @@ fun CreateUserScreenContent(
 
                     OutlinedTextField(
                         value = usernameText,
-                        onValueChange = { usernameText = it },
+                        onValueChange = viewModel::onUsernameChange,
                         placeholder = { Text("Brugernavn") },
                         shape = RoundedCornerShape(28.dp),
                         modifier = Modifier.fillMaxWidth(),
@@ -120,7 +110,7 @@ fun CreateUserScreenContent(
 
                     OutlinedTextField(
                         value = passwordText,
-                        onValueChange = { passwordText = it },
+                        onValueChange = viewModel::onPasswordChange,
                         placeholder = { Text("Adgangskode") },
                         shape = RoundedCornerShape(28.dp),
                         modifier = Modifier.fillMaxWidth(),
@@ -134,18 +124,19 @@ fun CreateUserScreenContent(
 
                     ClassSelectorButton(
                         classes = classList,
-                        selectedClass = selectedClass,
-                        onSelect = { selectedClass = it }
+                        selectedClass = selectedClass.value,
+                        onSelect = viewModel::onClassSelectedFromUI
                     )
 
-                    if (selectedClass != null) {
-                        CreateGroupButton {
-                            viewModel.createGroup(it, selectedClass!!.id)
-                        }
+                    if (selectedClass.value != null) {
+                        CreateGroupButton(
+                            onCreate = viewModel::onCreateGroupClick
+                        )
+
                         GroupSelectorButton(
                             groups = groupList,
-                            selectedGroup = selectedGroup,
-                            onSelect = { selectedGroup = it }
+                            selectedGroup = selectedGroup.value,
+                            onSelect = viewModel::onGroupSelectedFromUI
                         )
                     } else {
                         Spacer(modifier = Modifier.height(96.dp)) // sørger for UI ikke bliver rykket op
@@ -172,16 +163,9 @@ fun CreateUserScreenContent(
             horizontalArrangement = Arrangement.Center
         ) {
 
-            CreateUserButton {
-                selectedClass?.let {
-                    viewModel.registerStudent(
-                        username = usernameText,
-                        password = passwordText,
-                        classId = it.id,
-                        groupId = selectedGroup?.id
-                    )
-                }
-            }
+            CreateUserButton(
+                onClick = viewModel::onCreateUserClick
+            )
         }
     }
 }

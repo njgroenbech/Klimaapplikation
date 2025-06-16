@@ -119,5 +119,4 @@ class FirebaseRepository(
             it.toObject(Group::class.java)?.copy(id = it.id)
         }
     }
-
 }
